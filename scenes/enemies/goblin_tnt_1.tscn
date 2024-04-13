@@ -57,6 +57,7 @@ animations = [{
 script = ExtResource("1_ybtt7")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+unique_name_in_owner = true
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_gccju")
 animation = &"idle"

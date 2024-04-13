@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo3mghicxgith"]
+
+[ext_resource type="FontFile" uid="uid://nlo7gcunebhk" path="res://assets/fonts/Merchant Copy Doublesize.ttf" id="1_2cwjo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kcxg1"]
+font = ExtResource("1_2cwjo")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="CastWord" type="Label"]
+offset_right = 1.0
+offset_bottom = 23.0
+text = "Test"
+label_settings = SubResource("LabelSettings_kcxg1")

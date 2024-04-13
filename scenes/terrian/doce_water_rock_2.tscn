@@ -71,5 +71,6 @@ animations = [{
 script = ExtResource("1_rvuit")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_5mn35")
 animation = &"idle"

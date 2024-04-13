@@ -25,6 +25,8 @@ size = Vector3(300, 0.5, 80)
 [node name="Main" type="Node3D"]
 
 [node name="Cast" parent="." instance=ExtResource("1_a815a")]
+timer_on_type = null
+timner_on_cast = null
 
 [node name="Player" parent="." instance=ExtResource("1_q57fh")]
 process_mode = 4

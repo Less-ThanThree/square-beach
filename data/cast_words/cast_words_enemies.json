@@ -1,0 +1,17 @@
+{
+	"archer": {
+		"word": "archer",
+	},
+	"knight": {
+		"word": "knight",
+	},
+	"pawn": {
+		"word": "pawn",
+	},
+	"nothing": {
+		"word": "nothing",
+	},
+	"void": {
+		"word": "void",
+	}
+}

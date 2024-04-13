@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfkru4flxlac1"]
+
+[ext_resource type="Texture2D" uid="uid://c47qpm1q184pe" path="res://assets/Cast/Openbook.png" id="1_4pt60"]
+[ext_resource type="Script" path="res://scripts/cast/cast.gd" id="1_6bqvh"]
+[ext_resource type="Texture2D" uid="uid://cf31p0882h8sy" path="res://assets/Cast/Torch/C300-1.png" id="1_tti0y"]
+[ext_resource type="Texture2D" uid="uid://doegqm7n3pa4g" path="res://assets/Cast/Torch/C300-2.png" id="2_t7pmj"]
+[ext_resource type="Texture2D" uid="uid://lmxrq8ocscsc" path="res://assets/Cast/Torch/C300-3.png" id="3_4xliq"]
+[ext_resource type="Script" path="res://scripts/load_animation.gd" id="4_itcty"]
+[ext_resource type="PackedScene" uid="uid://bo3mghicxgith" path="res://scenes/cast/cast_word.tscn" id="5_2ox5j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlhwv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tti0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_t7pmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4xliq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_v2jbc"]
+offsets = PackedFloat32Array(0, 0.707792)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wb5qt"]
+gradient = SubResource("Gradient_v2jbc")
+fill = 1
+fill_from = Vector2(0.490826, 0.486239)
+
+[node name="Cast" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6bqvh")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="Container" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CenterContainer/Container"]
+unique_name_in_owner = true
+position = Vector2(312, 33)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_dlhwv")
+animation = &"idle"
+script = ExtResource("4_itcty")
+
+[node name="PointLight2D" type="PointLight2D" parent="CenterContainer/Container/AnimatedSprite"]
+position = Vector2(6, -120)
+rotation = 3.14159
+scale = Vector2(18.0015, -12.3524)
+color = Color(1, 1, 0.207843, 1)
+texture = SubResource("GradientTexture2D_wb5qt")
+
+[node name="Openbook" type="Sprite2D" parent="CenterContainer/Container"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_4pt60")
+
+[node name="CastWord_1" parent="CenterContainer/Container/Openbook" instance=ExtResource("5_2ox5j")]
+offset_left = -58.3333
+offset_top = -41.3333
+offset_right = -24.3333
+offset_bottom = -18.3333
+
+[node name="CastWord_2" parent="CenterContainer/Container/Openbook" instance=ExtResource("5_2ox5j")]
+offset_left = 15.3333
+offset_top = -14.0
+offset_right = 49.3333
+offset_bottom = 9.0
+
+[node name="CastWord_3" parent="CenterContainer/Container/Openbook" instance=ExtResource("5_2ox5j")]
+offset_left = -59.6667
+offset_top = 19.0
+offset_right = -25.6667
+offset_bottom = 42.0
+
+[node name="TimerOnType" type="Timer" parent="."]
+
+[node name="TimerOnCast" type="Timer" parent="."]

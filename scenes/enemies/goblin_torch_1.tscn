@@ -64,6 +64,7 @@ animations = [{
 script = ExtResource("1_m3hhf")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+unique_name_in_owner = true
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_hb6gj")
 animation = &"idle"
