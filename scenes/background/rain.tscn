@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://n4iaed77lvk5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bbhsi"]
+radius = 0.005
+
+[node name="Rain" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 1803
+mesh = SubResource("CapsuleMesh_bbhsi")
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 50)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -98, 0)

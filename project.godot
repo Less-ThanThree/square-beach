@@ -24,6 +24,10 @@ window/stretch/aspect="keep_width"
 
 project/assembly_name="Square-beach"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/lampheaddd/Desktop/test.avi"
+
 [input]
 
 forward={

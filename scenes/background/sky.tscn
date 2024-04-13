@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://tiicwfhbkevu"]
+
+[ext_resource type="Shader" path="res://assets/shaders/background/sky.gdshader" id="1_ajhht"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8m6v"]
+render_priority = -30
+shader = ExtResource("1_ajhht")
+shader_parameter/cloud_scale = 27.286
+shader_parameter/cloud_speed = 0.1
+shader_parameter/cloud_density = 1.0
+shader_parameter/cloud_height = 0.632
+shader_parameter/cloud_opacity = 0.467
+
+[sub_resource type="SphereMesh" id="SphereMesh_fsg5r"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("ShaderMaterial_b8m6v")
+
+[node name="Sky" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-200, 0, -1.74846e-05, 0, 200, 0, 1.74846e-05, 0, -200, 0, 0, 0)
+mesh = SubResource("SphereMesh_fsg5r")
+skeleton = NodePath("")
