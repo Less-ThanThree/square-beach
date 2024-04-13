@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, repeat_disable, filter_nearest; // Экранная текстура
 uniform float scale : hint_range(1.0, 64.0) = 8.0; // Масштабирование узора дизеринга
+uniform float dither_opacity : hint_range(0.0, 1.0) = 1.0; // Прозрачность эффекта дизеринга
 
 // Функция для генерации матрицы Байера 4x4
 float bayerMatrix(vec2 pos) {
@@ -20,14 +21,16 @@ float bayerMatrix(vec2 pos) {
 }
 
 void fragment() {
-    vec4 color = texture(SCREEN_TEXTURE, UV); // Используем SCREEN_TEXTURE для постпроцессинга
+    vec4 original_color = texture(SCREEN_TEXTURE, UV); // Исходный цвет из текстуры
     vec2 scaledUV = FRAGCOORD.xy / scale;
     float dither = bayerMatrix(scaledUV);
 
     // Применяем дизеринг к каждому цветовому каналу
-    color.r = floor(color.r * 16.0 + dither) / 16.0;
-    color.g = floor(color.g * 16.0 + dither) / 16.0;
-    color.b = floor(color.b * 16.0 + dither) / 16.0;
+    vec4 dithered_color = original_color;
+    dithered_color.r = floor(original_color.r * 16.0 + dither) / 16.0;
+    dithered_color.g = floor(original_color.g * 16.0 + dither) / 16.0;
+    dithered_color.b = floor(original_color.b * 16.0 + dither) / 16.0;
 
-    COLOR = color;
+    // Интерполяция между исходным и дизеринговым цветом с учётом прозрачности эффекта
+    COLOR = mix(original_color, dithered_color, dither_opacity);
 }

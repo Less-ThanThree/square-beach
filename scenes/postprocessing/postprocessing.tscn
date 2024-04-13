@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://assets/shaders/posterize.gdshader" id="2_qbv8k"]
 [ext_resource type="Shader" path="res://assets/shaders/glow.gdshader" id="3_m5dly"]
-[ext_resource type="Shader" path="res://scenes/postprocessing/dithering.gdshader" id="4_1pag5"]
+[ext_resource type="Shader" path="res://assets/shaders/dithering.gdshader" id="4_1pag5"]
 [ext_resource type="Shader" path="res://assets/shaders/grain.gdshader" id="4_gvccx"]
 [ext_resource type="Shader" path="res://assets/shaders/vignette.gdshader" id="5_jbj1f"]
 
@@ -17,6 +17,20 @@ shader_parameter/BLUR_SUBDIVISIONS = 32
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m5t61"]
 shader = ExtResource("2_qbv8k")
 shader_parameter/levels = 0.0
+
+[sub_resource type="Animation" id="Animation_33xnu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/levels")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_efrmn"]
 resource_name = "fire"
@@ -34,20 +48,6 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3, 6)
 }
 
-[sub_resource type="Animation" id="Animation_33xnu"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/levels")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x0g3f"]
 _data = {
 "RESET": SubResource("Animation_33xnu"),
@@ -57,6 +57,7 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb176"]
 shader = ExtResource("4_1pag5")
 shader_parameter/scale = 4.0
+shader_parameter/dither_opacity = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7n265"]
 shader = ExtResource("4_gvccx")
