@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjqepayl2soau"]
+
+[ext_resource type="Script" path="res://scripts/load_animation.gd" id="1_afuuh"]
+[ext_resource type="Texture2D" uid="uid://dc5fashp134x6" path="res://assets/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_g2h8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7428s"]
+atlas = ExtResource("1_g2h8i")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6a2v"]
+atlas = ExtResource("1_g2h8i")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhh4u"]
+atlas = ExtResource("1_g2h8i")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i66bs"]
+atlas = ExtResource("1_g2h8i")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6bqvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7428s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6a2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhh4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i66bs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Three1" type="Node3D"]
+script = ExtResource("1_afuuh")
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6bqvt")
+animation = &"idle"

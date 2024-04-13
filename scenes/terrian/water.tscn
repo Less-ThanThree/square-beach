@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://vvkj1u32m6ky"]
+
+[ext_resource type="Texture2D" uid="uid://b8yxocw3u8d67" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="1_pnqpk"]
+
+[node name="Water" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_pnqpk")

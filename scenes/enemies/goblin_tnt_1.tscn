@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://cgduwa8imsi8i"]
+
+[ext_resource type="Texture2D" uid="uid://bdsrqdj6fynwx" path="res://assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/TNT/Red/TNT_Red.png" id="1_50e5n"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ybtt7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q55ip"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxge0"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83oyt"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bletj"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u2hj"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y66sn"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gccju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q55ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxge0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83oyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bletj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u2hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y66sn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="GoblinTnt1" type="Node3D"]
+script = ExtResource("1_ybtt7")
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+flip_h = true
+sprite_frames = SubResource("SpriteFrames_gccju")
+animation = &"idle"
+frame_progress = 0.0431401

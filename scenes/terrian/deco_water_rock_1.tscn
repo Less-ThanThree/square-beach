@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://d0xry1vtn2ikm"]
+
+[ext_resource type="Script" path="res://scripts/load_animation.gd" id="1_4yrfu"]
+[ext_resource type="Texture2D" uid="uid://6dwbpniuj81h" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_04.png" id="2_gfyq3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy7qa"]
+atlas = ExtResource("2_gfyq3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oevlu"]
+atlas = ExtResource("2_gfyq3")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_natde"]
+atlas = ExtResource("2_gfyq3")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7wrq"]
+atlas = ExtResource("2_gfyq3")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ncqm"]
+atlas = ExtResource("2_gfyq3")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4sn3"]
+atlas = ExtResource("2_gfyq3")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wydit"]
+atlas = ExtResource("2_gfyq3")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4dh2"]
+atlas = ExtResource("2_gfyq3")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1cyku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy7qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oevlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_natde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7wrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ncqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4sn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wydit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4dh2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="DecoWaterRock" type="Node3D"]
+script = ExtResource("1_4yrfu")
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1cyku")
+animation = &"idle"
+frame = 7
+frame_progress = 0.680055

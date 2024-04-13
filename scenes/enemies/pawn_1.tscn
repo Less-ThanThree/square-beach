@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmypxkvsauah3"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_hoj1e"]
+[ext_resource type="Texture2D" uid="uid://d1jhbuklyr47e" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="2_vsmlg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc54l"]
+atlas = ExtResource("2_vsmlg")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xpi2"]
+atlas = ExtResource("2_vsmlg")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yollo"]
+atlas = ExtResource("2_vsmlg")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m8vk"]
+atlas = ExtResource("2_vsmlg")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i481x"]
+atlas = ExtResource("2_vsmlg")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki8ac"]
+atlas = ExtResource("2_vsmlg")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihkor"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc54l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xpi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yollo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m8vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i481x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki8ac")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Pawn1" type="Node3D"]
+script = ExtResource("1_hoj1e")
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ihkor")
+animation = &"idle"

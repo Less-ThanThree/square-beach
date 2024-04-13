@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct3esyncmun0w"]
+
+[ext_resource type="Texture2D" uid="uid://duh0m4ft2g7f5" path="res://assets/Tiny Swords (Update 010)/Deco/02.png" id="1_segcd"]
+
+[node name="Deco1" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_segcd")

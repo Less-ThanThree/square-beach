@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b21q5kmf5ntr2"]
+
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_rdse3"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_rdse3")
+
+[node name="PivotCameraGimbal" type="Node3D" parent="."]
+
+[node name="PivotCameraInner" type="Node3D" parent="PivotCameraGimbal"]
+
+[node name="Camera3D" type="Camera3D" parent="PivotCameraGimbal/PivotCameraInner"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 4)
+current = true

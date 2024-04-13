@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://fdyn02nmx237"]
+
+[ext_resource type="Texture2D" uid="uid://b62yx8g8tbt6s" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="1_etq1u"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xdgc3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hha8p"]
+atlas = ExtResource("1_etq1u")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fo2t"]
+atlas = ExtResource("1_etq1u")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v731"]
+atlas = ExtResource("1_etq1u")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bji1y"]
+atlas = ExtResource("1_etq1u")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmobn"]
+atlas = ExtResource("1_etq1u")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewwkb"]
+atlas = ExtResource("1_etq1u")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o8vli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hha8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fo2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v731")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bji1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmobn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewwkb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemie1" type="Node3D"]
+script = ExtResource("1_xdgc3")
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o8vli")
+animation = &"idle"

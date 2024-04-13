@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3q7sum5ws5tr"]
+
+[ext_resource type="Script" path="res://scripts/line.gd" id="1_42u7s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dx671"]
+size = Vector3(100, 10, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pti7f"]
+albedo_color = Color(0, 0.313726, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nhivt"]
+material = SubResource("StandardMaterial3D_pti7f")
+size = Vector2(100, 5)
+
+[node name="Line" type="Area3D"]
+script = ExtResource("1_42u7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dx671")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_nhivt")

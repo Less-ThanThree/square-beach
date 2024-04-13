@@ -1,0 +1,186 @@
+[gd_scene load_steps=17 format=3 uid="uid://8nyqayny65tp"]
+
+[ext_resource type="PackedScene" uid="uid://fdyn02nmx237" path="res://scenes/enemies/knight_1.tscn" id="1_b20vp"]
+[ext_resource type="PackedScene" uid="uid://bmypxkvsauah3" path="res://scenes/enemies/pawn_1.tscn" id="1_k0irt"]
+[ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
+[ext_resource type="PackedScene" uid="uid://cyck2p00kp5n5" path="res://scenes/enemies/archer_1.tscn" id="3_bv1i5"]
+[ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
+[ext_resource type="PackedScene" uid="uid://di48pcup5lwdj" path="res://scenes/enemies/goblin_torch_1.tscn" id="5_gnp8i"]
+[ext_resource type="PackedScene" uid="uid://bjqepayl2soau" path="res://scenes/terrian/three_1.tscn" id="6_fmajq"]
+[ext_resource type="PackedScene" uid="uid://ct3esyncmun0w" path="res://scenes/terrian/deco_1.tscn" id="7_5oyvk"]
+[ext_resource type="PackedScene" uid="uid://cvxlcv0vpjrmy" path="res://scenes/terrian/deco_3.tscn" id="7_woevi"]
+[ext_resource type="PackedScene" uid="uid://emjxdhtrnwv0" path="res://scenes/terrian/deco_2.tscn" id="8_a04sd"]
+[ext_resource type="PackedScene" uid="uid://d0xry1vtn2ikm" path="res://scenes/terrian/deco_water_rock_1.tscn" id="10_q7kas"]
+[ext_resource type="PackedScene" uid="uid://wtr0vcqufkhv" path="res://scenes/terrian/doce_water_rock_2.tscn" id="11_wbfdm"]
+[ext_resource type="PackedScene" uid="uid://d3q7sum5ws5tr" path="res://scenes/lines/line.tscn" id="13_i03w6"]
+[ext_resource type="PackedScene" uid="uid://cvs8s5oq5fqed" path="res://scenes/lines/line_y.tscn" id="14_xmru7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0h4r"]
+size = Vector3(300, 0.5, 80)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7vsn"]
+size = Vector3(300, 0.5, 80)
+
+[node name="Main" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_q57fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -2.16728)
+camera_speed = 35
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -0.121111, 4.567, -0.966646)
+visible = false
+
+[node name="Terrain" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.1234)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+shape = SubResource("BoxShape3D_u0h4r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_c7vsn")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Pawn1" parent="Enemies" instance=ExtResource("1_k0irt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.43757, 0.625, -2.86336)
+
+[node name="Enemie1" parent="Enemies" instance=ExtResource("1_b20vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66857, 0.625, -5.36336)
+
+[node name="Archer1" parent="Enemies" instance=ExtResource("3_bv1i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.24457, 0.625, -4.36336)
+
+[node name="Enemies_2" type="Node" parent="."]
+
+[node name="GoblinTnt1" parent="Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75239, 0.625, -4.91923)
+
+[node name="GoblinTorch1" parent="Enemies_2" instance=ExtResource("5_gnp8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3037, 0.625, -3.91923)
+
+[node name="Terrian" type="Node" parent="."]
+
+[node name="Thress_node" type="Node" parent="Terrian"]
+
+[node name="Threes6" type="Node" parent="Terrian/Thress_node"]
+
+[node name="Three3" parent="Terrian/Thress_node/Threes6" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 19.7546, 2.6, -24.4424)
+
+[node name="Three2" parent="Terrian/Thress_node/Threes6" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 13.9977, 2.6, -23.0382)
+
+[node name="Three1" parent="Terrian/Thress_node/Threes6" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15.4055, 2.6, -26.563)
+
+[node name="Threes5" type="Node" parent="Terrian/Thress_node"]
+
+[node name="Three3" parent="Terrian/Thress_node/Threes5" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.5624, 2.6, -24.4424)
+
+[node name="Three2" parent="Terrian/Thress_node/Threes5" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.3193, 2.6, -23.0382)
+
+[node name="Three1" parent="Terrian/Thress_node/Threes5" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.9115, 2.6, -26.563)
+
+[node name="Threes4" type="Node" parent="Terrian/Thress_node"]
+
+[node name="Three3" parent="Terrian/Thress_node/Threes4" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 11.6561, 2.6, -24.4424)
+
+[node name="Three2" parent="Terrian/Thress_node/Threes4" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.89926, 2.6, -23.0382)
+
+[node name="Three1" parent="Terrian/Thress_node/Threes4" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.30702, 2.6, -26.563)
+
+[node name="Threes3" type="Node" parent="Terrian/Thress_node"]
+
+[node name="Three3" parent="Terrian/Thress_node/Threes3" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.56406, 2.6, -24.4424)
+
+[node name="Three2" parent="Terrian/Thress_node/Threes3" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.32092, 2.6, -23.0382)
+
+[node name="Three1" parent="Terrian/Thress_node/Threes3" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.91316, 2.6, -26.563)
+
+[node name="Threes2" type="Node" parent="Terrian/Thress_node"]
+
+[node name="Three3" parent="Terrian/Thress_node/Threes2" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.48934, 2.6, -24.4424)
+
+[node name="Three2" parent="Terrian/Thress_node/Threes2" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.73247, 2.6, -23.0382)
+
+[node name="Three1" parent="Terrian/Thress_node/Threes2" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.14023, 2.6, -26.563)
+
+[node name="Threes" type="Node" parent="Terrian/Thress_node"]
+
+[node name="Three3" parent="Terrian/Thress_node/Threes" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.3491, 2.6, -24.4424)
+
+[node name="Three2" parent="Terrian/Thress_node/Threes" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.40776, 2.6, -23.0382)
+
+[node name="Three1" parent="Terrian/Thress_node/Threes" instance=ExtResource("6_fmajq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.6, -26.563)
+
+[node name="Deco" type="Node" parent="Terrian"]
+
+[node name="Deco3" parent="Terrian/Deco" instance=ExtResource("7_woevi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.05641, -19.8415)
+
+[node name="Deco1" parent="Terrian/Deco" instance=ExtResource("7_5oyvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -22.3494)
+
+[node name="Deco2" parent="Terrian/Deco" instance=ExtResource("8_a04sd")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.88098, 1.31735, -16.96)
+
+[node name="Water" type="Node" parent="Terrian"]
+
+[node name="DecoWaterRock" parent="Terrian/Water" instance=ExtResource("10_q7kas")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -2.4668)
+
+[node name="DoceWaterRock2" parent="Terrian/Water" instance=ExtResource("11_wbfdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83991, 0.625, -2.45192)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.915866, 0.401484, 0, -0.401484, 0.915866, 0, 23.4991, -7.29598)
+light_color = Color(0.384314, 0.321569, 0, 1)
+shadow_enabled = true
+
+[node name="Lines" type="Node3D" parent="."]
+
+[node name="Line3" parent="Lines" instance=ExtResource("13_i03w6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27212, -13.5497)
+
+[node name="Line" parent="Lines" instance=ExtResource("13_i03w6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401929, -3.27752)
+
+[node name="Line2" parent="Lines" instance=ExtResource("13_i03w6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33585, -8.43475)
+
+[node name="LineYRight" parent="Lines" instance=ExtResource("14_xmru7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3485, 0, -8.34677)
+
+[node name="LineYLeft" parent="Lines" instance=ExtResource("14_xmru7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.6749, 0.226252, -8.39588)
+
+[connection signal="area_entered" from="Lines/Line3" to="Player" method="_on_line_3_area_entered"]
+[connection signal="area_entered" from="Lines/Line" to="Player" method="_on_line_area_entered"]
+[connection signal="area_entered" from="Lines/Line2" to="Player" method="_on_line_2_area_entered"]
+[connection signal="area_entered" from="Lines/LineYRight" to="Player" method="_on_line_y_right_area_entered"]
+[connection signal="area_exited" from="Lines/LineYRight" to="Player" method="_on_line_y_right_area_exited"]
+[connection signal="area_entered" from="Lines/LineYLeft" to="Player" method="_on_line_y_left_area_entered"]
+[connection signal="area_exited" from="Lines/LineYLeft" to="Player" method="_on_line_y_left_area_exited"]
+
+[editable path="Player"]
+[editable path="Lines/Line3"]
+[editable path="Lines/Line"]
+[editable path="Lines/Line2"]

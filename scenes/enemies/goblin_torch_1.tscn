@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://di48pcup5lwdj"]
+
+[ext_resource type="Texture2D" uid="uid://cf25h8uunj6pj" path="res://assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_bmn1x"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_m3hhf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix4mu"]
+atlas = ExtResource("1_bmn1x")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3oji"]
+atlas = ExtResource("1_bmn1x")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_004e3"]
+atlas = ExtResource("1_bmn1x")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwwo3"]
+atlas = ExtResource("1_bmn1x")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km78y"]
+atlas = ExtResource("1_bmn1x")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dma66"]
+atlas = ExtResource("1_bmn1x")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gov6"]
+atlas = ExtResource("1_bmn1x")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hb6gj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix4mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3oji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_004e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwwo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km78y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dma66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gov6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="GoblinTorch1" type="Node3D"]
+script = ExtResource("1_m3hhf")
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+flip_h = true
+sprite_frames = SubResource("SpriteFrames_hb6gj")
+animation = &"idle"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.39593, 0.291003, -0.0304108)
+light_color = Color(1, 1, 0.286275, 1)
+spot_range = 1.42978
+spot_angle = 73.7848
