@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=23 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://fdyn02nmx237" path="res://scenes/enemies/knight_1.tscn" id="1_b20vp"]
 [ext_resource type="PackedScene" uid="uid://bmypxkvsauah3" path="res://scenes/enemies/pawn_1.tscn" id="1_k0irt"]
@@ -22,9 +22,16 @@ size = Vector3(300, 0.5, 80)
 [sub_resource type="BoxMesh" id="BoxMesh_c7vsn"]
 size = Vector3(300, 0.5, 80)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_1b18e"]
+
+[sub_resource type="Gradient" id="Gradient_bvguo"]
+offsets = PackedFloat32Array(0, 0.986667)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fagle"]
 sky_top_color = Color(0.0980392, 0.0980392, 0.439216, 1)
 sky_horizon_color = Color(0.45098, 0.309804, 0.588235, 1)
+sky_curve = 0.0776447
 
 [sub_resource type="Sky" id="Sky_ljq0e"]
 sky_material = SubResource("ProceduralSkyMaterial_fagle")
@@ -32,13 +39,14 @@ sky_material = SubResource("ProceduralSkyMaterial_fagle")
 [sub_resource type="Environment" id="Environment_s52f3"]
 background_mode = 2
 sky = SubResource("Sky_ljq0e")
+ambient_light_source = 2
+ambient_light_color = Color(0.772549, 0.54902, 1, 1)
 volumetric_fog_density = 0.1034
 
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_q57fh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -2.16728)
-camera_speed = 35
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -0.121111, 4.567, -0.966646)
@@ -54,6 +62,23 @@ shape = SubResource("BoxShape3D_u0h4r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/StaticBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_c7vsn")
+
+[node name="Rain" type="CPUParticles3D" parent="Terrain"]
+transform = Transform3D(12.5265, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.463694, 30.8499)
+visible = false
+amount = 300
+lifetime = 30.0
+speed_scale = 13.93
+mesh = SubResource("PlaneMesh_1b18e")
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 8)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.03
+color_ramp = SubResource("Gradient_bvguo")
+hue_variation_min = 0.12
+hue_variation_max = 0.12
 
 [node name="Enemies" type="Node" parent="."]
 
