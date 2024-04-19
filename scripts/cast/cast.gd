@@ -125,6 +125,7 @@ func match_word(buffer: String):
 			#tween.tween_property(cast.node, 'theme_override_colors/default_color', Color(0, 0, 0, 0), 1)
 			#await tween.finished
 			cast.particle.emitting = true
+			add_units(cast.word)
 			cast.node.queue_free()
 			availableWord.erase(cast)
 			enemies_keys.push_front(cast.word)
@@ -197,3 +198,18 @@ func _on_word_type_timeout(word):
 			availableWord.erase(cast)
 			enemies_keys.push_front(cast.word)
 			generate_single_word()
+
+func add_units(unit_name: String):
+	var unit_object = {
+		"name": unit_name,
+		"count": 0,
+	}
+	
+	for unit in Global.units:
+		if unit.name == unit_name:
+			unit.count += 1
+			return
+	
+	unit_object.name = unit_name
+	unit_object.count = 1
+	Global.units.push_front(unit_object)
