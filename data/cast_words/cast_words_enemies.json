@@ -1,23 +1,46 @@
 {
 	"archer": {
 		"word": "archer",
+		"cooldown": {
+			"isCooldown": true, 
+			"time": 10,
+		}
 	},
 	"knight": {
 		"word": "knight",
+		"cooldown": {
+			"isCooldown": true, 
+			"time": 20,
+		}
 	},
 	"pawn": {
 		"word": "pawn",
+		"cooldown": {
+			"isCooldown": false, 
+		}
 	},
 	"nothing": {
 		"word": "nothing",
+		"cooldown": {
+			"isCooldown": false, 
+		}
 	},
 	"void": {
 		"word": "void",
+		"cooldown": {
+			"isCooldown": false, 
+		}
 	},
 	"zopa": {
 		"word": "zopa",
+		"cooldown": {
+			"isCooldown": false, 
+		}
 	},
 	"suka": {
 		"word": "suka",
+		"cooldown": {
+			"isCooldown": false, 
+		}
 	}
 }

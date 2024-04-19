@@ -47,14 +47,16 @@ func _input(event):
 		buffer = ""
 
 func generate_single_word():
+	var enemies_word = Global.enemies
 	var random_seed = randi_range(0, enemies_keys.size() - 1)
 	var object_word
 	var word_scene
 	var particles_scene
+	print(enemies_keys)
 	
 	# Спавним ноду слова каста
 	word_scene = cast_word.instantiate()
-	word_scene.text = String(enemies_keys[random_seed])
+	word_scene.text = String(enemies_word[enemies_keys[random_seed]].word)
 	word_scene.scale = Vector2(0.3, 0.3)
 	word_scene.position = Vector2(randf_range(min_y_position, max_y_position), randf_range(min_x_position, max_x_position))
 	
@@ -68,10 +70,12 @@ func generate_single_word():
 	
 	# Конектим сигнал времени ввода слова
 	word_scene.connect("timer_on_type_timeout", _on_word_type_timeout)
+	word_scene.connect("timer_on_cooldown_timeout", _on_word_cooldown)
 	word_scene.set_timer(timer_on_type)
 	
 	object_word = {
-		"word": String(enemies_keys[random_seed]),
+		"word": String(enemies_word[enemies_keys[random_seed]].word),
+		"cooldown": enemies_word[enemies_keys[random_seed]].cooldown,
 		"node": word_scene,
 		"particle": particles_scene, 
 	}
@@ -106,10 +110,12 @@ func generation_words():
 		
 		# Конектим сигнал времени ввода слова
 		enemies_scene.connect("timer_on_type_timeout", _on_word_type_timeout)
+		enemies_scene.connect("timer_on_cooldown_timeout", _on_word_cooldown)
 		enemies_scene.set_timer(timer_on_type)
 		
 		object_word = {
 			"word": String(enemies_word[enemies_keys[random_seed]].word),
+			"cooldown": enemies_word[enemies_keys[random_seed]].cooldown,
 			"node": enemies_scene,
 			"particle": particles_scene,
 		}
@@ -125,23 +131,42 @@ func match_word(buffer: String):
 			#tween.tween_property(cast.node, 'theme_override_colors/default_color', Color(0, 0, 0, 0), 1)
 			#await tween.finished
 			cast.particle.emitting = true
-			cast.node.queue_free()
+			#cast.node.start_cooldown()
+			tween = create_tween().set_trans(Tween.TRANS_BACK)
+			tween.tween_property(current_word_cast.node, 'theme_override_colors/default_color', Color(0.718, 0.573, 0.035, 0), 1)
+			if (cast.cooldown.isCooldown):
+				print("Start cooldown")
+				cast.node.start_cooldown(cast.cooldown.time)
+			else:
+				print("No cooldown")
+				enemies_keys.push_front(cast.word)
+				cast.node.queue_free()
 			availableWord.erase(cast)
-			enemies_keys.push_front(cast.word)
 			generate_single_word()
 			is_cast_current_word = false
 			index = 1
 			return
 
 	if current_word_cast != null:
+		print("Skip cast: ", current_word_cast.word)
 		#tween = create_tween().set_trans(Tween.TRANS_BACK)
 		#tween.tween_property(current_word_cast.node, 'theme_override_colors/default_color', Color(0.718, 0.573, 0.035), 1)
 		#await tween.finished
 		current_word_cast.particle.emitting = true
-		current_word_cast.node.queue_free()
+		#enemies_keys.push_front(current_word_cast.word)
+		#cast.node.start_cooldown()
+		tween = create_tween().set_trans(Tween.TRANS_BACK)
+		tween.tween_property(current_word_cast.node, 'theme_override_colors/default_color', Color(0.718, 0.573, 0.035, 0), 1)
+		if (current_word_cast.cooldown.isCooldown):
+			print("Start cooldown")
+			current_word_cast.node.start_cooldown(current_word_cast.cooldown.time)
+		else:
+			print("No cooldown")
+			enemies_keys.push_front(current_word_cast.word)
+			current_word_cast.node.queue_free()
 		availableWord.erase(current_word_cast)
-		enemies_keys.push_front(current_word_cast.word)
 		generate_single_word()
+		#current_word_cast.node.queue_free()
 	index = 1
 	is_cast_current_word = false
 
@@ -193,7 +218,14 @@ func _on_word_type_timeout(word):
 			if current_word_cast != null:
 				if current_word_cast.word == word.text:
 					current_word_cast = null
-			cast.node.queue_free()
 			availableWord.erase(cast)
 			enemies_keys.push_front(cast.word)
 			generate_single_word()
+			cast.node.queue_free()
+
+func _on_word_cooldown(word):
+	enemies_keys.push_front(word.text)
+	word.queue_free()
+	#for cast in availableWord:
+		#if cast.word == word.text:
+			#cast.node.queue_free()

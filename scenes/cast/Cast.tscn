@@ -45,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6bqvh")
-timer_on_type = 5.0
+timer_on_type = 30.0
 max_word = 5
 
 [node name="Label" type="Label" parent="."]
