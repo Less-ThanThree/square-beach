@@ -2,10 +2,12 @@ extends Control
 
 @onready var container_unit = $Container
 @onready var drag_preview = $DragPreview
+@onready var control_button = $Container/ControlUnit
 
 var tween
 
 func _ready():
+	tween = Tween
 	for unit_slot in get_tree().get_nodes_in_group("unit_slot"):
 		var index = unit_slot.get_index()
 		unit_slot.connect("gui_input", _on_UnitSlot_gui_input.bind(index))
@@ -17,9 +19,15 @@ func _on_control_unit_toggled(toggled_on):
 	if toggled_on:
 		tween = create_tween().set_trans(Tween.TRANS_EXPO)
 		tween.tween_property(container_unit, 'position', Vector2(0, 600), 1)
+		control_button.disabled = true
+		await tween.finished
+		control_button.disabled = false
 	else:
 		tween = create_tween().set_trans(Tween.TRANS_QUINT)
 		tween.tween_property(container_unit, 'position', Vector2(0, 417), 1)
+		control_button.disabled = true
+		await tween.finished
+		control_button.disabled = false
 
 func _on_UnitSlot_gui_input(event, index):
 	if event is InputEventMouseButton:
