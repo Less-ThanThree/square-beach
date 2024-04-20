@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw10lhkg8y4us"]
+
+[ext_resource type="FontFile" uid="uid://nlo7gcunebhk" path="res://assets/fonts/Merchant Copy Doublesize.ttf" id="1_63qqw"]
+[ext_resource type="Script" path="res://scripts/ui/unit_interface/drag_preview.gd" id="1_bhx4e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5m2nr"]
+font = ExtResource("1_63qqw")
+font_size = 8
+
+[node name="DragPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_bhx4e")
+
+[node name="Item" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="UnitIcon" type="TextureRect" parent="Item"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="LabelQuantity" type="Label" parent="Item"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_5m2nr")
+horizontal_alignment = 2

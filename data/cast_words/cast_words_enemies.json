@@ -1,23 +1,30 @@
 {
 	"archer": {
 		"word": "archer",
+		"icon": "1.png"
 	},
 	"knight": {
 		"word": "knight",
+		"icon": "2.png",
 	},
 	"pawn": {
 		"word": "pawn",
+		"icon": "3.png",
 	},
 	"nothing": {
 		"word": "nothing",
+		"icon": "3.png",
 	},
 	"void": {
 		"word": "void",
+		"icon": "4.png",
 	},
 	"zopa": {
 		"word": "zopa",
+		"icon": "5.png",
 	},
 	"suka": {
 		"word": "suka",
+		"icon": "6.png",
 	}
 }

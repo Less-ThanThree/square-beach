@@ -1,7 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyck2p00kp5n5"]
+[gd_scene load_steps=25 format=3 uid="uid://cyck2p00kp5n5"]
 
 [ext_resource type="Texture2D" uid="uid://brjteal0br2a2" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Red/Archer_Red.png" id="1_4h343"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_pqypn"]
+[ext_resource type="Script" path="res://scripts/units/archer.gd" id="1_ji707"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02f4c"]
+atlas = ExtResource("1_4h343")
+region = Rect2(0, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3p8c"]
+atlas = ExtResource("1_4h343")
+region = Rect2(192, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ll0b"]
+atlas = ExtResource("1_4h343")
+region = Rect2(384, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74326"]
+atlas = ExtResource("1_4h343")
+region = Rect2(576, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_641a8"]
+atlas = ExtResource("1_4h343")
+region = Rect2(768, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imdav"]
+atlas = ExtResource("1_4h343")
+region = Rect2(960, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyocf"]
+atlas = ExtResource("1_4h343")
+region = Rect2(1152, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etf2d"]
+atlas = ExtResource("1_4h343")
+region = Rect2(1344, 768, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hksky"]
 atlas = ExtResource("1_4h343")
@@ -27,8 +59,61 @@ region = Rect2(768, 0, 192, 192)
 atlas = ExtResource("1_4h343")
 region = Rect2(960, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q7mo"]
+atlas = ExtResource("1_4h343")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4v6m"]
+atlas = ExtResource("1_4h343")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhg3n"]
+atlas = ExtResource("1_4h343")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hebp"]
+atlas = ExtResource("1_4h343")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce165"]
+atlas = ExtResource("1_4h343")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0purj"]
+atlas = ExtResource("1_4h343")
+region = Rect2(960, 192, 192, 192)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_t3fy2"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02f4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3p8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ll0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74326")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_641a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imdav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyocf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etf2d")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hksky")
@@ -51,12 +136,42 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q7mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4v6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhg3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hebp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce165")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0purj")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rlawb"]
+
 [node name="Archer1" type="Node3D"]
-script = ExtResource("1_pqypn")
+script = ExtResource("1_ji707")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_t3fy2")
-animation = &"idle"
+animation = &"attack"
+
+[node name="AttackRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("BoxShape3D_rlawb")

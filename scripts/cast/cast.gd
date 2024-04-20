@@ -47,6 +47,7 @@ func _input(event):
 		buffer = ""
 
 func generate_single_word():
+	var enemies_word = Global.enemies
 	var random_seed = randi_range(0, enemies_keys.size() - 1)
 	var object_word
 	var word_scene
@@ -72,6 +73,7 @@ func generate_single_word():
 	
 	object_word = {
 		"word": String(enemies_keys[random_seed]),
+		"icon": enemies_word[enemies_keys[random_seed]].icon,
 		"node": word_scene,
 		"particle": particles_scene, 
 	}
@@ -110,6 +112,7 @@ func generation_words():
 		
 		object_word = {
 			"word": String(enemies_word[enemies_keys[random_seed]].word),
+			"icon": enemies_word[enemies_keys[random_seed]].icon,
 			"node": enemies_scene,
 			"particle": particles_scene,
 		}
@@ -125,7 +128,7 @@ func match_word(buffer: String):
 			#tween.tween_property(cast.node, 'theme_override_colors/default_color', Color(0, 0, 0, 0), 1)
 			#await tween.finished
 			cast.particle.emitting = true
-			add_units(cast.word)
+			add_units(cast.word, cast.icon)
 			cast.node.queue_free()
 			availableWord.erase(cast)
 			enemies_keys.push_front(cast.word)
@@ -199,10 +202,11 @@ func _on_word_type_timeout(word):
 			enemies_keys.push_front(cast.word)
 			generate_single_word()
 
-func add_units(unit_name: String):
+func add_units(unit_name: String, unit_icon: String):
 	var unit_object = {
 		"name": unit_name,
 		"count": 0,
+		"icon": "none",
 	}
 	
 	for unit in Global.units:
@@ -212,4 +216,5 @@ func add_units(unit_name: String):
 	
 	unit_object.name = unit_name
 	unit_object.count = 1
+	unit_object.icon = unit_icon
 	Global.units.push_front(unit_object)
