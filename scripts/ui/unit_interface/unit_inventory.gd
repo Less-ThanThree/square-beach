@@ -18,13 +18,13 @@ func _on_control_unit_toggled(toggled_on):
 	
 	if toggled_on:
 		tween = create_tween().set_trans(Tween.TRANS_EXPO)
-		tween.tween_property(container_unit, 'position', Vector2(0, 600), 1)
+		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y + 180), 1)
 		control_button.disabled = true
 		await tween.finished
 		control_button.disabled = false
 	else:
 		tween = create_tween().set_trans(Tween.TRANS_QUINT)
-		tween.tween_property(container_unit, 'position', Vector2(0, 417), 1)
+		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y - 180), 1)
 		control_button.disabled = true
 		await tween.finished
 		control_button.disabled = false
@@ -35,7 +35,7 @@ func _on_UnitSlot_gui_input(event, index):
 			drag_item(index)
 
 func drag_item(index):
-	var unit_item = UnitInventory.units_inventory[index]
+	var unit_item = UnitInventory.units_inventory[index] 
 	var dragged_item = drag_preview.dragged_item
 	
 	# Взять юнита

@@ -25,6 +25,8 @@ UnitInventory="*res://scripts/Singleton/UnitInventory.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 window/vsync/vsync_mode=0
+window/rendering_method.mobile="mobile"
+window/canvas_textures/default_texture_filter=1
 
 [dotnet]
 
