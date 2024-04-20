@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd5w4iynosoce"]
+
+[ext_resource type="Script" path="res://scripts/test_unit.gd" id="1_ht5ja"]
+[ext_resource type="Texture2D" uid="uid://dngq1lllsxfe5" path="res://assets/test/photo1713010302.jpeg" id="2_q4w8q"]
+[ext_resource type="Script" path="res://scripts/test_button.gd" id="3_vdbdp"]
+
+[sub_resource type="Gradient" id="Gradient_xceyi"]
+offsets = PackedFloat32Array(0.429577, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0.756863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bieke"]
+gradient = SubResource("Gradient_xceyi")
+
+[node name="test_unit" type="StaticBody3D"]
+script = ExtResource("1_ht5ja")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.208285, 0, 0, 0, 0.208285, 0, 0, 0, 0.208285, 0, 0, 0)
+texture = ExtResource("2_q4w8q")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 467.0
+offset_top = 197.0
+offset_right = 741.0
+offset_bottom = 348.0
+text = "attack"
+script = ExtResource("3_vdbdp")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_right = 273.0
+offset_bottom = 378.0
+rounded = true
+fill_mode = 4
+texture_progress = SubResource("GradientTexture2D_bieke")
