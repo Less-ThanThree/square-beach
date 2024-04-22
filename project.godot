@@ -18,11 +18,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scripts/Singleton/Global.gd"
+UnitInventory="*res://scripts/Singleton/UnitInventory.gd"
 
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+window/vsync/vsync_mode=0
+window/rendering_method.mobile="mobile"
+window/canvas_textures/default_texture_filter=1
 
 [dotnet]
 
@@ -59,3 +63,7 @@ reset={
 [layer_names]
 
 3d_physics/layer_1="world"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

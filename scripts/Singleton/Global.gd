@@ -2,6 +2,7 @@ extends Node
 
 var enemies
 var magic
+var units: Array = []
 
 func _ready():
 	var counter = 0
