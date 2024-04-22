@@ -7,8 +7,13 @@ var slots
 
 func display_item_slot(cols: int, rows: int):
 	var item_slot
+	var unit_size = UnitInventory.units_inventory.size() - 1
 	columns = cols
 	slots = cols * rows
+	
+	if unit_size < slots:
+		for i in range(slots):
+			UnitInventory.units_inventory.append({})
 	
 	for index in range(slots):
 		item_slot = ItemSlot.instantiate()

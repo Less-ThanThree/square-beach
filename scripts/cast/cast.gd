@@ -1,18 +1,21 @@
 extends Node
 
 @export var timer_on_type: float = 3.0
-@export var timner_on_cast: float = 30
+@export var timer_on_cast: float = 30.0
 @export var min_y_position: float = -60
 @export var min_x_position: float = -50
 @export var max_y_position: float = 38
 @export var max_x_position: float = 38
 @export var max_word: int = 4
+@export var level_scene: PackedScene
 
 @onready var cast_word = load("res://scenes/cast/cast_word.tscn")
 @onready var cast_blow_particles = load("res://scenes/particles/cast_word_blow.tscn")
-@onready var book = $CenterContainer/Container/Openbook
+@onready var book = $CenterContainer/Bookcontainer
+@onready var book_anim = $CenterContainer/Container/OpenbookAnim
 @onready var timer_type = $TimerOnType
 @onready var timer_cast = $TimerOnCast 
+@onready var timer_label = $TimerCast
 
 var buffer: String
 var tween: Tween
@@ -24,11 +27,18 @@ var index: int = 1
 
 func _ready():
 	timer_type.set_wait_time(timer_on_type)
+	timer_cast.wait_time = timer_on_cast
+	book_anim.play("book_open")
+	await book_anim.animation_finished
+	timer_cast.start()
 	generation_words()
+
+func _process(delta):
+	update_timer_left(timer_cast.time_left)
 
 func _input(event):
 	if event is InputEventKey && event.pressed:
-		if event.keycode in range(65, 90):
+		if event.keycode in range(65, 91):
 			buffer += event.as_text_key_label()
 			if is_cast_current_word:
 				match_symbols(buffer.to_lower(),index)
@@ -56,7 +66,7 @@ func generate_single_word():
 	# Спавним ноду слова каста
 	word_scene = cast_word.instantiate()
 	word_scene.text = String(enemies_keys[random_seed])
-	word_scene.scale = Vector2(0.3, 0.3)
+	#word_scene.scale = Vector2(0.6, 0.6)
 	word_scene.position = Vector2(randf_range(min_y_position, max_y_position), randf_range(min_x_position, max_x_position))
 	
 	# Спавним ноду партиклов и ставим позицию в позицию слова
@@ -95,7 +105,7 @@ func generation_words():
 		# Спавним ноду слова каста
 		enemies_scene = cast_word.instantiate()
 		enemies_scene.text = String(enemies_word[enemies_keys[random_seed]].word)
-		enemies_scene.scale = Vector2(0.3, 0.3)
+		#enemies_scene.scale = Vector2(0.6, 0.6)
 		enemies_scene.position = Vector2(randf_range(min_y_position, max_y_position), randf_range(min_x_position, max_x_position))
 		
 		# Спавним ноду партиклов и ставим позицию в позицию слова
@@ -209,7 +219,7 @@ func add_units(unit_name: String, unit_icon: String):
 		"icon": "none",
 	}
 	
-	for unit in Global.units:
+	for unit in UnitInventory.units_inventory:
 		if unit.name == unit_name:
 			unit.count += 1
 			return
@@ -217,4 +227,15 @@ func add_units(unit_name: String, unit_icon: String):
 	unit_object.name = unit_name
 	unit_object.count = 1
 	unit_object.icon = unit_icon
-	Global.units.push_front(unit_object)
+	UnitInventory.units_inventory.push_front(unit_object)
+
+func update_timer_left(time: float):
+	timer_label.text = "Time cast: " + str(time).pad_decimals(2)
+
+func _on_timer_on_cast_timeout():
+	for node in availableWord:
+		node.particle.emitting = true
+		node.node.queue_free()
+	book_anim.play("book_close")
+	await book_anim.animation_finished
+	get_tree().change_scene_to_packed(level_scene)

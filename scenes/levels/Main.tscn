@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=18 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
-[ext_resource type="PackedScene" uid="uid://cfkru4flxlac1" path="res://scenes/cast/Cast.tscn" id="1_a815a"]
 [ext_resource type="PackedScene" uid="uid://fdyn02nmx237" path="res://scenes/enemies/knight_1.tscn" id="1_b20vp"]
 [ext_resource type="PackedScene" uid="uid://bmypxkvsauah3" path="res://scenes/enemies/pawn_1.tscn" id="1_k0irt"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
@@ -30,11 +29,7 @@ size = Vector3(300, 0.5, 80)
 [node name="UnitInventory" parent="Ui" instance=ExtResource("1_1jy6g")]
 mouse_filter = 2
 
-[node name="Cast" parent="." instance=ExtResource("1_a815a")]
-visible = false
-
 [node name="Player" parent="." instance=ExtResource("1_q57fh")]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -2.16728)
 camera_speed = 35
 

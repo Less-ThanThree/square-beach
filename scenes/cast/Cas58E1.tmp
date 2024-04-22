@@ -1,14 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://cfkru4flxlac1"]
+[gd_scene load_steps=13 format=3 uid="uid://cfkru4flxlac1"]
 
 [ext_resource type="Texture2D" uid="uid://c47qpm1q184pe" path="res://assets/Cast/Openbook.png" id="1_4pt60"]
 [ext_resource type="Script" path="res://scripts/cast/cast.gd" id="1_6bqvh"]
 [ext_resource type="Texture2D" uid="uid://cf31p0882h8sy" path="res://assets/Cast/Torch/C300-1.png" id="1_tti0y"]
-[ext_resource type="PackedScene" uid="uid://8nyqayny65tp" path="res://scenes/levels/Main.tscn" id="2_4clfl"]
 [ext_resource type="FontFile" uid="uid://nlo7gcunebhk" path="res://assets/fonts/Merchant Copy Doublesize.ttf" id="2_jsdca"]
 [ext_resource type="Texture2D" uid="uid://doegqm7n3pa4g" path="res://assets/Cast/Torch/C300-2.png" id="2_t7pmj"]
 [ext_resource type="Texture2D" uid="uid://lmxrq8ocscsc" path="res://assets/Cast/Torch/C300-3.png" id="3_4xliq"]
 [ext_resource type="Script" path="res://scripts/load_animation.gd" id="4_itcty"]
-[ext_resource type="Texture2D" uid="uid://cniskw0tfk027" path="res://assets/ui/book_cast_free.png" id="9_cpio6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lgdxm"]
 font = ExtResource("2_jsdca")
@@ -39,89 +37,6 @@ gradient = SubResource("Gradient_v2jbc")
 fill = 1
 fill_from = Vector2(0.490826, 0.486239)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tgx68"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(3320, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e4umj"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(2490, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oja14"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(1660, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2akce"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(830, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pe1l0"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(0, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ta2rt"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(0, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4051y"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(830, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yve0d"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(1660, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_64la1"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(2490, 0, 830, 726)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1jp7"]
-atlas = ExtResource("9_cpio6")
-region = Rect2(3320, 0, 830, 726)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jlivt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tgx68")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e4umj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oja14")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2akce")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pe1l0")
-}],
-"loop": false,
-"name": &"book_close",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ta2rt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4051y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yve0d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_64la1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d1jp7")
-}],
-"loop": false,
-"name": &"book_open",
-"speed": 5.0
-}]
-
 [sub_resource type="LabelSettings" id="LabelSettings_0tv6m"]
 font = ExtResource("2_jsdca")
 font_size = 20
@@ -134,13 +49,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6bqvh")
-timer_on_type = 60.0
-min_y_position = 0.0
-min_x_position = 0.0
-max_y_position = 400.0
-max_x_position = 250.0
+timer_on_type = 5.0
 max_word = 5
-level_scene = ExtResource("2_4clfl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -180,7 +90,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CenterContainer/Container"]
 unique_name_in_owner = true
-position = Vector2(429, 36)
+position = Vector2(312, 33)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dlhwv")
 animation = &"idle"
@@ -194,21 +104,8 @@ color = Color(1, 1, 0.207843, 1)
 texture = SubResource("GradientTexture2D_wb5qt")
 
 [node name="Openbook" type="Sprite2D" parent="CenterContainer/Container"]
-visible = false
 scale = Vector2(3, 3)
 texture = ExtResource("1_4pt60")
-
-[node name="OpenbookAnim" type="AnimatedSprite2D" parent="CenterContainer/Container"]
-position = Vector2(26, -35)
-scale = Vector2(0.851932, 0.790634)
-sprite_frames = SubResource("SpriteFrames_jlivt")
-animation = &"book_close"
-
-[node name="Bookcontainer" type="Control" parent="CenterContainer"]
-custom_minimum_size = Vector2(500, 250)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="TimerOnType" type="Timer" parent="."]
 
