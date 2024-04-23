@@ -2,22 +2,25 @@
 	"archer": {
 		"word": "archer",
 		"icon": "1.png",
+		"scene": "res://scenes/enemies/archer_1.tscn",
 		"cooldown": {
 			"isCooldown": true, 
-			"time": 10,
+			"time": 1,
 		}
 	},
 	"knight": {
 		"word": "knight",
+		"scene": "res://scenes/enemies/knight_1.tscn",
 		"icon": "2.png",
 		"cooldown": {
 			"isCooldown": true, 
-			"time": 20,
+			"time": 1,
 		}
 	},
 	"pawn": {
 		"word": "pawn",
 		"icon": "3.png",
+		"scene": "res://scenes/enemies/pawn_1.tscn",
 		"cooldown": {
 			"isCooldown": false, 
 		}
@@ -25,6 +28,7 @@
 	"nothing": {
 		"word": "nothing",
 		"icon": "4.png",
+		"scene": "res://scenes/enemies/pawn_1.tscn",
 		"cooldown": {
 			"isCooldown": false, 
 		}
@@ -32,6 +36,7 @@
 	"void": {
 		"word": "void",
 		"icon": "5.png",
+		"scene": "res://scenes/enemies/pawn_1.tscn",
 		"cooldown": {
 			"isCooldown": false, 
 		}
@@ -39,6 +44,7 @@
 	"zopa": {
 		"word": "zopa",
 		"icon": "6.png",
+		"scene": "res://scenes/enemies/pawn_1.tscn",
 		"cooldown": {
 			"isCooldown": false, 
 		}
@@ -46,6 +52,7 @@
 	"suka": {
 		"word": "suka",
 		"icon": "7.png",
+		"scene": "res://scenes/enemies/pawn_1.tscn",
 		"cooldown": {
 			"isCooldown": false, 
 		}

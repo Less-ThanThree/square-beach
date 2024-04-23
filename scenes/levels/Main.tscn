@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
+[ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
 [ext_resource type="PackedScene" uid="uid://fdyn02nmx237" path="res://scenes/enemies/knight_1.tscn" id="1_b20vp"]
 [ext_resource type="PackedScene" uid="uid://bmypxkvsauah3" path="res://scenes/enemies/pawn_1.tscn" id="1_k0irt"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
-[ext_resource type="PackedScene" uid="uid://cyck2p00kp5n5" path="res://scenes/enemies/archer_1.tscn" id="3_bv1i5"]
 [ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
 [ext_resource type="PackedScene" uid="uid://di48pcup5lwdj" path="res://scenes/enemies/goblin_torch_1.tscn" id="5_gnp8i"]
 [ext_resource type="PackedScene" uid="uid://bjqepayl2soau" path="res://scenes/terrian/three_1.tscn" id="6_fmajq"]
@@ -23,6 +23,7 @@ size = Vector3(300, 0.5, 80)
 size = Vector3(300, 0.5, 80)
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_4vvpr")
 
 [node name="Ui" type="CanvasLayer" parent="."]
 
@@ -55,9 +56,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.43757, 0.625, -2.86336)
 
 [node name="Enemie1" parent="Enemies" instance=ExtResource("1_b20vp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66857, 0.625, -5.36336)
-
-[node name="Archer1" parent="Enemies" instance=ExtResource("3_bv1i5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.24457, 0.625, -4.36336)
 
 [node name="Enemies_2" type="Node" parent="."]
 

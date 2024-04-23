@@ -11,7 +11,6 @@ func _process(delta):
 
 func set_dragged_item(item):
 	dragged_item = item
-	print(dragged_item)
 	if dragged_item:
 		unit_icon.texture = load("res://assets/ui/ui_icons_inventory/%s" % dragged_item.icon)
 		#unit_quantity.text = str(dragged_item.count)
