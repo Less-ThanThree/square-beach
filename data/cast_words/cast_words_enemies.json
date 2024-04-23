@@ -1,7 +1,7 @@
 {
 	"archer": {
 		"word": "archer",
-    "icon": "1.png"
+		"icon": "1.png",
 		"cooldown": {
 			"isCooldown": true, 
 			"time": 10,
@@ -9,7 +9,7 @@
 	},
 	"knight": {
 		"word": "knight",
-    "icon": "2.png",
+		"icon": "2.png",
 		"cooldown": {
 			"isCooldown": true, 
 			"time": 20,
@@ -17,35 +17,35 @@
 	},
 	"pawn": {
 		"word": "pawn",
-    "icon": "3.png",
+		"icon": "3.png",
 		"cooldown": {
 			"isCooldown": false, 
 		}
 	},
 	"nothing": {
 		"word": "nothing",
-    "icon": "4.png",
+		"icon": "4.png",
 		"cooldown": {
 			"isCooldown": false, 
 		}
 	},
 	"void": {
 		"word": "void",
-    "icon": "5.png",
+		"icon": "5.png",
 		"cooldown": {
 			"isCooldown": false, 
 		}
 	},
 	"zopa": {
 		"word": "zopa",
-    "icon": "6.png",
+		"icon": "6.png",
 		"cooldown": {
 			"isCooldown": false, 
 		}
 	},
 	"suka": {
 		"word": "suka",
-    "icon": "7.png",
+		"icon": "7.png",
 		"cooldown": {
 			"isCooldown": false, 
 		}
