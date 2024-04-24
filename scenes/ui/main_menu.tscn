@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsflda6hgo0rp"]
+
+[ext_resource type="PackedScene" uid="uid://31tuyo4kv757" path="res://scenes/ui/parallax_menu.tscn" id="1_8wdwh"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu/main_menu.gd" id="1_dvaei"]
+[ext_resource type="PackedScene" uid="uid://cfkru4flxlac1" path="res://scenes/cast/Cast.tscn" id="2_h3oer"]
+[ext_resource type="FontFile" uid="uid://nlo7gcunebhk" path="res://assets/fonts/Merchant Copy Doublesize.ttf" id="3_ovk3q"]
+[ext_resource type="Texture2D" uid="uid://85vey4xbnnoa" path="res://assets/Tiny Swords (Update 010)/UI/Buttons/Button_Red_3Slides.png" id="4_f2i3b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yswos"]
+font = ExtResource("3_ovk3q")
+font_size = 18
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dvaei")
+level_start_scene = ExtResource("2_h3oer")
+
+[node name="ParallaxMenu" parent="." instance=ExtResource("1_8wdwh")]
+layout_mode = 1
+
+[node name="ButtonStartGame" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -12.0
+offset_right = 225.0
+offset_bottom = 19.0
+grow_vertical = 2
+scale = Vector2(1.00732, 0.995971)
+theme_override_fonts/font = ExtResource("3_ovk3q")
+theme_override_font_sizes/font_size = 18
+icon = ExtResource("4_f2i3b")
+flat = true
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="ButtonStartGame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.407
+offset_top = -19.4332
+offset_right = 40.593
+offset_bottom = 3.56676
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start game"
+label_settings = SubResource("LabelSettings_yswos")
+
+[connection signal="pressed" from="ButtonStartGame" to="." method="_on_button_start_game_pressed"]

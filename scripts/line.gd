@@ -1,5 +1,6 @@
 extends Node3D
 
+signal player_on_line
 #@export var isForwardMove = true
 #@export var isDownMove = true
 #

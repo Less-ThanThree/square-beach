@@ -6,6 +6,7 @@ var cols: int = 8
 var rows: int = 2
 var slots: int = cols * rows
 var units_inventory: Array = []
+var pick_unit: Object
 
 #func _ready():
 	#for i in range(slots):
@@ -32,3 +33,6 @@ func remove_item(index):
 	units_inventory[index].clear()
 	items_changed.emit([index])
 	return previos_item
+
+func set_unit_pick(unit):
+	pick_unit = unit

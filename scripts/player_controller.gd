@@ -1,5 +1,7 @@
 extends Node3D
 
+signal on_line(line_number)
+
 @export var camera_speed = 1
 @export var line_height_meters = 5
 var tween
@@ -36,17 +38,20 @@ func _process(delta):
 
 func _on_line_3_area_entered(area):
 	isMovedForward = false
-	print("Line 3")
+	on_line.emit(3)
+	#print("Line 3")
 
 func _on_line_2_area_entered(area):
 	isMovedForward = true
 	isMovedDown = true
-	print("Line 2")
+	on_line.emit(2)
+	#print("Line 2")
 
 func _on_line_area_entered(area):
 	isMovedForward = true
 	isMovedDown = false
-	print("Line 1")
+	on_line.emit(1)
+	#print("Line 1")
 
 func _on_line_y_right_area_entered(area):
 	isMovedRight = false

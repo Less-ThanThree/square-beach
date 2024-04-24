@@ -1,5 +1,7 @@
 extends Control
 
+signal pick_unit(unit)
+
 @onready var container_unit = $Container
 @onready var drag_preview = $DragPreview
 @onready var control_button = $Container/ControlUnit
@@ -31,8 +33,10 @@ func _on_control_unit_toggled(toggled_on):
 
 func _on_UnitSlot_gui_input(event, index):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT && event.pressed:
 			drag_item(index)
+		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+			set_current_unit(index)
 
 func drag_item(index):
 	var unit_item = UnitInventory.units_inventory[index] 
@@ -49,4 +53,7 @@ func drag_item(index):
 	# Свапнуть юнита
 	if unit_item && dragged_item:
 		drag_preview.dragged_item = UnitInventory.set_item(index, dragged_item)
-	
+
+func set_current_unit(index):
+	#UnitInventory.set_unit_pick(UnitInventory.units_inventory[index])
+	pick_unit.emit(UnitInventory.units_inventory[index])

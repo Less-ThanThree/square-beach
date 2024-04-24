@@ -86,6 +86,7 @@ func generate_single_word():
 		"word": String(enemies_word[enemies_keys[random_seed]].word),
 		"cooldown": enemies_word[enemies_keys[random_seed]].cooldown,
 		"icon": enemies_word[enemies_keys[random_seed]].icon,
+		"scene": enemies_word[enemies_keys[random_seed]].scene,
 		"node": word_scene,
 		"particle": particles_scene, 
 	}
@@ -127,6 +128,7 @@ func generation_words():
 			"word": String(enemies_word[enemies_keys[random_seed]].word),
 			"cooldown": enemies_word[enemies_keys[random_seed]].cooldown,
 			"icon": enemies_word[enemies_keys[random_seed]].icon,
+			"scene": enemies_word[enemies_keys[random_seed]].scene,
 			"node": enemies_scene,
 			"particle": particles_scene,
 		}
@@ -152,7 +154,7 @@ func match_word(buffer: String):
 				print("No cooldown")
 				enemies_keys.push_front(cast.word)
 				cast.node.queue_free()
-			add_units(cast.word, cast.icon)
+			add_units(cast.word, cast.icon, cast.scene)
 			cast.node.queue_free()
 			availableWord.erase(cast)
 			generate_single_word()
@@ -243,11 +245,12 @@ func _on_word_cooldown(word):
 		#if cast.word == word.text:
 			#cast.node.queue_free()
 
-func add_units(unit_name: String, unit_icon: String):
+func add_units(unit_name: String, unit_icon: String, scene_path: String):
 	var unit_object = {
 		"name": unit_name,
 		"count": 0,
 		"icon": "none",
+		"scene": "null",
 	}
 	
 	for unit in UnitInventory.units_inventory:
@@ -258,6 +261,7 @@ func add_units(unit_name: String, unit_icon: String):
 	unit_object.name = unit_name
 	unit_object.count = 1
 	unit_object.icon = unit_icon
+	unit_object.scene = scene_path
 	UnitInventory.units_inventory.push_front(unit_object)
 
 func update_timer_left(time: float):

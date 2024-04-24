@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://31tuyo4kv757"]
+
+[ext_resource type="Texture2D" uid="uid://ccac8w8v4lgnn" path="res://assets/parallax/parallax-demon-woods-bg.png" id="1_fpd1f"]
+[ext_resource type="Script" path="res://scripts/ui/parallax/parallax_mouse.gd" id="1_pf0e2"]
+[ext_resource type="Texture2D" uid="uid://d1bou3jmfeoke" path="res://assets/parallax/parallax-demon-woods-far-trees.png" id="2_eo1hv"]
+[ext_resource type="Texture2D" uid="uid://cttsdkdo0uen0" path="res://assets/parallax/parallax-demon-woods-mid-trees.png" id="3_7a2xd"]
+[ext_resource type="Texture2D" uid="uid://i45skr00rt8i" path="res://assets/parallax/parallax-demon-woods-close-trees.png" id="4_opt32"]
+
+[node name="ParallaxMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pf0e2")
+
+[node name="Control" type="ParallaxBackground" parent="."]
+
+[node name="Parallax-demon-woods-bg" type="Sprite2D" parent="Control"]
+position = Vector2(776, 324)
+scale = Vector2(4.06667, 2.38235)
+texture = ExtResource("1_fpd1f")
+
+[node name="ParallaxLayerFar" type="ParallaxLayer" parent="Control"]
+texture_filter = 1
+texture_repeat = 3
+motion_mirroring = Vector2(600, 2.08165e-12)
+
+[node name="Parallax-demon-woods-far-trees" type="Sprite2D" parent="Control/ParallaxLayerFar"]
+position = Vector2(476, 324)
+scale = Vector2(2.28378, 2.38235)
+texture = ExtResource("2_eo1hv")
+
+[node name="ParallaxLayerMiddle" type="ParallaxLayer" parent="Control"]
+texture_filter = 1
+texture_repeat = 3
+motion_mirroring = Vector2(600, 2.08165e-12)
+
+[node name="Parallax-demon-woods-mid-trees" type="Sprite2D" parent="Control/ParallaxLayerMiddle"]
+position = Vector2(476, 324)
+scale = Vector2(2.28378, 2.38235)
+texture = ExtResource("3_7a2xd")
+
+[node name="ParallaxLayerClose" type="ParallaxLayer" parent="Control"]
+texture_filter = 1
+texture_repeat = 3
+motion_mirroring = Vector2(600, 2.08165e-12)
+
+[node name="Parallax-demon-woods-close-trees" type="Sprite2D" parent="Control/ParallaxLayerClose"]
+position = Vector2(476, 324)
+scale = Vector2(2.28378, 2.38235)
+texture = ExtResource("4_opt32")
