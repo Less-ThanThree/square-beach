@@ -1,10 +1,14 @@
 extends Node3D
 
+signal update_label_tron
+
 @onready var unit_inventory = $Ui/UnitInventory
 @onready var player = $Player
 @onready var line_1_spawn = $Lines/Line
 @onready var line_2_spawn = $Lines/Line2
 @onready var line_3_spawn = $Lines/Line3
+@onready var tron_player = $Tron_player
+@onready var tron_enemie = $Tron_enemies
 
 var current_line: int
 var current_unit
@@ -23,7 +27,7 @@ func _on_line(line_number):
 	print("Player on line %d" % line_number)
 
 func spawn_unit(line_number, unit):
-	var rand_pos_x = randf_range(-49, -45)
+	var rand_pos_x = randf_range(-47, -45)
 	var rand_pos_z = randf_range(1.4, -1.4)
 	if ResourceLoader.exists(unit.scene):
 		current_unit_scene = ResourceLoader.load(unit.scene).instantiate()
@@ -37,3 +41,20 @@ func spawn_unit(line_number, unit):
 				3:
 					line_3_spawn.add_child(current_unit_scene)
 		current_unit_scene = null
+
+func _on_area_3d_body_entered(body):
+	if body.is_in_group("goblin"):
+		Global.tron_player_hp -= 1
+		update_label_tron.emit()
+		body.queue_free()
+		if Global.tron_player_hp <= 0:
+			tron_player.on_tron_destroy()
+	
+	if body.is_in_group("allience"):
+		Global.tron_enemie_hp -= 1
+		update_label_tron.emit()
+		body.queue_free()
+		if Global.tron_enemie_hp <= 0:
+			tron_enemie.on_tron_destroy()
+
+

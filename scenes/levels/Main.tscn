@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=18 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
+[ext_resource type="PackedScene" uid="uid://dd5ve3derngit" path="res://scenes/ui/base_info.tscn" id="2_vob0w"]
 [ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
 [ext_resource type="PackedScene" uid="uid://bjqepayl2soau" path="res://scenes/terrian/three_1.tscn" id="6_fmajq"]
 [ext_resource type="PackedScene" uid="uid://ct3esyncmun0w" path="res://scenes/terrian/deco_1.tscn" id="7_5oyvk"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://wtr0vcqufkhv" path="res://scenes/terrian/doce_water_rock_2.tscn" id="11_wbfdm"]
 [ext_resource type="PackedScene" uid="uid://cyck2p00kp5n5" path="res://scenes/enemies/archer_1.tscn" id="12_qeslv"]
 [ext_resource type="PackedScene" uid="uid://d3q7sum5ws5tr" path="res://scenes/lines/line.tscn" id="13_i03w6"]
+[ext_resource type="PackedScene" uid="uid://dnhybtkpja1hu" path="res://scenes/levels/tron.tscn" id="14_g6f0t"]
 [ext_resource type="PackedScene" uid="uid://cvs8s5oq5fqed" path="res://scenes/lines/line_y.tscn" id="14_xmru7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0h4r"]
@@ -24,6 +26,8 @@ size = Vector3(300, 0.5, 80)
 script = ExtResource("1_4vvpr")
 
 [node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="BaseInfo" parent="Ui" instance=ExtResource("2_vob0w")]
 
 [node name="UnitInventory" parent="Ui" instance=ExtResource("1_1jy6g")]
 mouse_filter = 2
@@ -182,10 +186,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65862, 0.625, -4.31577)
 [node name="Enemies" type="Node" parent="Lines/Line"]
 
 [node name="Archer2" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.935, 0.625, -4.07376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8029, 0.625, -4.07376)
 
 [node name="Archer1" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6338, 0.625, -3.02628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.1041, 0.625, -3.02628)
 
 [node name="Line2" parent="Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33585, -8.28577)
@@ -212,6 +216,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3485, 0, -8.34677)
 [node name="LineYLeft" parent="Lines" instance=ExtResource("14_xmru7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.6749, 0.226252, -8.39588)
 
+[node name="Tron_player" parent="." instance=ExtResource("14_g6f0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9184, 0.625, -8.00216)
+
+[node name="Tron_enemies" parent="." instance=ExtResource("14_g6f0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8765, 0.625, -7.98417)
+
+[connection signal="update_label_tron" from="." to="Ui/BaseInfo" method="_on_main_update_label_tron"]
 [connection signal="area_entered" from="Lines/Line3" to="Player" method="_on_line_3_area_entered"]
 [connection signal="area_entered" from="Lines/Line" to="Player" method="_on_line_area_entered"]
 [connection signal="area_entered" from="Lines/Line2" to="Player" method="_on_line_2_area_entered"]
@@ -219,9 +230,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.6749, 0.226252, -8.39588)
 [connection signal="area_exited" from="Lines/LineYRight" to="Player" method="_on_line_y_right_area_exited"]
 [connection signal="area_entered" from="Lines/LineYLeft" to="Player" method="_on_line_y_left_area_entered"]
 [connection signal="area_exited" from="Lines/LineYLeft" to="Player" method="_on_line_y_left_area_exited"]
+[connection signal="body_entered" from="Tron_player/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Tron_enemies/Area3D" to="." method="_on_area_3d_body_entered"]
 
 [editable path="Ui/UnitInventory"]
 [editable path="Player"]
 [editable path="Lines/Line3"]
 [editable path="Lines/Line"]
 [editable path="Lines/Line2"]
+[editable path="Tron_player"]
+[editable path="Tron_enemies"]

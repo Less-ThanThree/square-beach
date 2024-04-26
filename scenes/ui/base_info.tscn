@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd5ve3derngit"]
+
+[ext_resource type="Script" path="res://scripts/ui/base_info/base_info.gd" id="1_bilbu"]
+[ext_resource type="Texture2D" uid="uid://duevjsjgrdydy" path="res://assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_tnq4j"]
+[ext_resource type="FontFile" uid="uid://djfal2h6rgrss" path="res://assets/fonts/antiquity-print.ttf" id="3_c0g20"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b0n2g"]
+font = ExtResource("3_c0g20")
+
+[sub_resource type="LabelSettings" id="LabelSettings_dp73k"]
+font = ExtResource("3_c0g20")
+
+[node name="BaseInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bilbu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1016, 40)
+texture = ExtResource("1_tnq4j")
+
+[node name="Tron_Enemie" type="Label" parent="Sprite2D2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -43.5
+offset_right = -75.5
+offset_bottom = -20.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tron:"
+label_settings = SubResource("LabelSettings_b0n2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(178, 39)
+texture = ExtResource("1_tnq4j")
+
+[node name="Tron_Player" type="Label" parent="Sprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -43.5
+offset_right = -75.5
+offset_bottom = -20.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tron:"
+label_settings = SubResource("LabelSettings_dp73k")

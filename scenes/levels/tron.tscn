@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://dnhybtkpja1hu"]
+
+[ext_resource type="Texture2D" uid="uid://wf1p6d65kh4b" path="res://assets/Tiny Swords (Update 010)/Resources/Gold Mine/GoldMine_Active.png" id="1_cft80"]
+[ext_resource type="Script" path="res://scripts/level/tron.gd" id="1_o7eqm"]
+[ext_resource type="Texture2D" uid="uid://6g11fabjbgje" path="res://assets/Tiny Swords (Update 010)/Resources/Gold Mine/GoldMine_Destroyed.png" id="2_1mt16"]
+[ext_resource type="Texture2D" uid="uid://ulpghsfuo2p1" path="res://assets/Tiny Swords (Update 010)/Effects/Explosion/Explosions.png" id="4_rhnlj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrmi1"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybx0j"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csh2t"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uel88"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ull6i"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geh6v"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa8md"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifd6u"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54wxg"]
+atlas = ExtResource("4_rhnlj")
+region = Rect2(1536, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3nb60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrmi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybx0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csh2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uel88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ull6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geh6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qa8md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifd6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54wxg")
+}],
+"loop": false,
+"name": &"destory",
+"speed": 9.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_muq6m"]
+size = Vector3(5, 1, 15)
+
+[node name="Tron" type="Node3D" groups=["tron"]]
+script = ExtResource("1_o7eqm")
+
+[node name="TronDestory" type="Sprite3D" parent="."]
+visible = false
+texture_filter = 0
+texture = ExtResource("2_1mt16")
+
+[node name="TronActive" type="Sprite3D" parent="."]
+texture_filter = 0
+texture = ExtResource("1_cft80")
+
+[node name="AnimatedDestory" type="AnimatedSprite3D" parent="."]
+visible = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_3nb60")
+animation = &"destory"
+frame = 1
+frame_progress = 0.925862
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_muq6m")
