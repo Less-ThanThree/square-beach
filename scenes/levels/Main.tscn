@@ -1,18 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=17 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
 [ext_resource type="PackedScene" uid="uid://fdyn02nmx237" path="res://scenes/enemies/knight_1.tscn" id="1_b20vp"]
-[ext_resource type="PackedScene" uid="uid://bmypxkvsauah3" path="res://scenes/enemies/pawn_1.tscn" id="1_k0irt"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
 [ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
-[ext_resource type="PackedScene" uid="uid://di48pcup5lwdj" path="res://scenes/enemies/goblin_torch_1.tscn" id="5_gnp8i"]
 [ext_resource type="PackedScene" uid="uid://bjqepayl2soau" path="res://scenes/terrian/three_1.tscn" id="6_fmajq"]
 [ext_resource type="PackedScene" uid="uid://ct3esyncmun0w" path="res://scenes/terrian/deco_1.tscn" id="7_5oyvk"]
 [ext_resource type="PackedScene" uid="uid://cvxlcv0vpjrmy" path="res://scenes/terrian/deco_3.tscn" id="7_woevi"]
 [ext_resource type="PackedScene" uid="uid://emjxdhtrnwv0" path="res://scenes/terrian/deco_2.tscn" id="8_a04sd"]
 [ext_resource type="PackedScene" uid="uid://d0xry1vtn2ikm" path="res://scenes/terrian/deco_water_rock_1.tscn" id="10_q7kas"]
 [ext_resource type="PackedScene" uid="uid://wtr0vcqufkhv" path="res://scenes/terrian/doce_water_rock_2.tscn" id="11_wbfdm"]
+[ext_resource type="PackedScene" uid="uid://cyck2p00kp5n5" path="res://scenes/enemies/archer_1.tscn" id="12_qeslv"]
 [ext_resource type="PackedScene" uid="uid://d3q7sum5ws5tr" path="res://scenes/lines/line.tscn" id="13_i03w6"]
 [ext_resource type="PackedScene" uid="uid://cvs8s5oq5fqed" path="res://scenes/lines/line_y.tscn" id="14_xmru7"]
 
@@ -48,22 +47,6 @@ shape = SubResource("BoxShape3D_u0h4r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/StaticBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_c7vsn")
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="Pawn1" parent="Enemies" instance=ExtResource("1_k0irt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.43757, 0.625, -2.86336)
-
-[node name="Enemie1" parent="Enemies" instance=ExtResource("1_b20vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66857, 0.625, -5.36336)
-
-[node name="Enemies_2" type="Node" parent="."]
-
-[node name="GoblinTnt1" parent="Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75239, 0.625, -4.91923)
-
-[node name="GoblinTorch1" parent="Enemies_2" instance=ExtResource("5_gnp8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3037, 0.625, -3.91923)
 
 [node name="Terrian" type="Node" parent="."]
 
@@ -164,11 +147,95 @@ shadow_enabled = true
 [node name="Line3" parent="Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27212, -13.5497)
 
+[node name="Enemies" type="Node" parent="Lines/Line3"]
+
+[node name="Enemie1" parent="Lines/Line3/Enemies" instance=ExtResource("1_b20vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3031, 0.625, -13.9341)
+
+[node name="Enemie2" parent="Lines/Line3/Enemies" instance=ExtResource("1_b20vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1549, 0.625, -12.6291)
+
+[node name="Archer1" parent="Lines/Line3/Enemies" instance=ExtResource("12_qeslv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9867, 0.625, -12.969)
+
+[node name="Archer2" parent="Lines/Line3/Enemies" instance=ExtResource("12_qeslv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6148, 0.625, -14.2662)
+
+[node name="Enemies2" type="Node" parent="Lines/Line3"]
+
+[node name="GoblinTnt2" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84355, 0.625, -13.5488)
+
+[node name="GoblinTnt1" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40936, 0.625, -14.5868)
+
+[node name="GoblinTnt3" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29984, 0.625, -12.4373)
+
+[node name="GoblinTnt4" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -13.5488)
+
 [node name="Line" parent="Lines" instance=ExtResource("13_i03w6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401929, -3.27752)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401929, -3.06031)
+
+[node name="Enemies_2" type="Node" parent="Lines/Line"]
+
+[node name="GoblinTnt1" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97853, 0.625, -1.92603)
+
+[node name="GoblinTnt2" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15515, 0.625, -3.16004)
+
+[node name="GoblinTnt3" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -2.22337)
+
+[node name="GoblinTnt4" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65862, 0.625, -4.31577)
+
+[node name="Enemies" type="Node" parent="Lines/Line"]
+
+[node name="Archer1" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6338, 0.625, -3.02628)
+
+[node name="Archer2" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2665, 0.625, -3.93466)
+
+[node name="Enemie1" parent="Lines/Line/Enemies" instance=ExtResource("1_b20vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.079, 0.625, -1.77808)
+
+[node name="Enemie2" parent="Lines/Line/Enemies" instance=ExtResource("1_b20vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2063, 0.625, -3.02628)
 
 [node name="Line2" parent="Lines" instance=ExtResource("13_i03w6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33585, -8.43475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33585, -8.28577)
+
+[node name="Enemies_2" type="Node" parent="Lines/Line2"]
+
+[node name="GoblinTnt1" parent="Lines/Line2/Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29846, 0.625, -9.94912)
+
+[node name="GoblinTnt2" parent="Lines/Line2/Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74653, 0.625, -7.77236)
+
+[node name="GoblinTnt3" parent="Lines/Line2/Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37426, 0.625, -7.46695)
+
+[node name="GoblinTnt4" parent="Lines/Line2/Enemies_2" instance=ExtResource("4_ixq1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -8.85551)
+
+[node name="Enemies" type="Node" parent="Lines/Line2"]
+
+[node name="Enemie1" parent="Lines/Line2/Enemies" instance=ExtResource("1_b20vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1855, 0.625, -9.09038)
+
+[node name="Enemie2" parent="Lines/Line2/Enemies" instance=ExtResource("1_b20vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3152, 0.625, -7.58166)
+
+[node name="Archer1" parent="Lines/Line2/Enemies" instance=ExtResource("12_qeslv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.787, 0.625, -9.05673)
+
+[node name="Archer2" parent="Lines/Line2/Enemies" instance=ExtResource("12_qeslv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6089, 0.625, -7.927)
 
 [node name="LineYRight" parent="Lines" instance=ExtResource("14_xmru7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3485, 0, -8.34677)

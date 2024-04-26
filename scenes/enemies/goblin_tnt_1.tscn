@@ -1,7 +1,40 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgduwa8imsi8i"]
+[gd_scene load_steps=25 format=3 uid="uid://cgduwa8imsi8i"]
 
+[ext_resource type="Script" path="res://scripts/units/goblin.gd" id="1_3tx4v"]
 [ext_resource type="Texture2D" uid="uid://bdsrqdj6fynwx" path="res://assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/TNT/Red/TNT_Red.png" id="1_50e5n"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ybtt7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ixnk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33y6v"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0acki"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0x3k"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v88kf"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rkvg"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt4qd"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro6xq"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(960, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erndu"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(1152, 384, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q55ip"]
 atlas = ExtResource("1_50e5n")
@@ -27,8 +60,58 @@ region = Rect2(768, 0, 192, 192)
 atlas = ExtResource("1_50e5n")
 region = Rect2(960, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2261"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edv7y"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co4na"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pruli"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhm6b"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrpcg"]
+atlas = ExtResource("1_50e5n")
+region = Rect2(960, 192, 192, 192)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_gccju"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0acki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0x3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v88kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rkvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt4qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro6xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erndu")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q55ip")
@@ -51,14 +134,59 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2261")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edv7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co4na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pruli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhm6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrpcg")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
 }]
 
-[node name="GoblinTnt1" type="Node3D"]
-script = ExtResource("1_ybtt7")
+[node name="GoblinTnt1" type="CharacterBody3D" groups=["goblin"]]
+script = ExtResource("1_3tx4v")
+unit_health = 100
+unit_movement_speed = 1.2
+unit_attack_range = 2
+unit_attack_speed = 0.3
+unit_attack_damage = 1
 
-[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+[node name="CollisionUnit" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0ixnk")
+
+[node name="AttackRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("BoxShape3D_33y6v")
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="AttackRange"]
 unique_name_in_owner = true
 flip_h = true
 sprite_frames = SubResource("SpriteFrames_gccju")
-animation = &"idle"
-frame_progress = 0.0431401
+animation = &"attack"
+frame_progress = 0.717299
+
+[node name="TimerOnAttackSpeed" type="Timer" parent="."]
+
+[connection signal="die" from="." to="." method="_on_die"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="TimerOnAttackSpeed" to="." method="_on_timer_on_attack_speed_timeout"]

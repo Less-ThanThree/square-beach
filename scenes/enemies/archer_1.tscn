@@ -1,7 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://cyck2p00kp5n5"]
+[gd_scene load_steps=26 format=3 uid="uid://cyck2p00kp5n5"]
 
 [ext_resource type="Texture2D" uid="uid://brjteal0br2a2" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Red/Archer_Red.png" id="1_4h343"]
 [ext_resource type="Script" path="res://scripts/units/archer.gd" id="1_ji707"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vgs7y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rlawb"]
+size = Vector3(1, 1, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02f4c"]
 atlas = ExtResource("1_4h343")
@@ -161,20 +166,31 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rlawb"]
-
-[node name="Archer1" type="Node3D"]
+[node name="Archer1" type="CharacterBody3D" groups=["allience"]]
 script = ExtResource("1_ji707")
-movement_speed = 0.01
+unit_health = 100
+unit_movement_speed = 0.8
+unit_attack_range = 5
+unit_attack_speed = 0.5
+unit_attack_damage = 20
 
-[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
-unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_t3fy2")
-animation = &"attack"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vgs7y")
 
 [node name="AttackRange" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
 shape = SubResource("BoxShape3D_rlawb")
 
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="AttackRange"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_t3fy2")
+animation = &"attack"
+
+[node name="TimerOnAttackSpeed" type="Timer" parent="."]
+
+[connection signal="die" from="." to="." method="_on_die"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="timeout" from="TimerOnAttackSpeed" to="." method="_on_timer_on_attack_speed_timeout"]

@@ -2,19 +2,32 @@ extends Node
 
 class_name Unit
 
-@export var health: int = 100
-@export var movement_speed: float = 0.1
-@export var attack_damage: int = 5
-@export var attack_speed: int = 1
-@export var attack_range: int = 1
-@export var mana_cost: int = 1
-@export var word_spell: String
+signal die
+
+var health: int
+var movement_speed: float
+var attack_damage: int
+var attack_speed: int
+var attack_range: int
+var mana_cost: int
+var word_spell: String
+var animation_sprite: AnimatedSprite3D
 
 var state
 
 func take_damage(damage: int):
 	health -= damage
+	print(health)
+	if health < 0:
+		die.emit()
 
-func move_to():
-	var new_vector = Vector3(self.position.x + movement_speed, self.position.y, self.position.z)
+func move_to(delta):
+	var new_vector = Vector3(self.position.x + (movement_speed * delta), self.position.y, self.position.z)
 	self.position = new_vector
+
+func move_to_reverse(delta):
+	var new_vector = Vector3(self.position.x - (movement_speed * delta), self.position.y, self.position.z)
+	self.position = new_vector
+
+func animation_unit_play(animation, name_anim):
+	animation.play(name_anim)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://fdyn02nmx237"]
+[gd_scene load_steps=24 format=3 uid="uid://fdyn02nmx237"]
 
 [ext_resource type="Script" path="res://scripts/units/knight.gd" id="1_4jxg7"]
 [ext_resource type="Texture2D" uid="uid://b62yx8g8tbt6s" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="1_etq1u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_45xw3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ke0kp"]
 atlas = ExtResource("1_etq1u")
@@ -147,8 +149,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemie1" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ul5ca"]
+size = Vector3(1, 1, 5)
+
+[node name="Enemie1" type="CharacterBody3D" groups=["allience"]]
 script = ExtResource("1_4jxg7")
+unit_health = 100
+unit_movement_speed = 0.5
+unit_attack_range = 2
+unit_attack_speed = 0.3
+unit_attack_damage = 30
+
+[node name="CollisionUnit" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_45xw3")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
 unique_name_in_owner = true
@@ -156,3 +169,17 @@ sprite_frames = SubResource("SpriteFrames_o8vli")
 animation = &"attack"
 frame = 4
 frame_progress = 0.241957
+
+[node name="AttackRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("BoxShape3D_ul5ca")
+
+[node name="TimerOnAttackSpeed" type="Timer" parent="."]
+
+[connection signal="die" from="." to="." method="_on_die"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="TimerOnAttackSpeed" to="." method="_on_timer_on_attack_speed_timeout"]
