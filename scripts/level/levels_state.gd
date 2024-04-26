@@ -24,7 +24,7 @@ func _on_line(line_number):
 
 func spawn_unit(line_number, unit):
 	var rand_pos_x = randf_range(-49, -45)
-	var rand_pos_z = randf_range(1.8, -1.8)
+	var rand_pos_z = randf_range(1.4, -1.4)
 	if ResourceLoader.exists(unit.scene):
 		current_unit_scene = ResourceLoader.load(unit.scene).instantiate()
 		if current_unit_scene:

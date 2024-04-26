@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ixnk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33y6v"]
-size = Vector3(1, 1, 5)
+size = Vector3(1, 1, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0acki"]
 atlas = ExtResource("1_50e5n")
@@ -178,9 +178,10 @@ shape = SubResource("BoxShape3D_33y6v")
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="AttackRange"]
 unique_name_in_owner = true
 flip_h = true
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gccju")
 animation = &"attack"
-frame_progress = 0.717299
+frame_progress = 0.397857
 
 [node name="TimerOnAttackSpeed" type="Timer" parent="."]
 

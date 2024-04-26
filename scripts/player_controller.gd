@@ -37,32 +37,39 @@ func _process(delta):
 		move_down()
 
 func _on_line_3_area_entered(area):
-	isMovedForward = false
-	on_line.emit(3)
-	#print("Line 3")
+	if area.is_in_group("player_camera"):
+		isMovedForward = false
+		on_line.emit(3)
+		#print("Line 3")
 
 func _on_line_2_area_entered(area):
-	isMovedForward = true
-	isMovedDown = true
-	on_line.emit(2)
+	if area.is_in_group("player_camera"):
+		isMovedForward = true
+		isMovedDown = true
+		on_line.emit(2)
 	#print("Line 2")
 
 func _on_line_area_entered(area):
-	isMovedForward = true
-	isMovedDown = false
-	on_line.emit(1)
+	if area.is_in_group("player_camera"):
+		isMovedForward = true
+		isMovedDown = false
+		on_line.emit(1)
 	#print("Line 1")
 
 func _on_line_y_right_area_entered(area):
-	isMovedRight = false
-	print("Right void")
+	if area.is_in_group("player_camera"):
+		isMovedRight = false
+		print("Right void")
 
 func _on_line_y_right_area_exited(area):
-	isMovedRight = true
+	if area.is_in_group("player_camera"):
+		isMovedRight = true
 
 func _on_line_y_left_area_entered(area):
-	isMovedLeft = false
-	print("Left void")
+	if area.is_in_group("player_camera"):
+		isMovedLeft = false
+		print("Left void")
 
 func _on_line_y_left_area_exited(area):
-	isMovedLeft = true
+	if area.is_in_group("player_camera"):
+		isMovedLeft = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmypxkvsauah3"]
+[gd_scene load_steps=12 format=3 uid="uid://bmypxkvsauah3"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_hoj1e"]
 [ext_resource type="Texture2D" uid="uid://d1jhbuklyr47e" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="2_vsmlg"]
+[ext_resource type="Texture2D" uid="uid://cmmwm6ovuj50c" path="res://assets/спрайтвита1.png" id="3_hcx7y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pc54l"]
 atlas = ExtResource("2_vsmlg")
@@ -27,6 +28,10 @@ region = Rect2(768, 0, 192, 192)
 atlas = ExtResource("2_vsmlg")
 region = Rect2(960, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wvmd"]
+atlas = ExtResource("3_hcx7y")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ihkor"]
 animations = [{
 "frames": [{
@@ -51,6 +56,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wvmd")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="Pawn1" type="Node3D"]
@@ -58,5 +71,6 @@ script = ExtResource("1_hoj1e")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
 unique_name_in_owner = true
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_ihkor")
 animation = &"idle"

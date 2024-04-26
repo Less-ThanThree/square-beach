@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_vgs7y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rlawb"]
-size = Vector3(1, 1, 5)
+size = Vector3(1, 1, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02f4c"]
 atlas = ExtResource("1_4h343")
@@ -169,10 +169,10 @@ animations = [{
 [node name="Archer1" type="CharacterBody3D" groups=["allience"]]
 script = ExtResource("1_ji707")
 unit_health = 100
-unit_movement_speed = 0.8
-unit_attack_range = 5
+unit_movement_speed = 1.75
+unit_attack_range = 20
 unit_attack_speed = 0.5
-unit_attack_damage = 20
+unit_attack_damage = 40
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vgs7y")
@@ -184,8 +184,9 @@ shape = SubResource("BoxShape3D_rlawb")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="AttackRange"]
 unique_name_in_owner = true
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_t3fy2")
-animation = &"attack"
+animation = &"move"
 
 [node name="TimerOnAttackSpeed" type="Timer" parent="."]
 
@@ -193,4 +194,5 @@ animation = &"attack"
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_shape_entered" from="AttackRange" to="." method="_on_attack_range_body_shape_entered"]
 [connection signal="timeout" from="TimerOnAttackSpeed" to="." method="_on_timer_on_attack_speed_timeout"]

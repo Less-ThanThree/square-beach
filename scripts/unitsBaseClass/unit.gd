@@ -17,7 +17,6 @@ var state
 
 func take_damage(damage: int):
 	health -= damage
-	print(health)
 	if health < 0:
 		die.emit()
 

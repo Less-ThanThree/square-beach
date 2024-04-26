@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=16 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
-[ext_resource type="PackedScene" uid="uid://fdyn02nmx237" path="res://scenes/enemies/knight_1.tscn" id="1_b20vp"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
 [ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
 [ext_resource type="PackedScene" uid="uid://bjqepayl2soau" path="res://scenes/terrian/three_1.tscn" id="6_fmajq"]
@@ -30,7 +29,7 @@ script = ExtResource("1_4vvpr")
 mouse_filter = 2
 
 [node name="Player" parent="." instance=ExtResource("1_q57fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -2.16728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -2.80898)
 camera_speed = 35
 
 [node name="MainCamera" type="Camera3D" parent="."]
@@ -149,18 +148,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27212, -13.5497)
 
 [node name="Enemies" type="Node" parent="Lines/Line3"]
 
-[node name="Enemie1" parent="Lines/Line3/Enemies" instance=ExtResource("1_b20vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3031, 0.625, -13.9341)
-
-[node name="Enemie2" parent="Lines/Line3/Enemies" instance=ExtResource("1_b20vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1549, 0.625, -12.6291)
-
-[node name="Archer1" parent="Lines/Line3/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9867, 0.625, -12.969)
-
-[node name="Archer2" parent="Lines/Line3/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6148, 0.625, -14.2662)
-
 [node name="Enemies2" type="Node" parent="Lines/Line3"]
 
 [node name="GoblinTnt2" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
@@ -184,27 +171,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401929, -3.06031)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97853, 0.625, -1.92603)
 
 [node name="GoblinTnt2" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15515, 0.625, -3.16004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15515, 0.625, -3.3625)
 
 [node name="GoblinTnt3" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -2.22337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -2.8493)
 
 [node name="GoblinTnt4" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65862, 0.625, -4.31577)
 
 [node name="Enemies" type="Node" parent="Lines/Line"]
 
+[node name="Archer2" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.935, 0.625, -4.07376)
+
 [node name="Archer1" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6338, 0.625, -3.02628)
-
-[node name="Archer2" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2665, 0.625, -3.93466)
-
-[node name="Enemie1" parent="Lines/Line/Enemies" instance=ExtResource("1_b20vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.079, 0.625, -1.77808)
-
-[node name="Enemie2" parent="Lines/Line/Enemies" instance=ExtResource("1_b20vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2063, 0.625, -3.02628)
 
 [node name="Line2" parent="Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33585, -8.28577)
@@ -224,18 +205,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37426, 0.625, -7.46695)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -8.85551)
 
 [node name="Enemies" type="Node" parent="Lines/Line2"]
-
-[node name="Enemie1" parent="Lines/Line2/Enemies" instance=ExtResource("1_b20vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1855, 0.625, -9.09038)
-
-[node name="Enemie2" parent="Lines/Line2/Enemies" instance=ExtResource("1_b20vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3152, 0.625, -7.58166)
-
-[node name="Archer1" parent="Lines/Line2/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.787, 0.625, -9.05673)
-
-[node name="Archer2" parent="Lines/Line2/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6089, 0.625, -7.927)
 
 [node name="LineYRight" parent="Lines" instance=ExtResource("14_xmru7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3485, 0, -8.34677)
