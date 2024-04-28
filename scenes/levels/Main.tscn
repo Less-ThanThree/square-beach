@@ -1,26 +1,39 @@
-[gd_scene load_steps=18 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=25 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
 [ext_resource type="PackedScene" uid="uid://dd5ve3derngit" path="res://scenes/ui/base_info.tscn" id="2_vob0w"]
 [ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
+[ext_resource type="Texture2D" uid="uid://i45skr00rt8i" path="res://assets/parallax/parallax-demon-woods-close-trees.png" id="6_5kvxa"]
 [ext_resource type="PackedScene" uid="uid://bjqepayl2soau" path="res://scenes/terrian/three_1.tscn" id="6_fmajq"]
 [ext_resource type="PackedScene" uid="uid://ct3esyncmun0w" path="res://scenes/terrian/deco_1.tscn" id="7_5oyvk"]
+[ext_resource type="Texture2D" uid="uid://cttsdkdo0uen0" path="res://assets/parallax/parallax-demon-woods-mid-trees.png" id="7_l0fad"]
 [ext_resource type="PackedScene" uid="uid://cvxlcv0vpjrmy" path="res://scenes/terrian/deco_3.tscn" id="7_woevi"]
 [ext_resource type="PackedScene" uid="uid://emjxdhtrnwv0" path="res://scenes/terrian/deco_2.tscn" id="8_a04sd"]
+[ext_resource type="Texture2D" uid="uid://d1bou3jmfeoke" path="res://assets/parallax/parallax-demon-woods-far-trees.png" id="8_w1p3l"]
 [ext_resource type="PackedScene" uid="uid://d0xry1vtn2ikm" path="res://scenes/terrian/deco_water_rock_1.tscn" id="10_q7kas"]
 [ext_resource type="PackedScene" uid="uid://wtr0vcqufkhv" path="res://scenes/terrian/doce_water_rock_2.tscn" id="11_wbfdm"]
 [ext_resource type="PackedScene" uid="uid://cyck2p00kp5n5" path="res://scenes/enemies/archer_1.tscn" id="12_qeslv"]
 [ext_resource type="PackedScene" uid="uid://d3q7sum5ws5tr" path="res://scenes/lines/line.tscn" id="13_i03w6"]
 [ext_resource type="PackedScene" uid="uid://dnhybtkpja1hu" path="res://scenes/levels/tron.tscn" id="14_g6f0t"]
 [ext_resource type="PackedScene" uid="uid://cvs8s5oq5fqed" path="res://scenes/lines/line_y.tscn" id="14_xmru7"]
+[ext_resource type="Sky" uid="uid://bf3p47qi6a8vy" path="res://scenes/background/Midday.tres" id="16_31oa1"]
+[ext_resource type="PackedScene" uid="uid://tiicwfhbkevu" path="res://scenes/background/sky.tscn" id="17_63usu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0h4r"]
 size = Vector3(300, 0.5, 80)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqb2p"]
+albedo_color = Color(0, 0.223529, 0.235294, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_c7vsn"]
+material = SubResource("StandardMaterial3D_vqb2p")
 size = Vector3(300, 0.5, 80)
+
+[sub_resource type="Environment" id="Environment_kl26e"]
+background_mode = 2
+sky = ExtResource("16_31oa1")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_4vvpr")
@@ -34,7 +47,7 @@ mouse_filter = 2
 
 [node name="Player" parent="." instance=ExtResource("1_q57fh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -2.80898)
-camera_speed = 35
+camera_speed = 2.0
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -0.121111, 4.567, -0.966646)
@@ -120,6 +133,99 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.40776, 2.6, -23.0382)
 
 [node name="Three1" parent="Terrian/Thress_node/Threes" instance=ExtResource("6_fmajq")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.6, -26.563)
+
+[node name="parallax" type="Node3D" parent="Terrian/Thress_node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="woods_close" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 0, 9.95619, -29.5671)
+texture_filter = 0
+render_priority = -10
+texture = ExtResource("6_5kvxa")
+
+[node name="woods_mid" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 0, 9.95619, -35.9101)
+texture_filter = 0
+render_priority = -11
+texture = ExtResource("7_l0fad")
+
+[node name="woods_far" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 0, 9.95619, -45.7942)
+texture_filter = 0
+render_priority = -12
+texture = ExtResource("8_w1p3l")
+
+[node name="woods_close4" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 84, 9.95619, -29.5671)
+texture_filter = 0
+render_priority = -10
+texture = ExtResource("6_5kvxa")
+
+[node name="woods_mid4" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 84, 9.95619, -35.9101)
+texture_filter = 0
+render_priority = -11
+texture = ExtResource("7_l0fad")
+
+[node name="woods_far4" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 84, 9.95619, -45.7942)
+texture_filter = 0
+render_priority = -12
+texture = ExtResource("8_w1p3l")
+
+[node name="woods_close5" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -84, 9.95619, -29.5671)
+texture_filter = 0
+render_priority = -10
+texture = ExtResource("6_5kvxa")
+
+[node name="woods_mid5" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -84, 9.95619, -35.9101)
+texture_filter = 0
+render_priority = -11
+texture = ExtResource("7_l0fad")
+
+[node name="woods_far5" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -84, 9.95619, -45.7942)
+texture_filter = 0
+render_priority = -12
+texture = ExtResource("8_w1p3l")
+
+[node name="woods_close2" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 42, 9.95619, -29.5671)
+texture_filter = 0
+render_priority = -10
+texture = ExtResource("6_5kvxa")
+
+[node name="woods_mid2" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 42, 9.95619, -35.9101)
+texture_filter = 0
+render_priority = -11
+texture = ExtResource("7_l0fad")
+
+[node name="woods_far2" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 42, 9.95619, -45.7942)
+texture_filter = 0
+render_priority = -12
+texture = ExtResource("8_w1p3l")
+
+[node name="woods_close3" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -42, 9.95619, -29.5671)
+texture_filter = 0
+render_priority = -10
+texture = ExtResource("6_5kvxa")
+
+[node name="woods_mid3" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -42, 9.95619, -35.9101)
+texture_filter = 0
+render_priority = -11
+texture = ExtResource("7_l0fad")
+
+[node name="woods_far3" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
+transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -42, 9.95619, -45.7942)
+texture_filter = 0
+render_priority = -12
+texture = ExtResource("8_w1p3l")
 
 [node name="Deco" type="Node" parent="Terrian"]
 
@@ -221,6 +327,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9184, 0.625, -8.00216)
 
 [node name="Tron_enemies" parent="." instance=ExtResource("14_g6f0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8765, 0.625, -7.98417)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kl26e")
+
+[node name="Sky" parent="WorldEnvironment" instance=ExtResource("17_63usu")]
+transform = Transform3D(0.756511, 0, 0, 0, 0.756511, 0, 0, 0, 0.756511, 0, 0, 0)
 
 [connection signal="update_label_tron" from="." to="Ui/BaseInfo" method="_on_main_update_label_tron"]
 [connection signal="area_entered" from="Lines/Line3" to="Player" method="_on_line_3_area_entered"]

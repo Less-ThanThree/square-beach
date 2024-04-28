@@ -2,7 +2,7 @@ extends Node3D
 
 signal on_line(line_number)
 
-@export var camera_speed = 1.0
+@export var camera_speed = 2.0
 @export var line_height_meters = 5.0
 @export var damping = 0.1
 
@@ -18,13 +18,13 @@ var isMovedLeft = true
 func move_forward():
 	tween = create_tween().set_trans(Tween.TRANS_EXPO)
 	isTweened = false
-	tween.tween_property(self, "position", Vector3(position.x, position.y, (position.z - line_height_meters)), 1)
+	tween.tween_property(self, "position", Vector3(position.x, position.y, (position.z - line_height_meters)), 0.5)
 	tween.tween_callback(set_is_tween.bind(true))
 
 func move_down():
 	tween = create_tween().set_trans(Tween.TRANS_EXPO)
 	isTweened = false
-	tween.tween_property(self, "position", Vector3(position.x, position.y, (position.z + line_height_meters)), 1)
+	tween.tween_property(self, "position", Vector3(position.x, position.y, (position.z + line_height_meters)), 0.5)
 	tween.tween_callback(set_is_tween.bind(true))
 
 func set_is_tween(isTweend: bool):
