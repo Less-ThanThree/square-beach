@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://n4iaed77lvk5"]
+
+[ext_resource type="Shader" path="res://assets/shaders/background/rain.gdshader" id="1_woycc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcxak"]
+shader = ExtResource("1_woycc")
+shader_parameter/rain_amount = 200.0
+shader_parameter/near_rain_length = 0.156
+shader_parameter/far_rain_length = 0.222
+shader_parameter/near_rain_width = 1.0
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0.8, 0.8, 0.8, 0.133333)
+shader_parameter/base_rain_speed = 1.0
+shader_parameter/additional_rain_speed = 0.915
+shader_parameter/slant = 0.2
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mcxak")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

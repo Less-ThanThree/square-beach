@@ -32,6 +32,10 @@ window/canvas_textures/default_texture_filter=1
 
 project/assembly_name="Square-beach"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/lampheaddd/Desktop/test.avi"
+
 [input]
 
 forward={

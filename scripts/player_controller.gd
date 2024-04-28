@@ -2,8 +2,12 @@ extends Node3D
 
 signal on_line(line_number)
 
-@export var camera_speed = 1
-@export var line_height_meters = 5
+@export var camera_speed = 1.0
+@export var line_height_meters = 5.0
+@export var damping = 0.1
+
+var velocity = Vector3.ZERO
+var target_velocity = Vector3.ZERO
 var tween
 var isTweened = true
 var isMovedForward = true
@@ -27,13 +31,19 @@ func set_is_tween(isTweend: bool):
 	isTweened = isTweend
 
 func _process(delta):
-	if Input.is_action_pressed("right") && isMovedRight:
-		translate(transform.basis.x * camera_speed * delta)
-	if Input.is_action_pressed("left") && isMovedLeft:
-		translate(-transform.basis.x * camera_speed * delta)
-	if Input.is_action_just_pressed("forward") && isTweened && isMovedForward:
+	if Input.is_action_pressed("right") and isMovedRight:
+		target_velocity.x = line_height_meters
+	elif Input.is_action_pressed("left") and isMovedLeft:
+		target_velocity.x = -line_height_meters
+	else:
+		target_velocity.x = 0
+
+	velocity.x = lerp(velocity.x, target_velocity.x, damping)
+	position.x += velocity.x * camera_speed * delta
+
+	if Input.is_action_just_pressed("forward") and isTweened and isMovedForward:
 		move_forward()
-	if Input.is_action_just_released("down") && isTweened && isMovedDown:
+	if Input.is_action_just_released("down") and isTweened and isMovedDown:
 		move_down()
 
 func _on_line_3_area_entered(area):
