@@ -1,18 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0vh4ypr8o53n"]
+[gd_scene load_steps=15 format=3 uid="uid://d0vh4ypr8o53n"]
 
+[ext_resource type="Texture2D" uid="uid://7h0203xhfud0" path="res://assets/test/Снимок экрана 2024-04-30 181755.png" id="1_cqk5k"]
 [ext_resource type="Shader" path="res://assets/shaders/posterize.gdshader" id="2_qbv8k"]
 [ext_resource type="Shader" path="res://assets/shaders/glow.gdshader" id="3_m5dly"]
 [ext_resource type="Shader" path="res://assets/shaders/dithering.gdshader" id="4_1pag5"]
 [ext_resource type="Shader" path="res://assets/shaders/grain.gdshader" id="4_gvccx"]
 [ext_resource type="Shader" path="res://assets/shaders/vignette.gdshader" id="5_jbj1f"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljrfy"]
-shader = ExtResource("3_m5dly")
-shader_parameter/BLOOM_THRESHOLD = 0.86
-shader_parameter/BLOOM_INTENSITY = 2.06
-shader_parameter/BLUR_ITERATIONS = 10
-shader_parameter/BLUR_SIZE = -0.01
-shader_parameter/BLUR_SUBDIVISIONS = 32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m5t61"]
 shader = ExtResource("2_qbv8k")
@@ -44,7 +37,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0, 20, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 3, 6)
 }
 
@@ -54,24 +47,37 @@ _data = {
 "fire": SubResource("Animation_efrmn")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljrfy"]
+shader = ExtResource("3_m5dly")
+shader_parameter/BLOOM_THRESHOLD = 0.9
+shader_parameter/BLOOM_INTENSITY = 1.5
+shader_parameter/BLUR_ITERATIONS = 3
+shader_parameter/BLUR_SIZE = -0.01
+shader_parameter/BLUR_SUBDIVISIONS = 32
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb176"]
 shader = ExtResource("4_1pag5")
-shader_parameter/scale = 4.0
-shader_parameter/dither_opacity = 0.5
+shader_parameter/scale = 3.0
+shader_parameter/dither_opacity = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7n265"]
 shader = ExtResource("4_gvccx")
-shader_parameter/grain_intensity = 0.018
+shader_parameter/grain_intensity = 0.005
 shader_parameter/grain_scale = 54.393
-shader_parameter/pixel_size = 0.2
+shader_parameter/pixel_size = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6pak"]
 shader = ExtResource("5_jbj1f")
 shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.365
+shader_parameter/vignette_opacity = 0.236
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="Post-processing" type="CanvasLayer"]
+
+[node name="СнимокЭкрана2024-04-30181142" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(568, 339)
+texture = ExtResource("1_cqk5k")
 
 [node name="Shaders" type="Control" parent="."]
 layout_mode = 3
@@ -81,19 +87,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="Glow" type="ColorRect" parent="Shaders"]
-material = SubResource("ShaderMaterial_ljrfy")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Shaders"]
-copy_mode = 2
 
 [node name="Posterize" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_m5t61")
@@ -110,6 +103,20 @@ libraries = {
 "": SubResource("AnimationLibrary_x0g3f")
 }
 autoplay = "fire"
+speed_scale = 0.5
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Shaders"]
+copy_mode = 2
+
+[node name="Glow" type="ColorRect" parent="Shaders"]
+material = SubResource("ShaderMaterial_ljrfy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="BackBufferCopy2" type="BackBufferCopy" parent="Shaders"]
 copy_mode = 2

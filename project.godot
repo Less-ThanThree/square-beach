@@ -35,6 +35,7 @@ project/assembly_name="Square-beach"
 [editor]
 
 movie_writer/movie_file="C:/Users/lampheaddd/Desktop/test.avi"
+movie_writer/fps=30
 
 [input]
 

@@ -1,35 +1,594 @@
-[gd_scene load_steps=25 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=104 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
 [ext_resource type="PackedScene" uid="uid://dd5ve3derngit" path="res://scenes/ui/base_info.tscn" id="2_vob0w"]
 [ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
-[ext_resource type="Texture2D" uid="uid://i45skr00rt8i" path="res://assets/parallax/parallax-demon-woods-close-trees.png" id="6_5kvxa"]
-[ext_resource type="PackedScene" uid="uid://bjqepayl2soau" path="res://scenes/terrian/three_1.tscn" id="6_fmajq"]
-[ext_resource type="PackedScene" uid="uid://ct3esyncmun0w" path="res://scenes/terrian/deco_1.tscn" id="7_5oyvk"]
-[ext_resource type="Texture2D" uid="uid://cttsdkdo0uen0" path="res://assets/parallax/parallax-demon-woods-mid-trees.png" id="7_l0fad"]
-[ext_resource type="PackedScene" uid="uid://cvxlcv0vpjrmy" path="res://scenes/terrian/deco_3.tscn" id="7_woevi"]
-[ext_resource type="PackedScene" uid="uid://emjxdhtrnwv0" path="res://scenes/terrian/deco_2.tscn" id="8_a04sd"]
-[ext_resource type="Texture2D" uid="uid://d1bou3jmfeoke" path="res://assets/parallax/parallax-demon-woods-far-trees.png" id="8_w1p3l"]
-[ext_resource type="PackedScene" uid="uid://d0xry1vtn2ikm" path="res://scenes/terrian/deco_water_rock_1.tscn" id="10_q7kas"]
-[ext_resource type="PackedScene" uid="uid://wtr0vcqufkhv" path="res://scenes/terrian/doce_water_rock_2.tscn" id="11_wbfdm"]
+[ext_resource type="Texture2D" uid="uid://bhyp3t2a07vru" path="res://assets/environment/trees_anim/trees.png" id="5_iy2ax"]
+[ext_resource type="Texture2D" uid="uid://bl67ryhxvpmmf" path="res://assets/environment/trees_anim/trees2.png" id="5_lfwdq"]
+[ext_resource type="Texture2D" uid="uid://bjpdh6enfuktr" path="res://assets/environment/trees_anim/trees3.png" id="6_nl4nw"]
+[ext_resource type="Texture2D" uid="uid://cqjrs7d665qtt" path="res://assets/environment/trees_anim/trees4.png" id="7_modxq"]
+[ext_resource type="Texture2D" uid="uid://m6vpo5wevpas" path="res://assets/environment/trees_anim/trees_dark2.png" id="8_dtg3g"]
+[ext_resource type="Texture2D" uid="uid://b258nn226d8rs" path="res://assets/environment/background/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/clouds_front_t_fc.png" id="9_hwms1"]
+[ext_resource type="Texture2D" uid="uid://dnsnlltcowrmw" path="res://assets/environment/trees_anim/trees_dark3.png" id="9_xe7av"]
+[ext_resource type="Texture2D" uid="uid://cbilab0mp7ku0" path="res://assets/environment/background/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/clouds_mid_t_fc.png" id="10_t5hnu"]
+[ext_resource type="Texture2D" uid="uid://c70ifv52ajfir" path="res://assets/environment/trees_anim/trees_dark4.png" id="10_xtwfr"]
+[ext_resource type="Texture2D" uid="uid://disgb82tcoycr" path="res://assets/environment/background/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/grassy_mountains_fc.png" id="11_gr5je"]
+[ext_resource type="Texture2D" uid="uid://cedh86c76mug" path="res://assets/environment/trees_anim/trees_dark.png" id="11_nrs5l"]
+[ext_resource type="Texture2D" uid="uid://cxnbowqduena5" path="res://assets/environment/props/free.png" id="12_hfkby"]
 [ext_resource type="PackedScene" uid="uid://cyck2p00kp5n5" path="res://scenes/enemies/archer_1.tscn" id="12_qeslv"]
 [ext_resource type="PackedScene" uid="uid://d3q7sum5ws5tr" path="res://scenes/lines/line.tscn" id="13_i03w6"]
 [ext_resource type="PackedScene" uid="uid://dnhybtkpja1hu" path="res://scenes/levels/tron.tscn" id="14_g6f0t"]
 [ext_resource type="PackedScene" uid="uid://cvs8s5oq5fqed" path="res://scenes/lines/line_y.tscn" id="14_xmru7"]
 [ext_resource type="Sky" uid="uid://bf3p47qi6a8vy" path="res://scenes/background/Midday.tres" id="16_31oa1"]
 [ext_resource type="PackedScene" uid="uid://tiicwfhbkevu" path="res://scenes/background/sky.tscn" id="17_63usu"]
+[ext_resource type="Texture2D" uid="uid://bxhngw78webux" path="res://assets/environment/Grass/grass2.png" id="17_efrhl"]
+[ext_resource type="Texture2D" uid="uid://dn4u25w1s2qao" path="res://assets/environment/Grass/grass.png" id="18_uuvx4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0h4r"]
 size = Vector3(300, 0.5, 80)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqb2p"]
-albedo_color = Color(0, 0.223529, 0.235294, 1)
+albedo_color = Color(0, 0.494118, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_c7vsn"]
 material = SubResource("StandardMaterial3D_vqb2p")
 size = Vector3(300, 0.5, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og7w7"]
+atlas = ExtResource("5_lfwdq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsfmg"]
+atlas = ExtResource("5_lfwdq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj3n5"]
+atlas = ExtResource("5_lfwdq")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l803q"]
+atlas = ExtResource("5_lfwdq")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lccgm"]
+atlas = ExtResource("5_lfwdq")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py7p4"]
+atlas = ExtResource("6_nl4nw")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lceyf"]
+atlas = ExtResource("6_nl4nw")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1v4m"]
+atlas = ExtResource("6_nl4nw")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8d6t"]
+atlas = ExtResource("6_nl4nw")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlmpu"]
+atlas = ExtResource("6_nl4nw")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk0c4"]
+atlas = ExtResource("7_modxq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x6es"]
+atlas = ExtResource("7_modxq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7p5l"]
+atlas = ExtResource("7_modxq")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_700bb"]
+atlas = ExtResource("7_modxq")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq4oo"]
+atlas = ExtResource("7_modxq")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvsgo"]
+atlas = ExtResource("8_dtg3g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40613"]
+atlas = ExtResource("8_dtg3g")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv8rw"]
+atlas = ExtResource("8_dtg3g")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x082k"]
+atlas = ExtResource("8_dtg3g")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nycsf"]
+atlas = ExtResource("8_dtg3g")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0wb0"]
+atlas = ExtResource("9_xe7av")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dakqc"]
+atlas = ExtResource("9_xe7av")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78l4g"]
+atlas = ExtResource("9_xe7av")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyllb"]
+atlas = ExtResource("9_xe7av")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqny0"]
+atlas = ExtResource("9_xe7av")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71q3j"]
+atlas = ExtResource("10_xtwfr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gyx4"]
+atlas = ExtResource("10_xtwfr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jgb1"]
+atlas = ExtResource("10_xtwfr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21rfc"]
+atlas = ExtResource("10_xtwfr")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6pnu"]
+atlas = ExtResource("10_xtwfr")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3he34"]
+atlas = ExtResource("11_nrs5l")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h7lx"]
+atlas = ExtResource("11_nrs5l")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ku2w"]
+atlas = ExtResource("11_nrs5l")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlgyc"]
+atlas = ExtResource("11_nrs5l")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8sq1"]
+atlas = ExtResource("11_nrs5l")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaux5"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkjl0"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxxtk"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyfjv"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu8bc"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plhru"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxbae"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53j06"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl637"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tagts"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(192, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm4m8"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50ook"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo7fv"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s712m"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqdqe"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(192, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtkpn"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3ljs"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80yql"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpjj0"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8yd8"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(192, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pnu5"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(0, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoq88"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(48, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye7i5"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(96, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb47r"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(144, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1nit"]
+atlas = ExtResource("5_iy2ax")
+region = Rect2(192, 192, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crhdr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og7w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsfmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj3n5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l803q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lccgm")
+}],
+"loop": true,
+"name": &"trees2_wind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py7p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lceyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1v4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8d6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlmpu")
+}],
+"loop": true,
+"name": &"trees3_wind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk0c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x6es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7p5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_700bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq4oo")
+}],
+"loop": true,
+"name": &"trees4_wind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvsgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40613")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv8rw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x082k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nycsf")
+}],
+"loop": true,
+"name": &"trees_dark2_wind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0wb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dakqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78l4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyllb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqny0")
+}],
+"loop": true,
+"name": &"trees_dark3_wind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71q3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gyx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jgb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21rfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6pnu")
+}],
+"loop": true,
+"name": &"trees_dark4_wind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3he34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h7lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ku2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlgyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8sq1")
+}],
+"loop": true,
+"name": &"trees_dark_wind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaux5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkjl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxxtk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyfjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu8bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plhru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxbae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53j06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl637")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tagts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm4m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50ook")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo7fv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s712m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqdqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtkpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3ljs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80yql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpjj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8yd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pnu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoq88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye7i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb47r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1nit")
+}],
+"loop": true,
+"name": &"trees_wind",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2dq8"]
+atlas = ExtResource("12_hfkby")
+region = Rect2(32, 208, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ukde"]
+atlas = ExtResource("12_hfkby")
+region = Rect2(320, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4ijx"]
+atlas = ExtResource("17_efrhl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tse6j"]
+atlas = ExtResource("17_efrhl")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpywf"]
+atlas = ExtResource("17_efrhl")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4hkx"]
+atlas = ExtResource("17_efrhl")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukk1b"]
+atlas = ExtResource("17_efrhl")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f51w7"]
+atlas = ExtResource("18_uuvx4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncem2"]
+atlas = ExtResource("18_uuvx4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sga0u"]
+atlas = ExtResource("18_uuvx4")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqjvx"]
+atlas = ExtResource("18_uuvx4")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcyi0"]
+atlas = ExtResource("18_uuvx4")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1f406"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4ijx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tse6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpywf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4hkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukk1b")
+}],
+"loop": true,
+"name": &"grass2_wind",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f51w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncem2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sga0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqjvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcyi0")
+}],
+"loop": true,
+"name": &"grass_wind",
+"speed": 5.0
+}]
 
 [sub_resource type="Environment" id="Environment_kl26e"]
 background_mode = 2
@@ -43,10 +602,11 @@ script = ExtResource("1_4vvpr")
 [node name="BaseInfo" parent="Ui" instance=ExtResource("2_vob0w")]
 
 [node name="UnitInventory" parent="Ui" instance=ExtResource("1_1jy6g")]
+visible = false
 mouse_filter = 2
 
 [node name="Player" parent="." instance=ExtResource("1_q57fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -2.80898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -1.15231)
 camera_speed = 2.0
 
 [node name="MainCamera" type="Camera3D" parent="."]
@@ -64,187 +624,794 @@ shape = SubResource("BoxShape3D_u0h4r")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/StaticBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_c7vsn")
 
-[node name="Terrian" type="Node" parent="."]
+[node name="Background" type="Node3D" parent="Terrain"]
+transform = Transform3D(0.7745, 0, 0, 0, 0.7745, 0, 0, 0, 0.7745, 0, 0, 2.49807)
 
-[node name="Thress_node" type="Node" parent="Terrian"]
+[node name="Trees_close" type="Node3D" parent="Terrain/Background"]
+transform = Transform3D(0.905744, 0, 0, 0, 1.02841, 0, 0, 0, 0.514642, 0, 0.234825, 8.97331)
 
-[node name="Threes6" type="Node" parent="Terrian/Thress_node"]
-
-[node name="Three3" parent="Terrian/Thress_node/Threes6" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 19.7546, 2.6, -24.4424)
-
-[node name="Three2" parent="Terrian/Thress_node/Threes6" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 13.9977, 2.6, -23.0382)
-
-[node name="Three1" parent="Terrian/Thress_node/Threes6" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15.4055, 2.6, -26.563)
-
-[node name="Threes5" type="Node" parent="Terrian/Thress_node"]
-
-[node name="Three3" parent="Terrian/Thress_node/Threes5" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.5624, 2.6, -24.4424)
-
-[node name="Three2" parent="Terrian/Thress_node/Threes5" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18.3193, 2.6, -23.0382)
-
-[node name="Three1" parent="Terrian/Thress_node/Threes5" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.9115, 2.6, -26.563)
-
-[node name="Threes4" type="Node" parent="Terrian/Thress_node"]
-
-[node name="Three3" parent="Terrian/Thress_node/Threes4" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 11.6561, 2.6, -24.4424)
-
-[node name="Three2" parent="Terrian/Thress_node/Threes4" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.89926, 2.6, -23.0382)
-
-[node name="Three1" parent="Terrian/Thress_node/Threes4" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.30702, 2.6, -26.563)
-
-[node name="Threes3" type="Node" parent="Terrian/Thress_node"]
-
-[node name="Three3" parent="Terrian/Thress_node/Threes3" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.56406, 2.6, -24.4424)
-
-[node name="Three2" parent="Terrian/Thress_node/Threes3" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.32092, 2.6, -23.0382)
-
-[node name="Three1" parent="Terrian/Thress_node/Threes3" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.91316, 2.6, -26.563)
-
-[node name="Threes2" type="Node" parent="Terrian/Thress_node"]
-
-[node name="Three3" parent="Terrian/Thress_node/Threes2" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.48934, 2.6, -24.4424)
-
-[node name="Three2" parent="Terrian/Thress_node/Threes2" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.73247, 2.6, -23.0382)
-
-[node name="Three1" parent="Terrian/Thress_node/Threes2" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.14023, 2.6, -26.563)
-
-[node name="Threes" type="Node" parent="Terrian/Thress_node"]
-
-[node name="Three3" parent="Terrian/Thress_node/Threes" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.3491, 2.6, -24.4424)
-
-[node name="Three2" parent="Terrian/Thress_node/Threes" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.40776, 2.6, -23.0382)
-
-[node name="Three1" parent="Terrian/Thress_node/Threes" instance=ExtResource("6_fmajq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.6, -26.563)
-
-[node name="parallax" type="Node3D" parent="Terrian/Thress_node"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-
-[node name="woods_close" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 0, 9.95619, -29.5671)
+[node name="AnimatedTree" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 4, 15.815)
 texture_filter = 0
-render_priority = -10
-texture = ExtResource("6_5kvxa")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_wind"
+autoplay = "trees_wind"
+frame_progress = 0.783969
+speed_scale = 0.5
 
-[node name="woods_mid" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 0, 9.95619, -35.9101)
+[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.97857, 4, 6.94744)
 texture_filter = 0
-render_priority = -11
-texture = ExtResource("7_l0fad")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
 
-[node name="woods_far" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 0, 9.95619, -45.7942)
+[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -44.3958, 4, -17.1683)
 texture_filter = 0
-render_priority = -12
-texture = ExtResource("8_w1p3l")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
 
-[node name="woods_close4" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 84, 9.95619, -29.5671)
+[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15.4558, 4, -3.83765)
 texture_filter = 0
-render_priority = -10
-texture = ExtResource("6_5kvxa")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
 
-[node name="woods_mid4" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 84, 9.95619, -35.9101)
+[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 18.6666, 4, 14.0581)
 texture_filter = 0
-render_priority = -11
-texture = ExtResource("7_l0fad")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
 
-[node name="woods_far4" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 84, 9.95619, -45.7942)
+[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -16.1065, 4, 15.815)
 texture_filter = 0
-render_priority = -12
-texture = ExtResource("8_w1p3l")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees4_wind"
+autoplay = "trees4_wind"
+frame_progress = 0.26992
+speed_scale = 0.5
 
-[node name="woods_close5" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -84, 9.95619, -29.5671)
+[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -55.8889, 4, 8.60447)
+flip_h = true
 texture_filter = 0
-render_priority = -10
-texture = ExtResource("6_5kvxa")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_wind"
+autoplay = "trees_wind"
+frame_progress = 0.783969
+speed_scale = 0.5
 
-[node name="woods_mid5" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -84, 9.95619, -35.9101)
+[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -49.9103, 4, -0.263088)
+flip_h = true
 texture_filter = 0
-render_priority = -11
-texture = ExtResource("7_l0fad")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
 
-[node name="woods_far5" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -84, 9.95619, -45.7942)
+[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -100.285, 4, -24.3789)
+flip_h = true
 texture_filter = 0
-render_priority = -12
-texture = ExtResource("8_w1p3l")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
 
-[node name="woods_close2" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 42, 9.95619, -29.5671)
+[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.3447, 4, -11.0482)
+flip_h = true
 texture_filter = 0
-render_priority = -10
-texture = ExtResource("6_5kvxa")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
 
-[node name="woods_mid2" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 42, 9.95619, -35.9101)
+[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -37.2223, 4, 6.84754)
+flip_h = true
 texture_filter = 0
-render_priority = -11
-texture = ExtResource("7_l0fad")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
 
-[node name="woods_far2" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, 42, 9.95619, -45.7942)
+[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.9954, 4, 8.60447)
+flip_h = true
 texture_filter = 0
-render_priority = -12
-texture = ExtResource("8_w1p3l")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees4_wind"
+autoplay = "trees4_wind"
+frame_progress = 0.26992
+speed_scale = 0.5
 
-[node name="woods_close3" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -42, 9.95619, -29.5671)
+[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45.0783, 4, 9.33348)
+flip_h = true
 texture_filter = 0
-render_priority = -10
-texture = ExtResource("6_5kvxa")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_wind"
+autoplay = "trees_wind"
+frame_progress = 0.783969
+speed_scale = 0.5
 
-[node name="woods_mid3" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -42, 9.95619, -35.9101)
+[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 51.0569, 4, 0.465916)
+flip_h = true
 texture_filter = 0
-render_priority = -11
-texture = ExtResource("7_l0fad")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
 
-[node name="woods_far3" type="Sprite3D" parent="Terrian/Thress_node/parallax"]
-transform = Transform3D(7.14428, 0, 0, 0, 7.14428, 0, 0, 0, 7.14428, -42, 9.95619, -45.7942)
+[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.682465, 4, -23.6499)
+flip_h = true
 texture_filter = 0
-render_priority = -12
-texture = ExtResource("8_w1p3l")
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
 
-[node name="Deco" type="Node" parent="Terrian"]
+[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 29.6225, 4, -10.3192)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
 
-[node name="Deco3" parent="Terrian/Deco" instance=ExtResource("7_woevi")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.05641, -19.8415)
+[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 63.7449, 4, 7.57655)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
 
-[node name="Deco1" parent="Terrian/Deco" instance=ExtResource("7_5oyvk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -22.3494)
+[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 28.9718, 4, 9.33348)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees4_wind"
+autoplay = "trees4_wind"
+frame_progress = 0.26992
+speed_scale = 0.5
 
-[node name="Deco2" parent="Terrian/Deco" instance=ExtResource("8_a04sd")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.88098, 1.31735, -16.96)
+[node name="Trees_far" type="Node3D" parent="Terrain/Background"]
+transform = Transform3D(-0.906, 0, 0, 0, 1.028, 0, 0, 0, -0.515, 6.74174, 0.234825, -22.5529)
 
-[node name="Water" type="Node" parent="Terrian"]
+[node name="AnimatedTree" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 4, 15.815)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_wind"
+autoplay = "trees_wind"
+frame_progress = 0.783969
+speed_scale = 0.5
 
-[node name="DecoWaterRock" parent="Terrian/Water" instance=ExtResource("10_q7kas")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -2.4668)
+[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.97857, 4, 6.94744)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
 
-[node name="DoceWaterRock2" parent="Terrian/Water" instance=ExtResource("11_wbfdm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83991, 0.625, -2.45192)
+[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -44.3958, 4, -17.1683)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
+
+[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15.4558, 4, -3.83765)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
+
+[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 18.6666, 4, 14.0581)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
+
+[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -16.1065, 4, 15.815)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees4_wind"
+autoplay = "trees4_wind"
+frame_progress = 0.26992
+speed_scale = 0.5
+
+[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -55.8889, 4, 8.60447)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_wind"
+autoplay = "trees_wind"
+frame_progress = 0.783969
+speed_scale = 0.5
+
+[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -49.9103, 4, -0.263088)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
+
+[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -100.285, 4, -24.3789)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
+
+[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.3447, 4, -11.0482)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
+
+[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -37.2223, 4, 6.84754)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
+
+[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.9954, 4, 8.60447)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees4_wind"
+autoplay = "trees4_wind"
+frame_progress = 0.26992
+speed_scale = 0.5
+
+[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45.0783, 4, 9.33348)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_wind"
+autoplay = "trees_wind"
+frame_progress = 0.783969
+speed_scale = 0.5
+
+[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 51.0569, 4, 0.465916)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
+
+[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.682465, 4, -23.6499)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees2_wind"
+autoplay = "trees2_wind"
+frame_progress = 0.62411
+speed_scale = 0.5
+
+[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 29.6225, 4, -10.3192)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
+
+[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 63.7449, 4, 7.57655)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees3_wind"
+autoplay = "trees3_wind"
+frame_progress = 0.859756
+speed_scale = 0.5
+
+[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 28.9718, 4, 9.33348)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees4_wind"
+autoplay = "trees4_wind"
+frame_progress = 0.26992
+speed_scale = 0.5
+
+[node name="Trees_Dark" type="Node3D" parent="Terrain/Background"]
+transform = Transform3D(1.16273, 0, 0, 0, 1.36044, 0, 0, 0, 0.514642, 0, 1.48939, -30.3659)
+visible = false
+
+[node name="AnimatedTree" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 4, 15.815)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark_wind"
+autoplay = "trees_dark_wind"
+frame = 2
+frame_progress = 0.35871
+speed_scale = 0.5
+
+[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.97857, 4, 6.94744)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark2_wind"
+autoplay = "trees_dark2_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -44.3958, 4, -17.1683)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark2_wind"
+autoplay = "trees_dark2_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15.4558, 4, -3.83765)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 18.6666, 4, 14.0581)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -16.1065, 4, 15.815)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree21" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -4.3836, 4, 69.853)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree22" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 32.3477, 4, 72.9287)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -55.8889, 4, 8.60448)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark_wind"
+autoplay = "trees_dark_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -49.9103, 4, -0.263088)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark2_wind"
+autoplay = "trees_dark2_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -100.285, 4, -24.3789)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark2_wind"
+autoplay = "trees_dark2_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.3447, 4, -11.0482)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree23" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -25.0998, 4, 70.6106)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -37.2223, 4, 6.84754)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.9954, 4, 8.60447)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark4_wind"
+autoplay = "trees_dark4_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree19" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -21.6082, 4, 90.8252)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark4_wind"
+autoplay = "trees_dark4_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree20" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 11.0392, 4, 72.2703)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark4_wind"
+autoplay = "trees_dark4_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45.0783, 4, 9.33348)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark_wind"
+autoplay = "trees_dark_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 51.0569, 4, 0.465916)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark2_wind"
+autoplay = "trees_dark2_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.682465, 4, -23.6499)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark2_wind"
+autoplay = "trees_dark2_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 29.6225, 4, -10.3192)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 63.7449, 4, 7.57655)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark3_wind"
+autoplay = "trees_dark3_wind"
+speed_scale = 0.5
+
+[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 28.9718, 4, 9.33348)
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crhdr")
+animation = &"trees_dark4_wind"
+autoplay = "trees_dark4_wind"
+speed_scale = 0.5
+
+[node name="Mountains" type="Node3D" parent="Terrain/Background"]
+
+[node name="Clouds_front" type="Sprite3D" parent="Terrain/Background/Mountains"]
+transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, 0, 19.4666, -30.249)
+render_priority = -1
+texture = ExtResource("9_hwms1")
+
+[node name="Clouds_front2" type="Sprite3D" parent="Terrain/Background/Mountains"]
+transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, 68.74, 19.467, -30.2495)
+render_priority = -1
+texture = ExtResource("9_hwms1")
+
+[node name="Clouds_front3" type="Sprite3D" parent="Terrain/Background/Mountains"]
+transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, -68.74, 19.467, -30.2495)
+render_priority = -1
+texture = ExtResource("9_hwms1")
+
+[node name="Clouds_mid" type="Sprite3D" parent="Terrain/Background/Mountains"]
+transform = Transform3D(37.4233, 0, 0, 0, 37.4233, 0, 0, 0, 37.4233, -67.04, 22.283, -72.284)
+render_priority = -2
+texture = ExtResource("10_t5hnu")
+
+[node name="Clouds_mid2" type="Sprite3D" parent="Terrain/Background/Mountains"]
+transform = Transform3D(37.4233, 0, 0, 0, 37.4233, 0, 0, 0, 37.4233, 76.663, 22.283, -72.2843)
+render_priority = -2
+texture = ExtResource("10_t5hnu")
+
+[node name="Mountains2" type="Sprite3D" parent="Terrain/Background/Mountains"]
+transform = Transform3D(66.5926, 0, 0, 0, 66.5926, 0, 0, 0, 66.5926, -122.126, 19.4666, -151.465)
+render_priority = -35
+texture = ExtResource("11_gr5je")
+
+[node name="Mountains3" type="Sprite3D" parent="Terrain/Background/Mountains"]
+transform = Transform3D(66.5926, 0, 0, 0, 66.5926, 0, 0, 0, 66.5926, 133.639, 19.4666, -151.465)
+render_priority = -35
+texture = ExtResource("11_gr5je")
+
+[node name="Props" type="Node3D" parent="Terrain/Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.49333)
+
+[node name="Church" type="Node3D" parent="Terrain/Background/Props"]
+
+[node name="Church" type="Sprite3D" parent="Terrain/Background/Props/Church"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -21.9709, 7.27192, -18.176)
+texture_filter = 0
+texture = SubResource("AtlasTexture_h2dq8")
+
+[node name="Fence" type="Node3D" parent="Terrain/Background/Props/Church"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38754, 0, 0)
+visible = false
+
+[node name="Fence" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -13.0144, 4.8841, -7.44231)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence2" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -8.11356, 4.8841, -12.4961)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence4" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -8.11356, 4.8841, -22.4431)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence5" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -37.8868, 4.8841, -12.4961)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence6" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -37.8868, 4.8841, -22.4431)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence3" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -32.837, 4.8841, -7.44231)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence7" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -13.0144, 4.8841, -27.4978)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence8" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -32.837, 4.8841, -27.4978)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Church2" type="Node3D" parent="Terrain/Background/Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.3431, 0, 0)
+
+[node name="Church" type="Sprite3D" parent="Terrain/Background/Props/Church2"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -21.9709, 7.27192, -18.176)
+texture_filter = 0
+texture = SubResource("AtlasTexture_h2dq8")
+
+[node name="Fence" type="Node3D" parent="Terrain/Background/Props/Church2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38754, 0, 0)
+visible = false
+
+[node name="Fence" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -13.0144, 4.8841, -7.44231)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence2" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -8.11356, 4.8841, -12.4961)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence4" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -8.11356, 4.8841, -22.4431)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence5" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -37.8868, 4.8841, -12.4961)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence6" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -37.8868, 4.8841, -22.4431)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence3" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -32.837, 4.8841, -7.44231)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence7" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -13.0144, 4.8841, -27.4978)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Fence8" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -32.837, 4.8841, -27.4978)
+texture_filter = 0
+texture = SubResource("AtlasTexture_0ukde")
+
+[node name="Grass" type="Node3D" parent="Terrain/Background"]
+
+[node name="Grass" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -14.1989, 2.56868, -29.8604)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+frame = 1
+frame_progress = 0.48867
+speed_scale = 0.5
+
+[node name="Grass2" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, 12.7056, 2.56867, 0.901485)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+frame = 1
+frame_progress = 0.48867
+speed_scale = 0.5
+
+[node name="Grass3" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -49.3028, 2.56867, -10.4616)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+frame = 1
+frame_progress = 0.48867
+speed_scale = 0.5
+
+[node name="Grass4" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, 58.4319, 2.56867, -12.6117)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+frame = 1
+frame_progress = 0.48867
+speed_scale = 0.5
+
+[node name="Grass5" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -85, 2.56867, -21.5665)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+frame = 1
+frame_progress = 0.48867
+speed_scale = 0.5
+
+[node name="Grass6" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -59.2974, 2.56867, 18.0609)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass2_wind"
+autoplay = "grass2_wind"
+speed_scale = 0.5
+
+[node name="Grass7" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -23.3754, 2.56867, 12.9051)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass2_wind"
+autoplay = "grass2_wind"
+speed_scale = 0.5
+
+[node name="Grass8" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, 49.6872, 2.56867, 17.9236)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass2_wind"
+autoplay = "grass2_wind"
+speed_scale = 0.5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.915866, 0.401484, 0, -0.401484, 0.915866, 0, 23.4991, -7.29598)
@@ -332,7 +1499,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8765, 0.625, -7.98417)
 environment = SubResource("Environment_kl26e")
 
 [node name="Sky" parent="WorldEnvironment" instance=ExtResource("17_63usu")]
-transform = Transform3D(0.756511, 0, 0, 0, 0.756511, 0, 0, 0, 0.756511, 0, 0, 0)
+transform = Transform3D(0.770399, 0, 0, 0, 0.283443, 0, 0, 0, 0.770399, 0, 0, 0)
 
 [connection signal="update_label_tron" from="." to="Ui/BaseInfo" method="_on_main_update_label_tron"]
 [connection signal="area_entered" from="Lines/Line3" to="Player" method="_on_line_3_area_entered"]
