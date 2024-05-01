@@ -2,7 +2,7 @@ extends Node
 
 var enemies
 var magic
-var tron_player_hp: int = 100
+var tron_player_hp: int = 10
 var tron_enemie_hp: int = 10
 var units: Array = []
 

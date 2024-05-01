@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd5ve3derngit"]
+[gd_scene load_steps=7 format=3 uid="uid://dd5ve3derngit"]
 
 [ext_resource type="Script" path="res://scripts/ui/base_info/base_info.gd" id="1_bilbu"]
 [ext_resource type="Texture2D" uid="uid://duevjsjgrdydy" path="res://assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_tnq4j"]
 [ext_resource type="FontFile" uid="uid://djfal2h6rgrss" path="res://assets/fonts/antiquity-print.ttf" id="3_c0g20"]
+[ext_resource type="PackedScene" uid="uid://3nhudcsuooa2" path="res://scenes/ui/heart_ui_tron.tscn" id="4_a2q7r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b0n2g"]
 font = ExtResource("3_c0g20")
@@ -15,11 +16,16 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bilbu")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(1016, 40)
 texture = ExtResource("1_tnq4j")
@@ -40,6 +46,7 @@ text = "Tron:"
 label_settings = SubResource("LabelSettings_b0n2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(178, 39)
 texture = ExtResource("1_tnq4j")
@@ -58,3 +65,129 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Tron:"
 label_settings = SubResource("LabelSettings_dp73k")
+
+[node name="TronPlayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeartUiTron10" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 363.0
+offset_right = 363.0
+
+[node name="HeartUiTron9" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 323.0
+offset_right = 323.0
+
+[node name="HeartUiTron8" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 283.0
+offset_right = 283.0
+
+[node name="HeartUiTron7" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 243.0
+offset_right = 243.0
+
+[node name="HeartUiTron6" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 203.0
+offset_right = 203.0
+
+[node name="HeartUiTron5" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 163.0
+offset_right = 163.0
+
+[node name="HeartUiTron4" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 123.0
+offset_right = 123.0
+
+[node name="HeartUiTron3" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 83.0
+offset_right = 83.0
+
+[node name="HeartUiTron2" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 43.0
+offset_right = 43.0
+
+[node name="HeartUiTron1" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = 3.0
+offset_right = 3.0
+
+[node name="TronEnemie" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="HeartUiTron1" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -25.0
+offset_top = 20.0
+offset_right = -25.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="HeartUiTron2" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -45.0
+offset_right = -45.0
+
+[node name="HeartUiTron3" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -85.0
+offset_right = -85.0
+
+[node name="HeartUiTron4" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -125.0
+offset_right = -125.0
+
+[node name="HeartUiTron5" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -165.0
+offset_right = -165.0
+
+[node name="HeartUiTron6" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -205.0
+offset_right = -205.0
+
+[node name="HeartUiTron7" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -245.0
+offset_right = -245.0
+
+[node name="HeartUiTron8" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -285.0
+offset_right = -285.0
+
+[node name="HeartUiTron9" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -325.0
+offset_right = -325.0
+
+[node name="HeartUiTron10" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
+layout_mode = 1
+offset_left = -365.0
+offset_right = -365.0
+
+[editable path="TronEnemie/HeartUiTron1"]

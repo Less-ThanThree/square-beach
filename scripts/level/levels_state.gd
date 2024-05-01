@@ -1,6 +1,6 @@
 extends Node3D
 
-signal update_label_tron
+signal update_label_tron(type)
 
 @onready var unit_inventory = $Ui/UnitInventory
 @onready var player = $Player
@@ -54,14 +54,14 @@ func spawn_unit(line_number, unit):
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("goblin"):
 		Global.tron_player_hp -= 1
-		update_label_tron.emit()
+		update_label_tron.emit("allience")
 		body.queue_free()
 		if Global.tron_player_hp <= 0:
 			tron_player.on_tron_destroy()
 	
 	if body.is_in_group("allience"):
 		Global.tron_enemie_hp -= 1
-		update_label_tron.emit()
+		update_label_tron.emit("goblin")
 		body.queue_free()
 		if Global.tron_enemie_hp <= 0:
 			tron_enemie.on_tron_destroy()
