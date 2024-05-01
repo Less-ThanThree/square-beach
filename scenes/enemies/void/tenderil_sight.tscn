@@ -1,0 +1,204 @@
+[gd_scene load_steps=26 format=3 uid="uid://yklddnuig2ml"]
+
+[ext_resource type="Texture2D" uid="uid://ddk7qlcfomnn5" path="res://assets/units/Animations/void/Tenderlislight.png" id="1_57op1"]
+[ext_resource type="Script" path="res://scripts/units/void/tenderil_sight.gd" id="1_kk43x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_42vy4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uuwcc"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w20je"]
+atlas = ExtResource("1_57op1")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxcad"]
+atlas = ExtResource("1_57op1")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_877j7"]
+atlas = ExtResource("1_57op1")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tp2b"]
+atlas = ExtResource("1_57op1")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbbqq"]
+atlas = ExtResource("1_57op1")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td7u2"]
+atlas = ExtResource("1_57op1")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5i56"]
+atlas = ExtResource("1_57op1")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvfwr"]
+atlas = ExtResource("1_57op1")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at616"]
+atlas = ExtResource("1_57op1")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7v8j"]
+atlas = ExtResource("1_57op1")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6g1r"]
+atlas = ExtResource("1_57op1")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq5dp"]
+atlas = ExtResource("1_57op1")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbcql"]
+atlas = ExtResource("1_57op1")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cr0m"]
+atlas = ExtResource("1_57op1")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2hoj"]
+atlas = ExtResource("1_57op1")
+region = Rect2(512, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0tfv"]
+atlas = ExtResource("1_57op1")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgvrt"]
+atlas = ExtResource("1_57op1")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as38d"]
+atlas = ExtResource("1_57op1")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyuiv"]
+atlas = ExtResource("1_57op1")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lya1m"]
+atlas = ExtResource("1_57op1")
+region = Rect2(512, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_07dct"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w20je")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxcad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_877j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tp2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbbqq")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td7u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5i56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvfwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at616")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7v8j")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6g1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq5dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbcql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cr0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2hoj")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0tfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgvrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as38d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyuiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lya1m")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[node name="TenderilSight" type="CharacterBody3D"]
+script = ExtResource("1_kk43x")
+unit_health = 50
+unit_movement_speed = 1.0
+unit_attack_range = 3
+unit_attack_speed = 2.0
+unit_attack_damage = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_42vy4")
+
+[node name="AttackRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("BoxShape3D_uuwcc")
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="AttackRange"]
+unique_name_in_owner = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_07dct")
+animation = &"move"
+frame = 1
+frame_progress = 0.0135881
+
+[node name="TimerOnAttackSpeed" type="Timer" parent="."]
+
+[connection signal="die" from="." to="." method="_on_die"]
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="timeout" from="TimerOnAttackSpeed" to="." method="_on_timer_on_attack_speed_timeout"]

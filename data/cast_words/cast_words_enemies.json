@@ -1,60 +1,66 @@
 {
-	"archer": {
-		"word": "archer",
-		"icon": "1.png",
-		"scene": "res://scenes/enemies/archer_1.tscn",
+	"sprout": {
+		"word": "sprout",
+		"icon": "sprout.png",
+		"scene": "res://scenes/enemies/vita/sprout.tscn",
 		"cooldown": {
-			"isCooldown": true, 
-			"time": 1,
+			"isCooldown": false,
 		}
 	},
-	"knight": {
-		"word": "knight",
-		"scene": "res://scenes/enemies/knight_1.tscn",
-		"icon": "2.png",
+	"bloomshot": {
+		"word": "bloomshot",
+		"icon": "Bloomshot.png",
+		"scene": "res://scenes/enemies/vita/bloom_shot.tscn",
 		"cooldown": {
-			"isCooldown": true, 
-			"time": 1,
+			"isCooldown": false,
 		}
 	},
-	"pawn": {
-		"word": "pawn",
-		"icon": "3.png",
-		"scene": "res://scenes/enemies/pawn_1.tscn",
+	"sagebark": {
+		"word": "sagebark",
+		"icon": "Sagebark.png",
+		"scene": "res://scenes/enemies/vita/sage_bark.tscn",
 		"cooldown": {
-			"isCooldown": false, 
+			"isCooldown": false,
 		}
 	},
-	"nothing": {
-		"word": "nothing",
-		"icon": "4.png",
-		"scene": "res://scenes/enemies/pawn_1.tscn",
+	"thornwarden": {
+		"word": "thornwarden",
+		"icon": "ThornWarden.png",
+		"scene": "res://scenes/enemies/vita/thron_warden.tscn",
 		"cooldown": {
-			"isCooldown": false, 
+			"isCooldown": false,
 		}
 	},
-	"void": {
-		"word": "void",
-		"icon": "5.png",
-		"scene": "res://scenes/enemies/pawn_1.tscn",
+	"howler": {
+		"word": "howler",
+		"icon": "Howler.png",
+		"scene": "res://scenes/enemies/void/howler.tscn",
 		"cooldown": {
-			"isCooldown": false, 
+			"isCooldown": false,
 		}
 	},
-	"zopa": {
-		"word": "zopa",
-		"icon": "6.png",
-		"scene": "res://scenes/enemies/pawn_1.tscn",
+	"darkspout": {
+		"word": "darkspout",
+		"icon": "DarkSpout.png",
+		"scene": "res://scenes/enemies/void/dark_spout.tscn",
 		"cooldown": {
-			"isCooldown": false, 
+			"isCooldown": false,
 		}
 	},
-	"suka": {
-		"word": "suka",
-		"icon": "7.png",
-		"scene": "res://scenes/enemies/pawn_1.tscn",
+	"tendrilsight": {
+		"word": "tendrilsight",
+		"icon": "Tendrilsight.png",
+		"scene": "res://scenes/enemies/void/tenderil_sight.tscn",
 		"cooldown": {
-			"isCooldown": false, 
+			"isCooldown": false,
+		}
+	},
+	"chompsavor": {
+		"word": "chompsavor",
+		"icon": "ChompSavor.png",
+		"scene": "res://scenes/enemies/void/chomp_savor.tscn",
+		"cooldown": {
+			"isCooldown": false,
 		}
 	}
 }

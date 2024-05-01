@@ -7,8 +7,12 @@ signal update_label_tron
 @onready var line_1_spawn = $Lines/Line
 @onready var line_2_spawn = $Lines/Line2
 @onready var line_3_spawn = $Lines/Line3
-@onready var tron_player = $Tron_player
+@onready var tron_player = $Tron_player 
 @onready var tron_enemie = $Tron_enemies
+@onready var chomp_1 = $Lines/Line/Enemies/ChompSavor
+@onready var chomp_2 = $Lines/Line/Enemies/DarkSpout
+#@onready var chomp_3 = $Lines/Line/Enemies/Howler
+#@onready var chomp_4 = $Lines/Line/Enemies/TenderilSight
 
 var current_line: int
 var current_unit
@@ -17,6 +21,11 @@ var current_unit_scene
 func _ready():
 	unit_inventory.connect("pick_unit", _on_pick)
 	player.connect("on_line", _on_line)
+	
+	chomp_1.unit_is_enemy = true
+	chomp_2.unit_is_enemy = true
+	#chomp_3.unit_is_enemy = true
+	#chomp_4.unit_is_enemy = true
 
 func _on_pick(unit):
 	spawn_unit(current_line, unit)

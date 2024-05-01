@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
 [ext_resource type="PackedScene" uid="uid://dd5ve3derngit" path="res://scenes/ui/base_info.tscn" id="2_vob0w"]
-[ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
 [ext_resource type="PackedScene" uid="uid://d0vh4ypr8o53n" path="res://scenes/postprocessing/postprocessing.tscn" id="4_y4tyd"]
 [ext_resource type="Texture2D" uid="uid://bhyp3t2a07vru" path="res://assets/environment/trees_anim/trees.png" id="5_iy2ax"]
 [ext_resource type="Texture2D" uid="uid://bl67ryhxvpmmf" path="res://assets/environment/trees_anim/trees2.png" id="5_lfwdq"]
@@ -18,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://disgb82tcoycr" path="res://assets/environment/background/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/grassy_mountains_fc.png" id="11_gr5je"]
 [ext_resource type="Texture2D" uid="uid://cedh86c76mug" path="res://assets/environment/trees_anim/trees_dark.png" id="11_nrs5l"]
 [ext_resource type="Texture2D" uid="uid://cxnbowqduena5" path="res://assets/environment/props/free.png" id="12_hfkby"]
-[ext_resource type="PackedScene" uid="uid://cyck2p00kp5n5" path="res://scenes/enemies/archer_1.tscn" id="12_qeslv"]
 [ext_resource type="PackedScene" uid="uid://d3q7sum5ws5tr" path="res://scenes/lines/line.tscn" id="13_i03w6"]
 [ext_resource type="PackedScene" uid="uid://dnhybtkpja1hu" path="res://scenes/levels/tron.tscn" id="14_g6f0t"]
 [ext_resource type="PackedScene" uid="uid://cvs8s5oq5fqed" path="res://scenes/lines/line_y.tscn" id="14_xmru7"]
@@ -26,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://tiicwfhbkevu" path="res://scenes/background/sky.tscn" id="17_63usu"]
 [ext_resource type="Texture2D" uid="uid://bxhngw78webux" path="res://assets/environment/Grass/grass2.png" id="17_efrhl"]
 [ext_resource type="Texture2D" uid="uid://dn4u25w1s2qao" path="res://assets/environment/Grass/grass.png" id="18_uuvx4"]
+[ext_resource type="PackedScene" uid="uid://dgth47v7uuakl" path="res://scenes/enemies/void/chomp_savor.tscn" id="21_2rxli"]
+[ext_resource type="PackedScene" uid="uid://cjgd0u5wmm41q" path="res://scenes/enemies/void/dark_spout.tscn" id="22_ipkos"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0h4r"]
 size = Vector3(300, 0.5, 80)
@@ -1429,59 +1429,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27212, -13.5497)
 
 [node name="Enemies2" type="Node" parent="Lines/Line3"]
 
-[node name="GoblinTnt2" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84355, 0.625, -13.5488)
-
-[node name="GoblinTnt1" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40936, 0.625, -14.5868)
-
-[node name="GoblinTnt3" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29984, 0.625, -12.4373)
-
-[node name="GoblinTnt4" parent="Lines/Line3/Enemies2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -13.5488)
-
 [node name="Line" parent="Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401929, -3.06031)
 
 [node name="Enemies_2" type="Node" parent="Lines/Line"]
 
-[node name="GoblinTnt1" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97853, 0.625, -1.92603)
-
-[node name="GoblinTnt2" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15515, 0.625, -3.3625)
-
-[node name="GoblinTnt3" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -2.8493)
-
-[node name="GoblinTnt4" parent="Lines/Line/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65862, 0.625, -4.31577)
-
 [node name="Enemies" type="Node" parent="Lines/Line"]
 
-[node name="Archer2" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8029, 0.625, -4.07376)
+[node name="ChompSavor" parent="Lines/Line/Enemies" instance=ExtResource("21_2rxli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -3.75198)
+unit_is_enemy = true
 
-[node name="Archer1" parent="Lines/Line/Enemies" instance=ExtResource("12_qeslv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.1041, 0.625, -3.02628)
+[node name="DarkSpout" parent="Lines/Line/Enemies" instance=ExtResource("22_ipkos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3425, 0.625, -2.19076)
+unit_is_enemy = true
 
 [node name="Line2" parent="Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33585, -8.28577)
 
 [node name="Enemies_2" type="Node" parent="Lines/Line2"]
-
-[node name="GoblinTnt1" parent="Lines/Line2/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29846, 0.625, -9.94912)
-
-[node name="GoblinTnt2" parent="Lines/Line2/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74653, 0.625, -7.77236)
-
-[node name="GoblinTnt3" parent="Lines/Line2/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37426, 0.625, -7.46695)
-
-[node name="GoblinTnt4" parent="Lines/Line2/Enemies_2" instance=ExtResource("4_ixq1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -8.85551)
 
 [node name="Enemies" type="Node" parent="Lines/Line2"]
 

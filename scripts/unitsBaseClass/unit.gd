@@ -3,6 +3,7 @@ extends Node
 class_name Unit
 
 signal die
+signal hit
 
 var health: int
 var movement_speed: float
@@ -12,11 +13,13 @@ var attack_range: int
 var mana_cost: int
 var word_spell: String
 var animation_sprite: AnimatedSprite3D
+var is_enemy: bool
 
 var state
 
 func take_damage(damage: int):
 	health -= damage
+	hit.emit()
 	if health < 0:
 		die.emit()
 

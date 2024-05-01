@@ -186,7 +186,9 @@ shape = SubResource("BoxShape3D_rlawb")
 unique_name_in_owner = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_t3fy2")
-animation = &"move"
+animation = &"attack"
+frame = 5
+frame_progress = 0.921588
 
 [node name="TimerOnAttackSpeed" type="Timer" parent="."]
 
