@@ -1,8 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b21q5kmf5ntr2"]
+[gd_scene load_steps=4 format=3 uid="uid://b21q5kmf5ntr2"]
 
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_rdse3"]
-[ext_resource type="PackedScene" uid="uid://d0vh4ypr8o53n" path="res://scenes/postprocessing/postprocessing.tscn" id="2_g8x7t"]
-[ext_resource type="PackedScene" uid="uid://n4iaed77lvk5" path="res://scenes/background/rain.tscn" id="2_xy68v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhx2q"]
 
@@ -34,8 +32,3 @@ mesh = SubResource("BoxMesh_1ddwq")
 [node name="Camera3D" type="Camera3D" parent="PivotCameraGimbal/PivotCameraInner"]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 4)
 current = true
-
-[node name="Rain" parent="." instance=ExtResource("2_xy68v")]
-visible = false
-
-[node name="Post-processing" parent="." instance=ExtResource("2_g8x7t")]

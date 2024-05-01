@@ -1,10 +1,11 @@
-[gd_scene load_steps=104 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=105 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
 [ext_resource type="PackedScene" uid="uid://dd5ve3derngit" path="res://scenes/ui/base_info.tscn" id="2_vob0w"]
 [ext_resource type="PackedScene" uid="uid://cgduwa8imsi8i" path="res://scenes/enemies/goblin_tnt_1.tscn" id="4_ixq1o"]
+[ext_resource type="PackedScene" uid="uid://d0vh4ypr8o53n" path="res://scenes/postprocessing/postprocessing.tscn" id="4_y4tyd"]
 [ext_resource type="Texture2D" uid="uid://bhyp3t2a07vru" path="res://assets/environment/trees_anim/trees.png" id="5_iy2ax"]
 [ext_resource type="Texture2D" uid="uid://bl67ryhxvpmmf" path="res://assets/environment/trees_anim/trees2.png" id="5_lfwdq"]
 [ext_resource type="Texture2D" uid="uid://bjpdh6enfuktr" path="res://assets/environment/trees_anim/trees3.png" id="6_nl4nw"]
@@ -597,12 +598,13 @@ sky = ExtResource("16_31oa1")
 [node name="Main" type="Node3D"]
 script = ExtResource("1_4vvpr")
 
+[node name="Post-processing" parent="." instance=ExtResource("4_y4tyd")]
+
 [node name="Ui" type="CanvasLayer" parent="."]
 
 [node name="BaseInfo" parent="Ui" instance=ExtResource("2_vob0w")]
 
 [node name="UnitInventory" parent="Ui" instance=ExtResource("1_1jy6g")]
-visible = false
 mouse_filter = 2
 
 [node name="Player" parent="." instance=ExtResource("1_q57fh")]
