@@ -1437,11 +1437,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401929, -3.06031)
 [node name="Enemies" type="Node" parent="Lines/Line"]
 
 [node name="ChompSavor" parent="Lines/Line/Enemies" instance=ExtResource("21_2rxli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -3.75198)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928851, -3.75198)
 unit_is_enemy = true
 
 [node name="DarkSpout" parent="Lines/Line/Enemies" instance=ExtResource("22_ipkos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3425, 0.625, -2.19076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3425, 0.926214, -2.19076)
 unit_is_enemy = true
 
 [node name="Line2" parent="Lines" instance=ExtResource("13_i03w6")]

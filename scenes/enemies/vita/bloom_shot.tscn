@@ -189,6 +189,7 @@ shape = SubResource("BoxShape3D_62ta1")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="AttackRange"]
 unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_uy3yk")
 animation = &"hit"

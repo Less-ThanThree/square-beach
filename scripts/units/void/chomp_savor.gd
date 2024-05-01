@@ -63,4 +63,7 @@ func _on_die():
 	self.queue_free()
 
 func _on_hit():
-	current_state = "hit"
+	if currnet_enemi_attack.size() > 0:
+		current_state = "hit"
+	else:
+		current_state = "move"

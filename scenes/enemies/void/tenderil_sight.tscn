@@ -189,11 +189,10 @@ shape = SubResource("BoxShape3D_uuwcc")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="AttackRange"]
 unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_07dct")
-animation = &"move"
-frame = 1
-frame_progress = 0.0135881
+animation = &"attack"
 
 [node name="TimerOnAttackSpeed" type="Timer" parent="."]
 

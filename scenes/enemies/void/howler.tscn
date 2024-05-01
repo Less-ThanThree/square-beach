@@ -189,9 +189,10 @@ shape = SubResource("BoxShape3D_m86e8")
 
 [node name="AnimatedSprite" type="AnimatedSprite3D" parent="AttackRange"]
 unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_d6h22")
-animation = &"die"
+animation = &"attack"
 
 [node name="TimerOnAttackSpeed" type="Timer" parent="."]
 
