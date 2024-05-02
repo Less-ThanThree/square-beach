@@ -5,6 +5,7 @@ var magic
 var tron_player_hp: int = 10
 var tron_enemie_hp: int = 10
 var units: Array = []
+var time_phase_fight: float = 60
 
 func _ready():
 	var counter = 0

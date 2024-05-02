@@ -21,6 +21,13 @@ func display_item_slot(cols: int, rows: int):
 		item_slot.display_item(UnitInventory.units_inventory[index])
 	UnitInventory.items_changed.connect(_on_Inventory_items_changed)
 
+func update_slots():
+	var item_slot
+	
+	for index in slots:
+		item_slot = get_child(index)
+		item_slot.display_item(UnitInventory.units_inventory[index])
+
 func _on_Inventory_items_changed(indexes):
 	var item_slot
 	

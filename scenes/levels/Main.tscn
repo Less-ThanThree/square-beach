@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=106 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d0vh4ypr8o53n" path="res://scenes/postprocessing/postprocessing.tscn" id="4_y4tyd"]
 [ext_resource type="Texture2D" uid="uid://bhyp3t2a07vru" path="res://assets/environment/trees_anim/trees.png" id="5_iy2ax"]
 [ext_resource type="Texture2D" uid="uid://bl67ryhxvpmmf" path="res://assets/environment/trees_anim/trees2.png" id="5_lfwdq"]
+[ext_resource type="PackedScene" uid="uid://cfkru4flxlac1" path="res://scenes/cast/Cast.tscn" id="5_p0mqo"]
 [ext_resource type="Texture2D" uid="uid://bjpdh6enfuktr" path="res://assets/environment/trees_anim/trees3.png" id="6_nl4nw"]
 [ext_resource type="Texture2D" uid="uid://cqjrs7d665qtt" path="res://assets/environment/trees_anim/trees4.png" id="7_modxq"]
 [ext_resource type="Texture2D" uid="uid://m6vpo5wevpas" path="res://assets/environment/trees_anim/trees_dark2.png" id="8_dtg3g"]
@@ -603,36 +604,46 @@ script = ExtResource("1_4vvpr")
 [node name="Ui" type="CanvasLayer" parent="."]
 
 [node name="BaseInfo" parent="Ui" instance=ExtResource("2_vob0w")]
+metadata/_edit_use_anchors_ = true
 
 [node name="UnitInventory" parent="Ui" instance=ExtResource("1_1jy6g")]
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Player" parent="." instance=ExtResource("1_q57fh")]
+[node name="Cast" parent="Ui" instance=ExtResource("5_p0mqo")]
+process_mode = 2
+timer_on_cast = 10.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Node" type="Node3D" parent="."]
+process_mode = 1
+
+[node name="Player" parent="Node" instance=ExtResource("1_q57fh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453398, 4.5, -1.15231)
 camera_speed = 2.0
 
-[node name="MainCamera" type="Camera3D" parent="."]
+[node name="MainCamera" type="Camera3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -0.121111, 4.567, -0.966646)
 visible = false
 
-[node name="Terrain" type="Node3D" parent="."]
+[node name="Terrain" type="Node3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.1234)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Terrain"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Terrain"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Terrain/StaticBody3D"]
 shape = SubResource("BoxShape3D_u0h4r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/StaticBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node/Terrain/StaticBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_c7vsn")
 
-[node name="Background" type="Node3D" parent="Terrain"]
+[node name="Background" type="Node3D" parent="Node/Terrain"]
 transform = Transform3D(0.7745, 0, 0, 0, 0.7745, 0, 0, 0, 0.7745, 0, 0, 2.49807)
 
-[node name="Trees_close" type="Node3D" parent="Terrain/Background"]
+[node name="Trees_close" type="Node3D" parent="Node/Terrain/Background"]
 transform = Transform3D(0.905744, 0, 0, 0, 1.02841, 0, 0, 0, 0.514642, 0, 0.234825, 8.97331)
 
-[node name="AnimatedTree" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 4, 15.815)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -641,7 +652,7 @@ autoplay = "trees_wind"
 frame_progress = 0.783969
 speed_scale = 0.5
 
-[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.97857, 4, 6.94744)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -650,7 +661,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -44.3958, 4, -17.1683)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -659,7 +670,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15.4558, 4, -3.83765)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -668,7 +679,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 18.6666, 4, 14.0581)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -677,7 +688,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -16.1065, 4, 15.815)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -686,7 +697,7 @@ autoplay = "trees4_wind"
 frame_progress = 0.26992
 speed_scale = 0.5
 
-[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -55.8889, 4, 8.60447)
 flip_h = true
 texture_filter = 0
@@ -696,7 +707,7 @@ autoplay = "trees_wind"
 frame_progress = 0.783969
 speed_scale = 0.5
 
-[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -49.9103, 4, -0.263088)
 flip_h = true
 texture_filter = 0
@@ -706,7 +717,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -100.285, 4, -24.3789)
 flip_h = true
 texture_filter = 0
@@ -716,7 +727,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.3447, 4, -11.0482)
 flip_h = true
 texture_filter = 0
@@ -726,7 +737,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -37.2223, 4, 6.84754)
 flip_h = true
 texture_filter = 0
@@ -736,7 +747,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.9954, 4, 8.60447)
 flip_h = true
 texture_filter = 0
@@ -746,7 +757,7 @@ autoplay = "trees4_wind"
 frame_progress = 0.26992
 speed_scale = 0.5
 
-[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45.0783, 4, 9.33348)
 flip_h = true
 texture_filter = 0
@@ -756,7 +767,7 @@ autoplay = "trees_wind"
 frame_progress = 0.783969
 speed_scale = 0.5
 
-[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 51.0569, 4, 0.465916)
 flip_h = true
 texture_filter = 0
@@ -766,7 +777,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.682465, 4, -23.6499)
 flip_h = true
 texture_filter = 0
@@ -776,7 +787,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 29.6225, 4, -10.3192)
 flip_h = true
 texture_filter = 0
@@ -786,7 +797,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 63.7449, 4, 7.57655)
 flip_h = true
 texture_filter = 0
@@ -796,7 +807,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Terrain/Background/Trees_close"]
+[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 28.9718, 4, 9.33348)
 flip_h = true
 texture_filter = 0
@@ -806,10 +817,10 @@ autoplay = "trees4_wind"
 frame_progress = 0.26992
 speed_scale = 0.5
 
-[node name="Trees_far" type="Node3D" parent="Terrain/Background"]
+[node name="Trees_far" type="Node3D" parent="Node/Terrain/Background"]
 transform = Transform3D(-0.906, 0, 0, 0, 1.028, 0, 0, 0, -0.515, 6.74174, 0.234825, -22.5529)
 
-[node name="AnimatedTree" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 4, 15.815)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -818,7 +829,7 @@ autoplay = "trees_wind"
 frame_progress = 0.783969
 speed_scale = 0.5
 
-[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.97857, 4, 6.94744)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -827,7 +838,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -44.3958, 4, -17.1683)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -836,7 +847,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15.4558, 4, -3.83765)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -845,7 +856,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 18.6666, 4, 14.0581)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -854,7 +865,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -16.1065, 4, 15.815)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -863,7 +874,7 @@ autoplay = "trees4_wind"
 frame_progress = 0.26992
 speed_scale = 0.5
 
-[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -55.8889, 4, 8.60447)
 flip_h = true
 texture_filter = 0
@@ -873,7 +884,7 @@ autoplay = "trees_wind"
 frame_progress = 0.783969
 speed_scale = 0.5
 
-[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -49.9103, 4, -0.263088)
 flip_h = true
 texture_filter = 0
@@ -883,7 +894,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -100.285, 4, -24.3789)
 flip_h = true
 texture_filter = 0
@@ -893,7 +904,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.3447, 4, -11.0482)
 flip_h = true
 texture_filter = 0
@@ -903,7 +914,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -37.2223, 4, 6.84754)
 flip_h = true
 texture_filter = 0
@@ -913,7 +924,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.9954, 4, 8.60447)
 flip_h = true
 texture_filter = 0
@@ -923,7 +934,7 @@ autoplay = "trees4_wind"
 frame_progress = 0.26992
 speed_scale = 0.5
 
-[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45.0783, 4, 9.33348)
 flip_h = true
 texture_filter = 0
@@ -933,7 +944,7 @@ autoplay = "trees_wind"
 frame_progress = 0.783969
 speed_scale = 0.5
 
-[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 51.0569, 4, 0.465916)
 flip_h = true
 texture_filter = 0
@@ -943,7 +954,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.682465, 4, -23.6499)
 flip_h = true
 texture_filter = 0
@@ -953,7 +964,7 @@ autoplay = "trees2_wind"
 frame_progress = 0.62411
 speed_scale = 0.5
 
-[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 29.6225, 4, -10.3192)
 flip_h = true
 texture_filter = 0
@@ -963,7 +974,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 63.7449, 4, 7.57655)
 flip_h = true
 texture_filter = 0
@@ -973,7 +984,7 @@ autoplay = "trees3_wind"
 frame_progress = 0.859756
 speed_scale = 0.5
 
-[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Terrain/Background/Trees_far"]
+[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 28.9718, 4, 9.33348)
 flip_h = true
 texture_filter = 0
@@ -983,11 +994,11 @@ autoplay = "trees4_wind"
 frame_progress = 0.26992
 speed_scale = 0.5
 
-[node name="Trees_Dark" type="Node3D" parent="Terrain/Background"]
+[node name="Trees_Dark" type="Node3D" parent="Node/Terrain/Background"]
 transform = Transform3D(1.16273, 0, 0, 0, 1.36044, 0, 0, 0, 0.514642, 0, 1.48939, -30.3659)
 visible = false
 
-[node name="AnimatedTree" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 4, 15.815)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -997,7 +1008,7 @@ frame = 2
 frame_progress = 0.35871
 speed_scale = 0.5
 
-[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree2" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 5.97857, 4, 6.94744)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -1005,7 +1016,7 @@ animation = &"trees_dark2_wind"
 autoplay = "trees_dark2_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree5" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -44.3958, 4, -17.1683)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -1013,7 +1024,7 @@ animation = &"trees_dark2_wind"
 autoplay = "trees_dark2_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree3" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15.4558, 4, -3.83765)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -1021,7 +1032,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree6" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 18.6666, 4, 14.0581)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -1029,7 +1040,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree4" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -16.1065, 4, 15.815)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -1037,7 +1048,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree21" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree21" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -4.3836, 4, 69.853)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -1045,7 +1056,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree22" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree22" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 32.3477, 4, 72.9287)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_crhdr")
@@ -1053,7 +1064,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree7" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -55.8889, 4, 8.60448)
 flip_h = true
 texture_filter = 0
@@ -1062,7 +1073,7 @@ animation = &"trees_dark_wind"
 autoplay = "trees_dark_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree8" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -49.9103, 4, -0.263088)
 flip_h = true
 texture_filter = 0
@@ -1071,7 +1082,7 @@ animation = &"trees_dark2_wind"
 autoplay = "trees_dark2_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree9" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -100.285, 4, -24.3789)
 flip_h = true
 texture_filter = 0
@@ -1080,7 +1091,7 @@ animation = &"trees_dark2_wind"
 autoplay = "trees_dark2_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree10" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.3447, 4, -11.0482)
 flip_h = true
 texture_filter = 0
@@ -1089,7 +1100,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree23" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree23" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -25.0998, 4, 70.6106)
 flip_h = true
 texture_filter = 0
@@ -1098,7 +1109,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree11" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -37.2223, 4, 6.84754)
 flip_h = true
 texture_filter = 0
@@ -1107,7 +1118,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree12" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.9954, 4, 8.60447)
 flip_h = true
 texture_filter = 0
@@ -1116,7 +1127,7 @@ animation = &"trees_dark4_wind"
 autoplay = "trees_dark4_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree19" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree19" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -21.6082, 4, 90.8252)
 flip_h = true
 texture_filter = 0
@@ -1125,7 +1136,7 @@ animation = &"trees_dark4_wind"
 autoplay = "trees_dark4_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree20" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree20" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 11.0392, 4, 72.2703)
 flip_h = true
 texture_filter = 0
@@ -1134,7 +1145,7 @@ animation = &"trees_dark4_wind"
 autoplay = "trees_dark4_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree13" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45.0783, 4, 9.33348)
 flip_h = true
 texture_filter = 0
@@ -1143,7 +1154,7 @@ animation = &"trees_dark_wind"
 autoplay = "trees_dark_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree14" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 51.0569, 4, 0.465916)
 flip_h = true
 texture_filter = 0
@@ -1152,7 +1163,7 @@ animation = &"trees_dark2_wind"
 autoplay = "trees_dark2_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree15" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0.682465, 4, -23.6499)
 flip_h = true
 texture_filter = 0
@@ -1161,7 +1172,7 @@ animation = &"trees_dark2_wind"
 autoplay = "trees_dark2_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree16" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 29.6225, 4, -10.3192)
 flip_h = true
 texture_filter = 0
@@ -1170,7 +1181,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree17" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 63.7449, 4, 7.57655)
 flip_h = true
 texture_filter = 0
@@ -1179,7 +1190,7 @@ animation = &"trees_dark3_wind"
 autoplay = "trees_dark3_wind"
 speed_scale = 0.5
 
-[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Terrain/Background/Trees_Dark"]
+[node name="AnimatedTree18" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_Dark"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 28.9718, 4, 9.33348)
 flip_h = true
 texture_filter = 0
@@ -1188,152 +1199,152 @@ animation = &"trees_dark4_wind"
 autoplay = "trees_dark4_wind"
 speed_scale = 0.5
 
-[node name="Mountains" type="Node3D" parent="Terrain/Background"]
+[node name="Mountains" type="Node3D" parent="Node/Terrain/Background"]
 
-[node name="Clouds_front" type="Sprite3D" parent="Terrain/Background/Mountains"]
+[node name="Clouds_front" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
 transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, 0, 19.4666, -30.249)
 render_priority = -1
 texture = ExtResource("9_hwms1")
 
-[node name="Clouds_front2" type="Sprite3D" parent="Terrain/Background/Mountains"]
+[node name="Clouds_front2" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
 transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, 68.74, 19.467, -30.2495)
 render_priority = -1
 texture = ExtResource("9_hwms1")
 
-[node name="Clouds_front3" type="Sprite3D" parent="Terrain/Background/Mountains"]
+[node name="Clouds_front3" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
 transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, -68.74, 19.467, -30.2495)
 render_priority = -1
 texture = ExtResource("9_hwms1")
 
-[node name="Clouds_mid" type="Sprite3D" parent="Terrain/Background/Mountains"]
+[node name="Clouds_mid" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
 transform = Transform3D(37.4233, 0, 0, 0, 37.4233, 0, 0, 0, 37.4233, -67.04, 22.283, -72.284)
 render_priority = -2
 texture = ExtResource("10_t5hnu")
 
-[node name="Clouds_mid2" type="Sprite3D" parent="Terrain/Background/Mountains"]
+[node name="Clouds_mid2" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
 transform = Transform3D(37.4233, 0, 0, 0, 37.4233, 0, 0, 0, 37.4233, 76.663, 22.283, -72.2843)
 render_priority = -2
 texture = ExtResource("10_t5hnu")
 
-[node name="Mountains2" type="Sprite3D" parent="Terrain/Background/Mountains"]
+[node name="Mountains2" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
 transform = Transform3D(66.5926, 0, 0, 0, 66.5926, 0, 0, 0, 66.5926, -122.126, 19.4666, -151.465)
 render_priority = -35
 texture = ExtResource("11_gr5je")
 
-[node name="Mountains3" type="Sprite3D" parent="Terrain/Background/Mountains"]
+[node name="Mountains3" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
 transform = Transform3D(66.5926, 0, 0, 0, 66.5926, 0, 0, 0, 66.5926, 133.639, 19.4666, -151.465)
 render_priority = -35
 texture = ExtResource("11_gr5je")
 
-[node name="Props" type="Node3D" parent="Terrain/Background"]
+[node name="Props" type="Node3D" parent="Node/Terrain/Background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.49333)
 
-[node name="Church" type="Node3D" parent="Terrain/Background/Props"]
+[node name="Church" type="Node3D" parent="Node/Terrain/Background/Props"]
 
-[node name="Church" type="Sprite3D" parent="Terrain/Background/Props/Church"]
+[node name="Church" type="Sprite3D" parent="Node/Terrain/Background/Props/Church"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -21.9709, 7.27192, -18.176)
 texture_filter = 0
 texture = SubResource("AtlasTexture_h2dq8")
 
-[node name="Fence" type="Node3D" parent="Terrain/Background/Props/Church"]
+[node name="Fence" type="Node3D" parent="Node/Terrain/Background/Props/Church"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38754, 0, 0)
 visible = false
 
-[node name="Fence" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+[node name="Fence" type="Sprite3D" parent="Node/Terrain/Background/Props/Church/Fence"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -13.0144, 4.8841, -7.44231)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence2" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+[node name="Fence2" type="Sprite3D" parent="Node/Terrain/Background/Props/Church/Fence"]
 transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -8.11356, 4.8841, -12.4961)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence4" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+[node name="Fence4" type="Sprite3D" parent="Node/Terrain/Background/Props/Church/Fence"]
 transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -8.11356, 4.8841, -22.4431)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence5" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+[node name="Fence5" type="Sprite3D" parent="Node/Terrain/Background/Props/Church/Fence"]
 transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -37.8868, 4.8841, -12.4961)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence6" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+[node name="Fence6" type="Sprite3D" parent="Node/Terrain/Background/Props/Church/Fence"]
 transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -37.8868, 4.8841, -22.4431)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence3" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+[node name="Fence3" type="Sprite3D" parent="Node/Terrain/Background/Props/Church/Fence"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -32.837, 4.8841, -7.44231)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence7" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+[node name="Fence7" type="Sprite3D" parent="Node/Terrain/Background/Props/Church/Fence"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -13.0144, 4.8841, -27.4978)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence8" type="Sprite3D" parent="Terrain/Background/Props/Church/Fence"]
+[node name="Fence8" type="Sprite3D" parent="Node/Terrain/Background/Props/Church/Fence"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -32.837, 4.8841, -27.4978)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Church2" type="Node3D" parent="Terrain/Background/Props"]
+[node name="Church2" type="Node3D" parent="Node/Terrain/Background/Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.3431, 0, 0)
 
-[node name="Church" type="Sprite3D" parent="Terrain/Background/Props/Church2"]
+[node name="Church" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -21.9709, 7.27192, -18.176)
 texture_filter = 0
 texture = SubResource("AtlasTexture_h2dq8")
 
-[node name="Fence" type="Node3D" parent="Terrain/Background/Props/Church2"]
+[node name="Fence" type="Node3D" parent="Node/Terrain/Background/Props/Church2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38754, 0, 0)
 visible = false
 
-[node name="Fence" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+[node name="Fence" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2/Fence"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -13.0144, 4.8841, -7.44231)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence2" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+[node name="Fence2" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2/Fence"]
 transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -8.11356, 4.8841, -12.4961)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence4" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+[node name="Fence4" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2/Fence"]
 transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -8.11356, 4.8841, -22.4431)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence5" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+[node name="Fence5" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2/Fence"]
 transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -37.8868, 4.8841, -12.4961)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence6" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+[node name="Fence6" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2/Fence"]
 transform = Transform3D(-1.36082e-06, 0, 31.1319, 0, 31.1319, 0, -31.1319, 0, -1.36082e-06, -37.8868, 4.8841, -22.4431)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence3" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+[node name="Fence3" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2/Fence"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -32.837, 4.8841, -7.44231)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence7" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+[node name="Fence7" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2/Fence"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -13.0144, 4.8841, -27.4978)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Fence8" type="Sprite3D" parent="Terrain/Background/Props/Church2/Fence"]
+[node name="Fence8" type="Sprite3D" parent="Node/Terrain/Background/Props/Church2/Fence"]
 transform = Transform3D(31.1319, 0, 0, 0, 31.1319, 0, 0, 0, 31.1319, -32.837, 4.8841, -27.4978)
 texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
-[node name="Grass" type="Node3D" parent="Terrain/Background"]
+[node name="Grass" type="Node3D" parent="Node/Terrain/Background"]
 
-[node name="Grass" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+[node name="Grass" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -14.1989, 2.56868, -29.8604)
 modulate = Color(0.541176, 1, 0.509804, 1)
 texture_filter = 0
@@ -1344,7 +1355,7 @@ frame = 1
 frame_progress = 0.48867
 speed_scale = 0.5
 
-[node name="Grass2" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+[node name="Grass2" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, 12.7056, 2.56867, 0.901485)
 modulate = Color(0.541176, 1, 0.509804, 1)
 texture_filter = 0
@@ -1355,7 +1366,7 @@ frame = 1
 frame_progress = 0.48867
 speed_scale = 0.5
 
-[node name="Grass3" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+[node name="Grass3" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -49.3028, 2.56867, -10.4616)
 modulate = Color(0.541176, 1, 0.509804, 1)
 texture_filter = 0
@@ -1366,7 +1377,7 @@ frame = 1
 frame_progress = 0.48867
 speed_scale = 0.5
 
-[node name="Grass4" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+[node name="Grass4" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, 58.4319, 2.56867, -12.6117)
 modulate = Color(0.541176, 1, 0.509804, 1)
 texture_filter = 0
@@ -1377,7 +1388,7 @@ frame = 1
 frame_progress = 0.48867
 speed_scale = 0.5
 
-[node name="Grass5" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+[node name="Grass5" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -85, 2.56867, -21.5665)
 modulate = Color(0.541176, 1, 0.509804, 1)
 texture_filter = 0
@@ -1388,7 +1399,7 @@ frame = 1
 frame_progress = 0.48867
 speed_scale = 0.5
 
-[node name="Grass6" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+[node name="Grass6" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -59.2974, 2.56867, 18.0609)
 modulate = Color(0.541176, 1, 0.509804, 1)
 texture_filter = 0
@@ -1397,7 +1408,7 @@ animation = &"grass2_wind"
 autoplay = "grass2_wind"
 speed_scale = 0.5
 
-[node name="Grass7" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+[node name="Grass7" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -23.3754, 2.56867, 12.9051)
 modulate = Color(0.541176, 1, 0.509804, 1)
 texture_filter = 0
@@ -1406,7 +1417,7 @@ animation = &"grass2_wind"
 autoplay = "grass2_wind"
 speed_scale = 0.5
 
-[node name="Grass8" type="AnimatedSprite3D" parent="Terrain/Background/Grass"]
+[node name="Grass8" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, 49.6872, 2.56867, 17.9236)
 modulate = Color(0.541176, 1, 0.509804, 1)
 texture_filter = 0
@@ -1415,75 +1426,80 @@ animation = &"grass2_wind"
 autoplay = "grass2_wind"
 speed_scale = 0.5
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 0.915866, 0.401484, 0, -0.401484, 0.915866, 0, 23.4991, -7.29598)
 light_color = Color(0.384314, 0.321569, 0, 1)
 shadow_enabled = true
 
-[node name="Lines" type="Node3D" parent="."]
+[node name="Lines" type="Node3D" parent="Node"]
 
-[node name="Line3" parent="Lines" instance=ExtResource("13_i03w6")]
+[node name="Line3" parent="Node/Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27212, -13.5497)
 
-[node name="Enemies" type="Node" parent="Lines/Line3"]
+[node name="Enemies" type="Node" parent="Node/Lines/Line3"]
 
-[node name="Enemies2" type="Node" parent="Lines/Line3"]
+[node name="Enemies2" type="Node" parent="Node/Lines/Line3"]
 
-[node name="Line" parent="Lines" instance=ExtResource("13_i03w6")]
+[node name="Line" parent="Node/Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401929, -3.06031)
 
-[node name="Enemies_2" type="Node" parent="Lines/Line"]
+[node name="Enemies_2" type="Node" parent="Node/Lines/Line"]
 
-[node name="Enemies" type="Node" parent="Lines/Line"]
+[node name="Enemies" type="Node" parent="Node/Lines/Line"]
 
-[node name="ChompSavor" parent="Lines/Line/Enemies" instance=ExtResource("21_2rxli")]
+[node name="ChompSavor" parent="Node/Lines/Line/Enemies" instance=ExtResource("21_2rxli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928851, -3.75198)
 unit_is_enemy = true
 
-[node name="DarkSpout" parent="Lines/Line/Enemies" instance=ExtResource("22_ipkos")]
+[node name="DarkSpout" parent="Node/Lines/Line/Enemies" instance=ExtResource("22_ipkos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3425, 0.926214, -2.19076)
 unit_is_enemy = true
 
-[node name="Line2" parent="Lines" instance=ExtResource("13_i03w6")]
+[node name="Line2" parent="Node/Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33585, -8.28577)
 
-[node name="Enemies_2" type="Node" parent="Lines/Line2"]
+[node name="Enemies_2" type="Node" parent="Node/Lines/Line2"]
 
-[node name="Enemies" type="Node" parent="Lines/Line2"]
+[node name="Enemies" type="Node" parent="Node/Lines/Line2"]
 
-[node name="LineYRight" parent="Lines" instance=ExtResource("14_xmru7")]
+[node name="LineYRight" parent="Node/Lines" instance=ExtResource("14_xmru7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3485, 0, -8.34677)
 
-[node name="LineYLeft" parent="Lines" instance=ExtResource("14_xmru7")]
+[node name="LineYLeft" parent="Node/Lines" instance=ExtResource("14_xmru7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.6749, 0.226252, -8.39588)
 
-[node name="Tron_player" parent="." instance=ExtResource("14_g6f0t")]
+[node name="Tron_player" parent="Node" instance=ExtResource("14_g6f0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9184, 0.625, -8.00216)
 
-[node name="Tron_enemies" parent="." instance=ExtResource("14_g6f0t")]
+[node name="Tron_enemies" parent="Node" instance=ExtResource("14_g6f0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8765, 0.625, -7.98417)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node"]
 environment = SubResource("Environment_kl26e")
 
-[node name="Sky" parent="WorldEnvironment" instance=ExtResource("17_63usu")]
+[node name="Sky" parent="Node/WorldEnvironment" instance=ExtResource("17_63usu")]
 transform = Transform3D(0.770399, 0, 0, 0, 0.283443, 0, 0, 0, 0.770399, 0, 0, 0)
 
+[connection signal="start_phase_cast" from="." to="Ui/Cast" method="_on_main_start_phase_cast"]
+[connection signal="start_phase_fight" from="." to="Ui/BaseInfo" method="_on_main_start_phase_fight"]
 [connection signal="update_label_tron" from="." to="Ui/BaseInfo" method="_on_main_update_label_tron"]
-[connection signal="area_entered" from="Lines/Line3" to="Player" method="_on_line_3_area_entered"]
-[connection signal="area_entered" from="Lines/Line" to="Player" method="_on_line_area_entered"]
-[connection signal="area_entered" from="Lines/Line2" to="Player" method="_on_line_2_area_entered"]
-[connection signal="area_entered" from="Lines/LineYRight" to="Player" method="_on_line_y_right_area_entered"]
-[connection signal="area_exited" from="Lines/LineYRight" to="Player" method="_on_line_y_right_area_exited"]
-[connection signal="area_entered" from="Lines/LineYLeft" to="Player" method="_on_line_y_left_area_entered"]
-[connection signal="area_exited" from="Lines/LineYLeft" to="Player" method="_on_line_y_left_area_exited"]
-[connection signal="body_entered" from="Tron_player/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Tron_enemies/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="end_phase_fight" from="Ui/BaseInfo" to="." method="_on_base_info_end_phase_fight"]
+[connection signal="end_phase_cast" from="Ui/Cast" to="." method="_on_cast_end_phase_cast"]
+[connection signal="end_phase_cast" from="Ui/Cast" to="Ui/UnitInventory/Container/UnitContainer/GridUnits" method="_on_cast_end_phase_cast"]
+[connection signal="area_entered" from="Node/Lines/Line3" to="Node/Player" method="_on_line_3_area_entered"]
+[connection signal="area_entered" from="Node/Lines/Line" to="Node/Player" method="_on_line_area_entered"]
+[connection signal="area_entered" from="Node/Lines/Line2" to="Node/Player" method="_on_line_2_area_entered"]
+[connection signal="area_entered" from="Node/Lines/LineYRight" to="Node/Player" method="_on_line_y_right_area_entered"]
+[connection signal="area_exited" from="Node/Lines/LineYRight" to="Node/Player" method="_on_line_y_right_area_exited"]
+[connection signal="area_entered" from="Node/Lines/LineYLeft" to="Node/Player" method="_on_line_y_left_area_entered"]
+[connection signal="area_exited" from="Node/Lines/LineYLeft" to="Node/Player" method="_on_line_y_left_area_exited"]
+[connection signal="body_entered" from="Node/Tron_player/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Node/Tron_enemies/Area3D" to="." method="_on_area_3d_body_entered"]
 
 [editable path="Ui/UnitInventory"]
-[editable path="Player"]
-[editable path="Lines/Line3"]
-[editable path="Lines/Line"]
-[editable path="Lines/Line2"]
-[editable path="Tron_player"]
-[editable path="Tron_enemies"]
+[editable path="Node/Player"]
+[editable path="Node/Lines/Line3"]
+[editable path="Node/Lines/Line"]
+[editable path="Node/Lines/Line2"]
+[editable path="Node/Tron_player"]
+[editable path="Node/Tron_enemies"]

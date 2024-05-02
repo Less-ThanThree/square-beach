@@ -1,5 +1,7 @@
 extends Node
 
+signal end_phase_cast
+
 @export var timer_on_type: float = 3.0
 @export var timer_on_cast: float = 30.0
 @export var min_y_position: float = -60
@@ -7,7 +9,7 @@ extends Node
 @export var max_y_position: float = 38
 @export var max_x_position: float = 38
 @export var max_word: int = 4
-@export var level_scene: PackedScene
+#@export var level_scene: PackedScene
 
 @onready var cast_word = load("res://scenes/cast/cast_word.tscn")
 @onready var cast_blow_particles = load("res://scenes/particles/cast_word_blow.tscn")
@@ -26,12 +28,13 @@ var current_word_cast
 var index: int = 1
 
 func _ready():
-	timer_type.set_wait_time(timer_on_type)
-	timer_cast.wait_time = timer_on_cast
-	book_anim.play("book_open")
-	await book_anim.animation_finished
-	timer_cast.start()
-	generation_words()
+	pass
+	#timer_type.set_wait_time(timer_on_type)
+	#timer_cast.wait_time = timer_on_cast
+	#book_anim.play("book_open")
+	#await book_anim.animation_finished
+	#generation_words()
+	#get_tree().paused = true
 
 func _process(delta):
 	update_timer_left(timer_cast.time_left)
@@ -252,11 +255,13 @@ func add_units(unit_name: String, unit_icon: String, scene_path: String):
 		"icon": "none",
 		"scene": "null",
 	}
+	print(UnitInventory.units_inventory)
 	
 	for unit in UnitInventory.units_inventory:
-		if unit.name == unit_name:
-			unit.count += 1
-			return
+		if unit.has("name"):
+			if unit.name == unit_name:
+				unit.count += 1
+				return
 	
 	unit_object.name = unit_name
 	unit_object.count = 1
@@ -273,4 +278,19 @@ func _on_timer_on_cast_timeout():
 		node.node.queue_free()
 	book_anim.play("book_close")
 	await book_anim.animation_finished
-	get_tree().change_scene_to_packed(level_scene)
+	end_phase_cast.emit()
+	availableWord = []
+	enemies_keys = []
+	current_word_cast = null
+	buffer = ""
+	#self.PROCESS_MODE_PAUSABLE
+	#get_tree().change_scene_to_packed(level_scene)
+
+func _on_main_start_phase_cast():
+	timer_type.set_wait_time(timer_on_type)
+	timer_cast.wait_time = timer_on_cast
+	book_anim.play("book_open")
+	await book_anim.animation_finished
+	generation_words()
+	timer_cast.start()
+	#self.PROCESS_MODE_INHERIT

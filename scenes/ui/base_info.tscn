@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/base_info/base_info.gd" id="1_bilbu"]
 [ext_resource type="Texture2D" uid="uid://duevjsjgrdydy" path="res://assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_tnq4j"]
 [ext_resource type="FontFile" uid="uid://djfal2h6rgrss" path="res://assets/fonts/antiquity-print.ttf" id="3_c0g20"]
-[ext_resource type="PackedScene" uid="uid://3nhudcsuooa2" path="res://scenes/ui/heart_ui_tron.tscn" id="4_a2q7r"]
+[ext_resource type="PackedScene" path="res://scenes/ui/heart_ui_tron.tscn" id="4_a2q7r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b0n2g"]
 font = ExtResource("3_c0g20")
@@ -189,5 +189,27 @@ offset_right = -325.0
 layout_mode = 1
 offset_left = -365.0
 offset_right = -365.0
+
+[node name="PhaseTimer" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 7.0
+offset_right = 95.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("3_c0g20")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Timer"
+fit_content = true
+scroll_active = false
+
+[node name="TimerOnStartPhase" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimerOnStartPhase" to="." method="_on_timer_on_start_phase_timeout"]
 
 [editable path="TronEnemie/HeartUiTron1"]

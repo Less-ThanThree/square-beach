@@ -1,9 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://cfkru4flxlac1"]
+[gd_scene load_steps=25 format=3 uid="uid://cfkru4flxlac1"]
 
 [ext_resource type="Texture2D" uid="uid://c47qpm1q184pe" path="res://assets/Cast/Openbook.png" id="1_4pt60"]
 [ext_resource type="Script" path="res://scripts/cast/cast.gd" id="1_6bqvh"]
 [ext_resource type="Texture2D" uid="uid://cf31p0882h8sy" path="res://assets/Cast/Torch/C300-1.png" id="1_tti0y"]
-[ext_resource type="PackedScene" uid="uid://8nyqayny65tp" path="res://scenes/levels/Main.tscn" id="2_4clfl"]
 [ext_resource type="FontFile" uid="uid://nlo7gcunebhk" path="res://assets/fonts/Merchant Copy Doublesize.ttf" id="2_jsdca"]
 [ext_resource type="Texture2D" uid="uid://doegqm7n3pa4g" path="res://assets/Cast/Torch/C300-2.png" id="2_t7pmj"]
 [ext_resource type="Texture2D" uid="uid://lmxrq8ocscsc" path="res://assets/Cast/Torch/C300-3.png" id="3_4xliq"]
@@ -140,7 +139,6 @@ min_x_position = 0.0
 max_y_position = 400.0
 max_x_position = 250.0
 max_word = 3
-level_scene = ExtResource("2_4clfl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
