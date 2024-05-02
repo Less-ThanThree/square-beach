@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://c63inugmqkwuw"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu/win_menu.gd" id="1_0jwb6"]
+[ext_resource type="FontFile" uid="uid://djfal2h6rgrss" path="res://assets/fonts/antiquity-print.ttf" id="2_nvh57"]
+[ext_resource type="PackedScene" uid="uid://8nyqayny65tp" path="res://scenes/levels/Main.tscn" id="2_vmnti"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hfkl8"]
+font = ExtResource("2_nvh57")
+font_size = 60
+
+[node name="WinMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0jwb6")
+scene_start_level = ExtResource("2_vmnti")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "WIN"
+label_settings = SubResource("LabelSettings_hfkl8")
+
+[node name="ButtonRestart" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -256.0
+offset_right = 66.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_nvh57")
+text = "RESTART?"
+flat = true
+
+[node name="ButtonExit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -192.0
+offset_right = 36.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_nvh57")
+text = "EXIT"
+flat = true
+
+[connection signal="pressed" from="ButtonRestart" to="." method="_on_button_restart_pressed"]
+[connection signal="pressed" from="ButtonExit" to="." method="_on_button_exit_pressed"]

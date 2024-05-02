@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://31tuyo4kv757" path="res://scenes/ui/parallax_menu.tscn" id="1_8wdwh"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu/main_menu.gd" id="1_dvaei"]
-[ext_resource type="PackedScene" uid="uid://cfkru4flxlac1" path="res://scenes/cast/Cast.tscn" id="2_h3oer"]
+[ext_resource type="PackedScene" uid="uid://8nyqayny65tp" path="res://scenes/levels/Main.tscn" id="2_uu4y1"]
 [ext_resource type="FontFile" uid="uid://nlo7gcunebhk" path="res://assets/fonts/Merchant Copy Doublesize.ttf" id="3_ovk3q"]
 [ext_resource type="Texture2D" uid="uid://85vey4xbnnoa" path="res://assets/Tiny Swords (Update 010)/UI/Buttons/Button_Red_3Slides.png" id="4_f2i3b"]
 
@@ -18,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dvaei")
-level_start_scene = ExtResource("2_h3oer")
+level_start_scene = ExtResource("2_uu4y1")
 
 [node name="ParallaxMenu" parent="." instance=ExtResource("1_8wdwh")]
 layout_mode = 1

@@ -18,6 +18,9 @@ signal start_phase_fight
 #@onready var chomp_3 = $Lines/Line/Enemies/Howler
 #@onready var chomp_4 = $Lines/Line/Enemies/TenderilSight
 
+@export var die_menu: PackedScene
+@export var win_menu: PackedScene
+
 var current_line: int
 var current_unit
 var current_unit_scene
@@ -68,14 +71,16 @@ func _on_area_3d_body_entered(body):
 		update_label_tron.emit("allience")
 		body.queue_free()
 		if Global.tron_player_hp <= 0:
-			tron_player.on_tron_destroy()
+			await tron_player.on_tron_destroy()
+			get_tree().change_scene_to_packed(die_menu)
 	
 	if body.is_in_group("allience"):
 		Global.tron_enemie_hp -= 1
 		update_label_tron.emit("goblin")
 		body.queue_free()
 		if Global.tron_enemie_hp <= 0:
-			tron_enemie.on_tron_destroy()
+			await tron_enemie.on_tron_destroy()
+			get_tree().change_scene_to_packed(win_menu)
 
 func _on_cast_end_phase_cast():
 	get_tree().paused = false
