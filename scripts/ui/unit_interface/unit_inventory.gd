@@ -20,13 +20,13 @@ func _on_control_unit_toggled(toggled_on):
 	
 	if toggled_on:
 		tween = create_tween().set_trans(Tween.TRANS_EXPO)
-		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y + 100), 1)
+		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y + 85), 1)
 		control_button.disabled = true
 		await tween.finished
 		control_button.disabled = false
 	else:
 		tween = create_tween().set_trans(Tween.TRANS_QUINT)
-		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y - 100), 1)
+		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y - 85), 1)
 		control_button.disabled = true
 		await tween.finished
 		control_button.disabled = false

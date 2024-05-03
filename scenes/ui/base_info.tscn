@@ -69,8 +69,10 @@ label_settings = SubResource("LabelSettings_dp73k")
 [node name="TronPlayer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
 
 [node name="HeartUiTron10" parent="TronPlayer" instance=ExtResource("4_a2q7r")]
 layout_mode = 1
@@ -127,8 +129,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -57.0
+offset_top = 15.0
+offset_right = -17.0
+offset_bottom = 55.0
 grow_horizontal = 0
 
 [node name="HeartUiTron1" parent="TronEnemie" instance=ExtResource("4_a2q7r")]
@@ -196,9 +200,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -105.0
-offset_top = 7.0
+offset_top = 23.0
 offset_right = 95.0
-offset_bottom = 47.0
+offset_bottom = 63.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("3_c0g20")
 theme_override_font_sizes/normal_font_size = 18

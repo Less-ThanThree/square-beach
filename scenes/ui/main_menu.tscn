@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsflda6hgo0rp"]
+[gd_scene load_steps=8 format=3 uid="uid://bsflda6hgo0rp"]
 
 [ext_resource type="PackedScene" uid="uid://31tuyo4kv757" path="res://scenes/ui/parallax_menu.tscn" id="1_8wdwh"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu/main_menu.gd" id="1_dvaei"]
 [ext_resource type="PackedScene" uid="uid://8nyqayny65tp" path="res://scenes/levels/Main.tscn" id="2_uu4y1"]
 [ext_resource type="FontFile" uid="uid://nlo7gcunebhk" path="res://assets/fonts/Merchant Copy Doublesize.ttf" id="3_ovk3q"]
 [ext_resource type="Texture2D" uid="uid://85vey4xbnnoa" path="res://assets/Tiny Swords (Update 010)/UI/Buttons/Button_Red_3Slides.png" id="4_f2i3b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av3xo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yswos"]
 font = ExtResource("3_ovk3q")
@@ -25,17 +27,22 @@ layout_mode = 1
 
 [node name="ButtonStartGame" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 128.0
-offset_top = -12.0
-offset_right = 225.0
-offset_bottom = 19.0
+offset_left = -100.0
+offset_top = -36.0
+offset_right = 100.0
+offset_bottom = 36.0
+grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.00732, 0.995971)
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_ovk3q")
 theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_av3xo")
 icon = ExtResource("4_f2i3b")
 flat = true
 icon_alignment = 1

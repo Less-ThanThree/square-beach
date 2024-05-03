@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://m5yqt1j85kd5"]
+[gd_scene load_steps=11 format=3 uid="uid://m5yqt1j85kd5"]
 
 [ext_resource type="FontFile" uid="uid://nlo7gcunebhk" path="res://assets/fonts/Merchant Copy Doublesize.ttf" id="1_4i5qx"]
 [ext_resource type="Script" path="res://scripts/ui/unit_interface/unit_inventory.gd" id="2_265i2"]
 [ext_resource type="Script" path="res://scripts/ui/unit_interface/container_grid.gd" id="3_nvob8"]
+[ext_resource type="Texture2D" uid="uid://deb1xnl7dppvl" path="res://assets/ui/menu.png" id="4_6fg86"]
 [ext_resource type="PackedScene" uid="uid://cw10lhkg8y4us" path="res://scenes/ui/unit_inventory/drag_preview.tscn" id="4_fm2ur"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u37k"]
@@ -22,6 +23,10 @@ border_color = Color(0, 0, 0, 1)
 Button/fonts/font = ExtResource("1_4i5qx")
 Button/styles/normal = SubResource("StyleBoxFlat_2u37k")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_g4l48")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0lc4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u8hr5"]
 
 [node name="UnitInventory" type="Control"]
 layout_mode = 3
@@ -58,16 +63,28 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 
+[node name="TextureRect" type="TextureRect" parent="Container"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 1.0
+offset_top = 41.0
+offset_right = 1921.0
+offset_bottom = 233.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_6fg86")
+
 [node name="UnitContainer" type="PanelContainer" parent="Container"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -124.0
-offset_bottom = 1.0
+offset_top = -95.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(1, 0.799998)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o0lc4")
 
 [node name="GridUnits" type="GridContainer" parent="Container/UnitContainer"]
 layout_mode = 2
@@ -81,15 +98,20 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -25.0
-offset_top = 16.0
-offset_right = 25.0
-offset_bottom = 47.0
+offset_left = -96.0
+offset_top = 33.0
+offset_right = -46.0
+offset_bottom = 64.0
 grow_horizontal = 2
+scale = Vector2(3.87999, 1)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u8hr5")
 toggle_mode = true
-text = "open"
+text = "
+"
+flat = true
 
 [connection signal="pick_unit" from="." to="Container/UnitContainer/GridUnits" method="_on_unit_inventory_pick_unit"]
 [connection signal="pressed" from="Container/ControlUnit" to="." method="_on_control_unit_pressed"]

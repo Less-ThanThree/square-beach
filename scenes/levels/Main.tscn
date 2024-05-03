@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=110 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqjrs7d665qtt" path="res://assets/environment/trees_anim/trees4.png" id="7_modxq"]
 [ext_resource type="Texture2D" uid="uid://m6vpo5wevpas" path="res://assets/environment/trees_anim/trees_dark2.png" id="8_dtg3g"]
 [ext_resource type="Texture2D" uid="uid://b258nn226d8rs" path="res://assets/environment/background/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/clouds_front_t_fc.png" id="9_hwms1"]
+[ext_resource type="Texture2D" uid="uid://dvpx26aoximu" path="res://assets/environment/Grass/Grass 001.png" id="9_sdyvy"]
 [ext_resource type="Texture2D" uid="uid://dnsnlltcowrmw" path="res://assets/environment/trees_anim/trees_dark3.png" id="9_xe7av"]
 [ext_resource type="Texture2D" uid="uid://cbilab0mp7ku0" path="res://assets/environment/background/Grassy_Mountains_Parallax_Background-vnitti/layers_fullcolor/clouds_mid_t_fc.png" id="10_t5hnu"]
 [ext_resource type="Texture2D" uid="uid://c70ifv52ajfir" path="res://assets/environment/trees_anim/trees_dark4.png" id="10_xtwfr"]
@@ -27,12 +28,17 @@
 [ext_resource type="PackedScene" uid="uid://tiicwfhbkevu" path="res://scenes/background/sky.tscn" id="17_63usu"]
 [ext_resource type="Texture2D" uid="uid://bxhngw78webux" path="res://assets/environment/Grass/grass2.png" id="17_efrhl"]
 [ext_resource type="Texture2D" uid="uid://dn4u25w1s2qao" path="res://assets/environment/Grass/grass.png" id="18_uuvx4"]
+[ext_resource type="PackedScene" uid="uid://bjqepayl2soau" path="res://scenes/terrian/three_1.tscn" id="23_gwiar"]
+[ext_resource type="PackedScene" uid="uid://cvxlcv0vpjrmy" path="res://scenes/terrian/deco_3.tscn" id="24_evpsw"]
+[ext_resource type="PackedScene" uid="uid://ct3esyncmun0w" path="res://scenes/terrian/deco_1.tscn" id="25_h51h0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0h4r"]
 size = Vector3(300, 0.5, 80)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqb2p"]
-albedo_color = Color(0, 0.494118, 0, 1)
+albedo_color = Color(0.886275, 0.933333, 0.870588, 1)
+albedo_texture = ExtResource("9_sdyvy")
+uv1_scale = Vector3(512, 128, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_c7vsn"]
 material = SubResource("StandardMaterial3D_vqb2p")
@@ -643,6 +649,7 @@ transform = Transform3D(0.7745, 0, 0, 0, 0.7745, 0, 0, 0, 0.7745, 0, 0, 2.49807)
 
 [node name="Trees_close" type="Node3D" parent="Node/Terrain/Background"]
 transform = Transform3D(0.905744, 0, 0, 0, 1.02841, 0, 0, 0, 0.514642, 0, 0.234825, 8.97331)
+visible = false
 
 [node name="AnimatedTree" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_close"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 4, 15.815)
@@ -820,6 +827,7 @@ speed_scale = 0.5
 
 [node name="Trees_far" type="Node3D" parent="Node/Terrain/Background"]
 transform = Transform3D(-0.906, 0, 0, 0, 1.028, 0, 0, 0, -0.515, 6.74174, 0.234825, -22.5529)
+visible = false
 
 [node name="AnimatedTree" type="AnimatedSprite3D" parent="Node/Terrain/Background/Trees_far"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 4, 15.815)
@@ -1237,8 +1245,49 @@ transform = Transform3D(66.5926, 0, 0, 0, 66.5926, 0, 0, 0, 66.5926, 133.639, 19
 render_priority = -35
 texture = ExtResource("11_gr5je")
 
+[node name="Mountains4" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
+transform = Transform3D(66.5926, 0, 0, 0, 66.5926, 0, 0, 0, 66.5926, 387.686, 19.4666, -151.465)
+render_priority = -35
+texture = ExtResource("11_gr5je")
+
+[node name="Mountains5" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
+transform = Transform3D(66.5926, 0, 0, 0, 66.5926, 0, 0, 0, 66.5926, -372.871, 19.4666, -151.465)
+render_priority = -35
+texture = ExtResource("11_gr5je")
+
+[node name="Clouds_front4" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
+transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, -137.23, 19.467, -30.2495)
+render_priority = -1
+texture = ExtResource("9_hwms1")
+
+[node name="Clouds_front5" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
+transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, -204.771, 19.467, -30.2495)
+render_priority = -1
+texture = ExtResource("9_hwms1")
+
+[node name="Clouds_front6" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
+transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, 136.54, 19.467, -30.2495)
+render_priority = -1
+texture = ExtResource("9_hwms1")
+
+[node name="Clouds_front7" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
+transform = Transform3D(17.8988, 0, 0, 0, 17.8988, 0, 0, 0, 17.8988, 203.081, 19.467, -30.2495)
+render_priority = -1
+texture = ExtResource("9_hwms1")
+
+[node name="Clouds_mid3" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
+transform = Transform3D(37.4233, 0, 0, 0, 37.4233, 0, 0, 0, 37.4233, -209.59, 22.283, -72.284)
+render_priority = -2
+texture = ExtResource("10_t5hnu")
+
+[node name="Clouds_mid4" type="Sprite3D" parent="Node/Terrain/Background/Mountains"]
+transform = Transform3D(37.4233, 0, 0, 0, 37.4233, 0, 0, 0, 37.4233, 219.973, 22.283, -72.284)
+render_priority = -2
+texture = ExtResource("10_t5hnu")
+
 [node name="Props" type="Node3D" parent="Node/Terrain/Background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.49333)
+visible = false
 
 [node name="Church" type="Node3D" parent="Node/Terrain/Background/Props"]
 
@@ -1344,6 +1393,7 @@ texture_filter = 0
 texture = SubResource("AtlasTexture_0ukde")
 
 [node name="Grass" type="Node3D" parent="Node/Terrain/Background"]
+visible = false
 
 [node name="Grass" type="AnimatedSprite3D" parent="Node/Terrain/Background/Grass"]
 transform = Transform3D(6.44823, 0, 0, 0, 7.64005, 0, 0, 0, 2.10293, -14.1989, 2.56868, -29.8604)
@@ -1427,9 +1477,3041 @@ animation = &"grass2_wind"
 autoplay = "grass2_wind"
 speed_scale = 0.5
 
+[node name="Three_group" type="Node3D" parent="Node/Terrain/Background"]
+
+[node name="Three" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three2" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7213, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three3" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9098, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three4" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1099, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three5" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.5649, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three6" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.0867, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three7" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.769, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three8" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.194, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three9" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.727, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three10" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.737, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three11" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9939, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three12" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2144, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three13" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5304, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three14" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.0859, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three15" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.7407, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three16" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.7096, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three17" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.266, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three18" type="Node3D" parent="Node/Terrain/Background/Three_group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.615, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three_group2" type="Node3D" parent="Node/Terrain/Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66293, 0, -6.71497)
+
+[node name="Three" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three2" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7213, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three3" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9098, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three4" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1099, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three5" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.5649, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three6" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.0867, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three7" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.769, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three8" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.194, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three9" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.727, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three10" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.737, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three11" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9939, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three12" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2144, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three13" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5304, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three14" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.0859, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three15" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.7407, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three16" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.7096, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three17" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.266, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three18" type="Node3D" parent="Node/Terrain/Background/Three_group2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.615, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group2/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three_group3" type="Node3D" parent="Node/Terrain/Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50024, 0, -23.3911)
+
+[node name="Three" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three2" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7213, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three3" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9098, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three4" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1099, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three5" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.5649, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three6" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.0867, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three7" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.769, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three8" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.194, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three9" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.727, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three10" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.737, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three11" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9939, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three12" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2144, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three13" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5304, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three14" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.0859, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three15" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.7407, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three16" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.7096, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three17" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.266, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three18" type="Node3D" parent="Node/Terrain/Background/Three_group3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.615, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group3/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three_group4" type="Node3D" parent="Node/Terrain/Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50024, 0, -49.8949)
+
+[node name="Three" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three2" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7213, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three3" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9098, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three4" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1099, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three5" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.5649, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three6" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.0867, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three7" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.769, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three8" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.194, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three9" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.727, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three9" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three10" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.737, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three10" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three11" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9939, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three11" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three12" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2144, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three12" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three13" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5304, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three13" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three14" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.0859, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three14" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three15" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.7407, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three15" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three16" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.7096, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three16" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three17" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.266, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three17" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three18" type="Node3D" parent="Node/Terrain/Background/Three_group4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.615, 0, 0)
+
+[node name="Three1" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/Three_group4/Three18" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="tron_three" type="Node3D" parent="Node/Terrain/Background"]
+
+[node name="Three" type="Node3D" parent="Node/Terrain/Background/tron_three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.0557, 0, 7.75898)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three2" type="Node3D" parent="Node/Terrain/Background/tron_three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.0557, 0, 10.5928)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three3" type="Node3D" parent="Node/Terrain/Background/tron_three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3634, 0, 13.0181)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three4" type="Node3D" parent="Node/Terrain/Background/tron_three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.7179, 0, 16.2512)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three5" type="Node3D" parent="Node/Terrain/Background/tron_three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.7898, 0, 18.7954)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three6" type="Node3D" parent="Node/Terrain/Background/tron_three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.6961, 0, 21.199)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three7" type="Node3D" parent="Node/Terrain/Background/tron_three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.3763, 0, 23.1243)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three8" type="Node3D" parent="Node/Terrain/Background/tron_three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.3562, 0, 26.0337)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="tron_three2" type="Node3D" parent="Node/Terrain/Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168.34, 0, -4.82483)
+
+[node name="Three" type="Node3D" parent="Node/Terrain/Background/tron_three2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.0557, 0, 7.75898)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three2/Three" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three2" type="Node3D" parent="Node/Terrain/Background/tron_three2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.0557, 0, 10.5928)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three2/Three2" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three3" type="Node3D" parent="Node/Terrain/Background/tron_three2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3634, 0, 13.0181)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three2/Three3" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three4" type="Node3D" parent="Node/Terrain/Background/tron_three2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.7179, 0, 16.2512)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three2/Three4" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three5" type="Node3D" parent="Node/Terrain/Background/tron_three2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.7104, 1.84701e-06, 18.8056)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three2/Three5" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three6" type="Node3D" parent="Node/Terrain/Background/tron_three2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.3233, 0, 21.199)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three2/Three6" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three7" type="Node3D" parent="Node/Terrain/Background/tron_three2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.7132, 0, 23.1243)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three2/Three7" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Three8" type="Node3D" parent="Node/Terrain/Background/tron_three2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.6579, 0, 26.0337)
+
+[node name="Three1" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.83092, 19.2233)
+
+[node name="Three2" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.36049, 2.83092, 16.4571)
+
+[node name="Three3" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90959, 2.83092, 19.8775)
+
+[node name="Three4" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.44529, 2.83092, 18.9238)
+
+[node name="Three5" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.67282, 2.83092, 17.92)
+
+[node name="Three6" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.30424, 2.83092, 19.4567)
+
+[node name="Three7" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.89909, 2.83092, 17.0233)
+
+[node name="Three8" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.28089, 2.83092, 20.0935)
+
+[node name="Three9" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.34574, 2.83092, 18.0394)
+
+[node name="Three10" parent="Node/Terrain/Background/tron_three2/Three8" instance=ExtResource("23_gwiar")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.8785, 2.83092, 19.2946)
+
+[node name="Bg_deco" type="Node3D" parent="Node/Terrain/Background"]
+
+[node name="Deco3" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("24_evpsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 61.8074, 1.09813, 23.5817)
+
+[node name="Deco4" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("24_evpsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.4304, 1.09813, 24.6412)
+
+[node name="Deco5" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("24_evpsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 60.5274, 1.09813, 24.2799)
+
+[node name="Deco6" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("24_evpsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 53.4983, 1.09813, 24.6468)
+
+[node name="Deco7" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("24_evpsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 55.0172, 1.09813, 24.3126)
+
+[node name="Deco8" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("24_evpsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 56.0372, 1.09813, 22.3936)
+
+[node name="Deco9" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("24_evpsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 51.2566, 1.09813, 22.9312)
+
+[node name="Deco10" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("24_evpsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 34.0659, 1.09813, 24.1065)
+
+[node name="Deco1" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.30039, 0.8008, 19.0437)
+
+[node name="Deco2" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42.9455, 0.8008, 19.0437)
+
+[node name="Deco11" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -57.4878, 0.8008, 19.0437)
+
+[node name="Deco12" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -56.7345, 0.8008, 18.7181)
+
+[node name="Deco13" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -57.0385, 0.8008, 19.8335)
+
+[node name="Deco14" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -56.3125, 0.8008, 19.3345)
+
+[node name="Deco15" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64.1396, 0.8008, 19.0911)
+
+[node name="Deco16" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -63.2985, 0.8008, 19.8284)
+
+[node name="Deco17" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.2419, 0.8008, 19.8284)
+
+[node name="Deco18" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.3678, 0.8008, 19.4533)
+
+[node name="Deco19" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.8666, 0.8008, 19.0917)
+
+[node name="Deco20" parent="Node/Terrain/Background/Bg_deco" instance=ExtResource("25_h51h0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.7865, 0.8008, 19.6008)
+
+[node name="Grass" type="AnimatedSprite3D" parent="Node/Terrain/Background/Bg_deco"]
+transform = Transform3D(2, 0, 0, 0, 2.37, 0, 0, 0, 0.652, 3.109, 0.928257, 38.5984)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+speed_scale = 0.5
+
+[node name="Grass2" type="AnimatedSprite3D" parent="Node/Terrain/Background/Bg_deco"]
+transform = Transform3D(2, 0, 0, 0, 2.37, 0, 0, 0, 0.652, -33.0115, 0.928257, 38.5984)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+speed_scale = 0.5
+
+[node name="Grass3" type="AnimatedSprite3D" parent="Node/Terrain/Background/Bg_deco"]
+transform = Transform3D(2, 0, 0, 0, 2.37, 0, 0, 0, 0.652, -24.0431, 0.928257, 31.916)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+speed_scale = 0.5
+
+[node name="Grass4" type="AnimatedSprite3D" parent="Node/Terrain/Background/Bg_deco"]
+transform = Transform3D(2, 0, 0, 0, 2.37, 0, 0, 0, 0.652, 22.327, 0.928257, 31.916)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+speed_scale = 0.5
+
+[node name="Grass5" type="AnimatedSprite3D" parent="Node/Terrain/Background/Bg_deco"]
+transform = Transform3D(2, 0, 0, 0, 2.37, 0, 0, 0, 0.652, 45.0606, 0.928257, 31.916)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+speed_scale = 0.5
+
+[node name="Grass6" type="AnimatedSprite3D" parent="Node/Terrain/Background/Bg_deco"]
+transform = Transform3D(2, 0, 0, 0, 2.37, 0, 0, 0, 0.652, 45.0606, 0.928257, 31.916)
+modulate = Color(0.541176, 1, 0.509804, 1)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_1f406")
+animation = &"grass_wind"
+autoplay = "grass_wind"
+speed_scale = 0.5
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 0.915866, 0.401484, 0, -0.401484, 0.915866, 0, 23.4991, -7.29598)
-light_color = Color(0.384314, 0.321569, 0, 1)
+light_color = Color(0.552941, 0.176471, 0.192157, 1)
 shadow_enabled = true
 
 [node name="Lines" type="Node3D" parent="Node"]
@@ -1462,10 +4544,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3485, 0, -8.34677)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.6749, 0.226252, -8.39588)
 
 [node name="Tron_player" parent="Node" instance=ExtResource("14_g6f0t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9184, 0.625, -8.00216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.4429, 2.41463, -8.00906)
 
 [node name="Tron_enemies" parent="Node" instance=ExtResource("14_g6f0t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8765, 0.625, -7.98417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.315, 3.17766, -7.98417)
+is_enemy_tron = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node"]
 environment = SubResource("Environment_kl26e")

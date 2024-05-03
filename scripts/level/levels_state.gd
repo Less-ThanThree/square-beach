@@ -11,8 +11,8 @@ signal start_phase_fight
 @onready var line_3_spawn = $Node/Lines/Line3
 @onready var tron_player = $Node/Tron_player
 @onready var tron_enemie = $Node/Tron_enemies
-@onready var chomp_1 = $Node/Lines/Line/Enemies/ChompSavor
-@onready var chomp_2 = $Node/Lines/Line/Enemies/DarkSpout
+#@onready var chomp_1 = $Node/Lines/Line/Enemies/ChompSavor
+#@onready var chomp_2 = $Node/Lines/Line/Enemies/DarkSpout
 @onready var cast_scene = $Ui/Cast
 @onready var fight = $Node
 
