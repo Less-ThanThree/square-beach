@@ -2,8 +2,8 @@ extends Node
 
 signal items_changed(indexes)
 
-var cols: int = 8
-var rows: int = 2
+var cols: int = 16
+var rows: int = 1
 var slots: int = cols * rows
 var units_inventory: Array = []
 var pick_unit: Object

@@ -20,13 +20,13 @@ func _on_control_unit_toggled(toggled_on):
 	
 	if toggled_on:
 		tween = create_tween().set_trans(Tween.TRANS_EXPO)
-		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y + 180), 1)
+		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y + 100), 1)
 		control_button.disabled = true
 		await tween.finished
 		control_button.disabled = false
 	else:
 		tween = create_tween().set_trans(Tween.TRANS_QUINT)
-		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y - 180), 1)
+		tween.tween_property(container_unit, 'position', Vector2(0, container_unit.position.y - 100), 1)
 		control_button.disabled = true
 		await tween.finished
 		control_button.disabled = false
@@ -55,5 +55,8 @@ func drag_item(index):
 		drag_preview.dragged_item = UnitInventory.set_item(index, dragged_item)
 
 func set_current_unit(index):
-	#UnitInventory.set_unit_pick(UnitInventory.units_inventory[index])
-	pick_unit.emit(UnitInventory.units_inventory[index])
+	if UnitInventory.units_inventory[index].has("count"):
+		UnitInventory.units_inventory[index].count -= 1
+		pick_unit.emit(UnitInventory.units_inventory[index])
+		if UnitInventory.units_inventory[index].count <= 0:
+			UnitInventory.remove_item(index)
