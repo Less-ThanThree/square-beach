@@ -15,8 +15,8 @@
 			"isCooldown": false,
 		}
 	},
-	"sagebark": {
-		"word": "sagebark",
+	"arksage": {
+		"word": "arksage",
 		"icon": "Sagebark.png",
 		"scene": "res://scenes/enemies/vita/sage_bark.tscn",
 		"cooldown": {
@@ -47,8 +47,8 @@
 			"isCooldown": false,
 		}
 	},
-	"tendrilsight": {
-		"word": "tendrilsight",
+	"oiltender": {
+		"word": "oiltender",
 		"icon": "Tendrilsight.png",
 		"scene": "res://scenes/enemies/void/tenderil_sight.tscn",
 		"cooldown": {

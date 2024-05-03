@@ -44,6 +44,7 @@ text = "WIN"
 label_settings = SubResource("LabelSettings_hfkl8")
 
 [node name="ButtonRestart" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

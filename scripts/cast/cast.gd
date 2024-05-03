@@ -216,7 +216,7 @@ func match_symbols(buffer: String, index: int):
 			i += 1
 
 		if buffer[index] == current_word_cast.word[index]:
-			if current_word_cast.node.is_inside_tree():
+			if current_word_cast != null:
 				current_word_cast.node.clear()
 				current_word_cast.node.append_text("[shake rate=20.0 level=5 connected=1][color=#b79209]%s[/color][/shake]%s" % [buffer_word, current_word_cast.word.substr(index + 1, current_word_cast.word.length())])
 		else:

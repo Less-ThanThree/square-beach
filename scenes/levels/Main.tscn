@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://8nyqayny65tp"]
+[gd_scene load_steps=106 format=3 uid="uid://8nyqayny65tp"]
 
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
@@ -27,8 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://tiicwfhbkevu" path="res://scenes/background/sky.tscn" id="17_63usu"]
 [ext_resource type="Texture2D" uid="uid://bxhngw78webux" path="res://assets/environment/Grass/grass2.png" id="17_efrhl"]
 [ext_resource type="Texture2D" uid="uid://dn4u25w1s2qao" path="res://assets/environment/Grass/grass.png" id="18_uuvx4"]
-[ext_resource type="PackedScene" uid="uid://dgth47v7uuakl" path="res://scenes/enemies/void/chomp_savor.tscn" id="21_2rxli"]
-[ext_resource type="PackedScene" uid="uid://cjgd0u5wmm41q" path="res://scenes/enemies/void/dark_spout.tscn" id="22_ipkos"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0h4r"]
 size = Vector3(300, 0.5, 80)
@@ -1449,14 +1447,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401929, -3.06031)
 [node name="Enemies_2" type="Node" parent="Node/Lines/Line"]
 
 [node name="Enemies" type="Node" parent="Node/Lines/Line"]
-
-[node name="ChompSavor" parent="Node/Lines/Line/Enemies" instance=ExtResource("21_2rxli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928851, -3.75198)
-unit_is_enemy = true
-
-[node name="DarkSpout" parent="Node/Lines/Line/Enemies" instance=ExtResource("22_ipkos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3425, 0.926214, -2.19076)
-unit_is_enemy = true
 
 [node name="Line2" parent="Node/Lines" instance=ExtResource("13_i03w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33585, -8.28577)
