@@ -3,9 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://m5yqt1j85kd5" path="res://scenes/ui/unit_inventory/unit_inventory.tscn" id="1_1jy6g"]
 [ext_resource type="Script" path="res://scripts/level/levels_state.gd" id="1_4vvpr"]
 [ext_resource type="PackedScene" uid="uid://b21q5kmf5ntr2" path="res://scenes/player/player.tscn" id="1_q57fh"]
-[ext_resource type="PackedScene" uid="uid://dqm4lgtdypgru" path="res://scenes/ui/lose_menu.tscn" id="2_px1qi"]
 [ext_resource type="PackedScene" uid="uid://dd5ve3derngit" path="res://scenes/ui/base_info.tscn" id="2_vob0w"]
-[ext_resource type="PackedScene" uid="uid://c63inugmqkwuw" path="res://scenes/ui/win_menu.tscn" id="3_q0734"]
 [ext_resource type="PackedScene" uid="uid://d0vh4ypr8o53n" path="res://scenes/postprocessing/postprocessing.tscn" id="4_y4tyd"]
 [ext_resource type="Texture2D" uid="uid://bhyp3t2a07vru" path="res://assets/environment/trees_anim/trees.png" id="5_iy2ax"]
 [ext_resource type="Texture2D" uid="uid://bl67ryhxvpmmf" path="res://assets/environment/trees_anim/trees2.png" id="5_lfwdq"]
@@ -604,8 +602,6 @@ sky = ExtResource("16_31oa1")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_4vvpr")
-die_menu = ExtResource("2_px1qi")
-win_menu = ExtResource("3_q0734")
 
 [node name="Post-processing" parent="." instance=ExtResource("4_y4tyd")]
 
