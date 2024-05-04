@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqm4lgtdypgru"]
+[gd_scene load_steps=4 format=3 uid="uid://dqm4lgtdypgru"]
 
 [ext_resource type="FontFile" uid="uid://djfal2h6rgrss" path="res://assets/fonts/antiquity-print.ttf" id="1_4ivnq"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu/die_menu.gd" id="1_xt56k"]
-[ext_resource type="PackedScene" uid="uid://8nyqayny65tp" path="res://scenes/levels/Main.tscn" id="2_j0ivk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_26yva"]
 font = ExtResource("1_4ivnq")
@@ -16,7 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xt56k")
-scene_start_level = ExtResource("2_j0ivk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
