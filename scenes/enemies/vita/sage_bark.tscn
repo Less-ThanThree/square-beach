@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ps2u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ruq1"]
-size = Vector3(1, 1, 2)
+size = Vector3(1, 1, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jamic"]
 atlas = ExtResource("1_a8sg8")

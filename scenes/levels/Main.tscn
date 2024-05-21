@@ -620,6 +620,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Cast" parent="Ui" instance=ExtResource("5_p0mqo")]
 process_mode = 2
+timer_on_cast = 10.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Node" type="Node3D" parent="."]

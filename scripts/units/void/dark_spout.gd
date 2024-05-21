@@ -14,6 +14,7 @@ extends UnitState
 
 var currnet_enemi_attack: Array = []
 var current_group
+var current_line
 
 func _ready():
 	if unit_is_enemy:
@@ -39,7 +40,7 @@ func _on_tree_entered():
 	print("Spawn: Dark spout")
 #
 func _on_attack_range_body_entered(body):
-	if body.is_in_group(current_group):
+	if body.is_in_group(current_group) && body.current_line == current_line:
 		current_state = "attack"
 		currnet_enemi_attack.push_back(body)
 		attack_cooldown.start()
