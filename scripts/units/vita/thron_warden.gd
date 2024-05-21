@@ -4,6 +4,7 @@ extends UnitState
 @onready var attack_range_col = $AttackRange/CollisionShape3D
 @onready var range_attack = $AttackRange
 @onready var attack_cooldown = $TimerOnAttackSpeed
+@onready var on_enemie_check = $TimerOnCheckEnemie
 
 @export var unit_health: int
 @export var unit_movement_speed: float
@@ -47,6 +48,7 @@ func _on_attack_range_body_entered(body):
 
 func _on_timer_on_attack_speed_timeout():
 	var unit_current_attack
+	on_enemie_check.start()
 	if currnet_enemi_attack.size() > 0:
 		unit_current_attack = currnet_enemi_attack.back()
 		if unit_current_attack == null:
@@ -54,11 +56,13 @@ func _on_timer_on_attack_speed_timeout():
 		if unit_current_attack != null:
 			unit_current_attack.take_damage(attack_damage)
 	else:
+		on_enemie_check.stop()
 		attack_cooldown.stop()
 		current_state = "move"
 
 func _on_die():
 	current_state = "die"
+	on_enemie_check.stop()
 	attack_cooldown.stop()
 	await animation_player.animation_finished
 	self.queue_free()
@@ -68,3 +72,8 @@ func _on_hit():
 		current_state = "hit"
 	else:
 		current_state = "move"
+
+func _on_timer_on_check_enemie_timeout():
+	if currnet_enemi_attack.size() == 0:
+		current_state = "move"
+		attack_cooldown.stop()

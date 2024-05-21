@@ -196,8 +196,12 @@ animation = &"attack"
 
 [node name="TimerOnAttackSpeed" type="Timer" parent="."]
 
+[node name="TimerOnCheckEnemie" type="Timer" parent="."]
+wait_time = 0.05
+
 [connection signal="die" from="." to="." method="_on_die"]
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="timeout" from="TimerOnAttackSpeed" to="." method="_on_timer_on_attack_speed_timeout"]
+[connection signal="timeout" from="TimerOnCheckEnemie" to="." method="_on_timer_on_check_enemie_timeout"]

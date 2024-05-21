@@ -19,5 +19,4 @@ func _process(delta):
 		"die":
 			animation_unit_play(animation_sprite, current_state)
 		"hit":
-			print("Hit")
 			animation_unit_play(animation_sprite, current_state)
