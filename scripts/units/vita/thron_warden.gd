@@ -68,8 +68,10 @@ func _on_die():
 	self.queue_free()
 
 func _on_hit():
+	current_state = "hit"
+	await animation_player.animation_finished
 	if currnet_enemi_attack.size() > 0:
-		current_state = "hit"
+		current_state = "attack"
 	else:
 		current_state = "move"
 

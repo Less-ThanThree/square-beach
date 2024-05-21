@@ -26,6 +26,7 @@ var enemies_keys: Array = []
 var is_cast_current_word = false
 var current_word_cast
 var index: int = 1
+var stop_type = false
 
 func _ready():
 	pass
@@ -38,9 +39,11 @@ func _ready():
 
 func _process(delta):
 	update_timer_left(timer_cast.time_left)
+	if !timer_cast.is_stopped() && timer_cast.time_left < 0.2:
+		stop_type = true
 
 func _input(event):
-	if event is InputEventKey && event.pressed:
+	if event is InputEventKey && event.pressed && !stop_type:
 		if event.keycode in range(65, 91):
 			buffer += event.as_text_key_label()
 			if is_cast_current_word:
@@ -156,9 +159,9 @@ func match_word(buffer: String):
 			else:
 				print("No cooldown")
 				enemies_keys.push_front(cast.word)
-				cast.node.queue_free()
+				cast.node.call_deferred("free")
 			add_units(cast.word, cast.icon, cast.scene)
-			cast.node.queue_free()
+			cast.node.call_deferred("free")
 			availableWord.erase(cast)
 			generate_single_word()
 			is_cast_current_word = false
@@ -181,7 +184,7 @@ func match_word(buffer: String):
 		else:
 			print("No cooldown")
 			enemies_keys.push_front(current_word_cast.word)
-			current_word_cast.node.queue_free()
+			current_word_cast.node.call_deferred("free")
 		availableWord.erase(current_word_cast)
 		generate_single_word()
 		#current_word_cast.node.queue_free()
@@ -220,7 +223,6 @@ func match_symbols(buffer: String, index: int):
 				current_word_cast.node.clear()
 				current_word_cast.node.append_text("[shake rate=20.0 level=5 connected=1][color=#b79209]%s[/color][/shake]%s" % [buffer_word, current_word_cast.word.substr(index + 1, current_word_cast.word.length())])
 		else:
-
 			if current_word_cast.node.is_inside_tree():
 				current_word_cast.node.clear()
 				current_word_cast.node.append_text(current_word_cast.word)
@@ -240,11 +242,11 @@ func _on_word_type_timeout(word):
 			availableWord.erase(cast)
 			enemies_keys.push_front(cast.word)
 			generate_single_word()
-			cast.node.queue_free()
+			cast.node.call_deferred("free")
 
 func _on_word_cooldown(word):
 	enemies_keys.push_front(word.text)
-	word.queue_free()
+	word.call_deferred("free")
 	#for cast in availableWord:
 		#if cast.word == word.text:
 			#cast.node.queue_free()
@@ -276,7 +278,7 @@ func update_timer_left(time: float):
 func _on_timer_on_cast_timeout():
 	for node in availableWord:
 		node.particle.emitting = true
-		node.node.queue_free()
+		node.node.call_deferred("free")
 	book_anim.play("book_close")
 	await book_anim.animation_finished
 	end_phase_cast.emit()

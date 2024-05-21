@@ -35,6 +35,8 @@ func _ready():
 	is_enemy = unit_is_enemy
 	attack_range_col.shape.size.x = unit_attack_range
 	attack_cooldown.wait_time = unit_attack_speed
+	diagonal_move_up = false
+	diagonal_move_down = false
 
 func _on_tree_entered():
 	current_state = "move"
@@ -68,8 +70,10 @@ func _on_die():
 	self.queue_free()
 
 func _on_hit():
+	current_state = "hit"
+	await animation_player.animation_finished
 	if currnet_enemi_attack.size() > 0:
-		current_state = "hit"
+		current_state = "attack"
 	else:
 		current_state = "move"
 
