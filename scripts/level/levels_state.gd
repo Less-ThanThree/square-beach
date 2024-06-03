@@ -11,8 +11,6 @@ signal start_phase_fight
 @onready var line_3_spawn = $Node/Lines/Line3
 @onready var tron_player = $Node/Tron_player
 @onready var tron_enemie = $Node/Tron_enemies
-#@onready var chomp_1 = $Node/Lines/Line/Enemies/ChompSavor
-#@onready var chomp_2 = $Node/Lines/Line/Enemies/DarkSpout
 @onready var cast_scene = $Ui/Cast
 @onready var fight = $Node
 
@@ -56,10 +54,13 @@ func spawn_unit(line_number, unit):
 				current_unit_scene.position = Vector3(rand_pos_x, 0.625, rand_pos_z)
 				match line_number:
 					1:
+						current_unit_scene.current_line = 1
 						line_1_spawn.add_child(current_unit_scene)
 					2:
+						current_unit_scene.current_line = 2
 						line_2_spawn.add_child(current_unit_scene)
 					3:
+						current_unit_scene.current_line = 3
 						line_3_spawn.add_child(current_unit_scene)
 			current_unit_scene = null
 
@@ -109,18 +110,23 @@ func spawn_wave_1():
 	var howler_unit_1 = howler.instantiate()
 	howler_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	howler_unit_1.unit_is_enemy = true
+	howler_unit_1.current_line = 1
 	var howler_unit_2 = howler.instantiate()
 	howler_unit_2.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	howler_unit_2.unit_is_enemy = true
+	howler_unit_2.current_line = 1
 	var dark_spout_unit_1 = darkspout.instantiate()
 	dark_spout_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	dark_spout_unit_1.unit_is_enemy = true
+	dark_spout_unit_1.current_line = 1
 	var sprout_unit_1 = sprout.instantiate()
 	sprout_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	sprout_unit_1.unit_is_enemy = true
+	sprout_unit_1.current_line = 3
 	var sprout_unit_2 = sprout.instantiate()
 	sprout_unit_2.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	sprout_unit_2.unit_is_enemy = true
+	sprout_unit_2.current_line = 3
 	line_1_spawn.add_child(howler_unit_1)
 	line_1_spawn.add_child(howler_unit_2)
 	line_1_spawn.add_child(dark_spout_unit_1)
@@ -131,21 +137,27 @@ func spawn_wave_2():
 	var howler_unit_1 =  howler.instantiate()
 	howler_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	howler_unit_1.unit_is_enemy = true
+	howler_unit_1.current_line = 1
 	var howler_unit_2 =  howler.instantiate()
 	howler_unit_2.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	howler_unit_2.unit_is_enemy = true
+	howler_unit_2.current_line = 1
 	var oiltender_unit_1 = oiltender.instantiate()
 	oiltender_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	oiltender_unit_1.unit_is_enemy = true
+	oiltender_unit_1.current_line = 1
 	var oiltender_unit_2 = oiltender.instantiate()
 	oiltender_unit_2.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	oiltender_unit_2.unit_is_enemy = true
+	oiltender_unit_2.current_line = 1
 	var bloomshot_unit_1 = bloomshot.instantiate()
 	bloomshot_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	bloomshot_unit_1.unit_is_enemy = true
+	bloomshot_unit_1.current_line = 2
 	var bloomshot_unit_2 = bloomshot.instantiate()
 	bloomshot_unit_2.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	bloomshot_unit_2.unit_is_enemy = true
+	bloomshot_unit_2.current_line = 3
 	line_1_spawn.add_child(howler_unit_1)
 	line_1_spawn.add_child(howler_unit_2)
 	line_1_spawn.add_child(oiltender_unit_1)
@@ -157,18 +169,23 @@ func spawn_wave_3():
 	var darkspout_unit_1 = darkspout.instantiate()
 	darkspout_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	darkspout_unit_1.unit_is_enemy = true
+	darkspout_unit_1.current_line = 1
 	var darkspout_unit_2 = darkspout.instantiate()
 	darkspout_unit_2.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	darkspout_unit_2.unit_is_enemy = true
+	darkspout_unit_2.current_line = 1
 	var howler_unit_1 = howler.instantiate()
 	howler_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	howler_unit_1.unit_is_enemy = true
+	howler_unit_1.current_line = 2
 	var oiltender_unit_1 = oiltender.instantiate()
 	oiltender_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	oiltender_unit_1.unit_is_enemy = true
+	oiltender_unit_1.current_line = 3
 	var chompsavor_unit_1 = chompsavor.instantiate()
 	chompsavor_unit_1.position = Vector3(randf_range(47, 45), 0.625, randf_range(1.4, -1.4))
 	chompsavor_unit_1.unit_is_enemy = true
+	chompsavor_unit_1.current_line = 3
 	line_1_spawn.add_child(darkspout_unit_1)
 	line_1_spawn.add_child(darkspout_unit_2)
 	line_2_spawn.add_child(howler_unit_1)
